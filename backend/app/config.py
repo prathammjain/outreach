@@ -17,8 +17,8 @@ class Settings(BaseSettings):
     database_url: str = "sqlite:///./payments.db"
     
     # Product Pricing (in paise/smallest currency unit)
-    tier_1_price: int = 110000  # Default ₹1100
-    tier_2_price: int = 199900  # Default ₹1999
+    tier_1_price: int = 99900   # Default ₹999
+    tier_2_price: int = 149900  # Default ₹1499
     
     # Google Sheet IDs
     indian_sheet_id: Optional[str] = None
