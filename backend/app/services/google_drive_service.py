@@ -16,24 +16,31 @@ SCOPES = ['https://www.googleapis.com/auth/drive']
 class GoogleDriveService:
     """Service for managing Google Drive permissions."""
     
-    def __init__(self, service_account_file: str):
+    def __init__(self, service_account_file: Optional[str] = None):
         """
         Initialize Google Drive service with service account credentials.
         
         Supports two methods:
-        1. File path (local development)
-        2. Base64-encoded JSON from env var (production deployment)
+        1. Base64-encoded JSON from settings (preferred for production)
+        2. File path (local development)
         
         Args:
             service_account_file: Path to service account JSON file
         """
-        # Check if Base64-encoded credentials are in environment
-        base64_creds = os.getenv('GOOGLE_SERVICE_ACCOUNT_JSON_BASE64')
+        from app.config import settings
+        
+        # Check if Base64-encoded credentials are in settings
+        base64_creds = settings.google_service_account_json_base64
         
         if base64_creds:
             # Decode Base64 credentials (for production deployment)
-            logger.info("Using Base64-encoded service account credentials from environment")
+            logger.info("Using Base64-encoded service account credentials from settings")
             try:
+                # Add padding if necessary
+                missing_padding = len(base64_creds) % 4
+                if missing_padding:
+                    base64_creds += '=' * (4 - missing_padding)
+                    
                 json_content = base64.b64decode(base64_creds)
                 credentials_info = json.loads(json_content)
                 self.credentials = service_account.Credentials.from_service_account_info(
@@ -43,13 +50,16 @@ class GoogleDriveService:
             except Exception as e:
                 logger.error(f"Failed to decode Base64 credentials: {e}")
                 raise
-        else:
+        elif service_account_file and os.path.exists(service_account_file):
             # Use file path (for local development)
             logger.info(f"Using service account file: {service_account_file}")
             self.credentials = service_account.Credentials.from_service_account_file(
                 service_account_file,
                 scopes=SCOPES
             )
+        else:
+            logger.error("No Google Service Account credentials provided (neither Base64 nor file path)")
+            raise ValueError("Google Service Account credentials missing")
         
         self.service = build('drive', 'v3', credentials=self.credentials)
     

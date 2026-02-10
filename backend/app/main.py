@@ -13,11 +13,27 @@ logging.basicConfig(
 
 logger = logging.getLogger(__name__)
 
+from contextlib import asynccontextmanager
+
+@asynccontextmanager
+async def lifespan(app: FastAPI):
+    """Lifecycle events for the FastAPI application."""
+    # Startup logic
+    logger.info("Initializing database...")
+    init_db()
+    logger.info("Database initialized successfully")
+    
+    yield
+    
+    # Shutdown logic
+    logger.info("Shutting down application...")
+
 # Create FastAPI app
 app = FastAPI(
     title="Google Sheets Access Control API",
     description="Backend for managing Google Sheets access via Razorpay payments",
-    version="1.0.0"
+    version="1.0.0",
+    lifespan=lifespan
 )
 
 # Configure CORS (adjust origins for production)
@@ -31,20 +47,6 @@ app.add_middleware(
 
 # Include routers
 app.include_router(webhooks.router)
-
-
-@app.on_event("startup")
-async def startup_event():
-    """Initialize database on startup."""
-    logger.info("Initializing database...")
-    init_db()
-    logger.info("Database initialized successfully")
-
-
-@app.on_event("shutdown")
-async def shutdown_event():
-    """Cleanup on shutdown."""
-    logger.info("Shutting down application...")
 
 
 @app.get("/")

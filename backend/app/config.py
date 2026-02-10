@@ -1,30 +1,34 @@
-from pydantic_settings import BaseSettings
+from pydantic_settings import BaseSettings, SettingsConfigDict
 from typing import Optional
+import os
 
 
 class Settings(BaseSettings):
     """Application configuration loaded from environment variables."""
     
     # Razorpay Configuration
-    razorpay_webhook_secret: str
+    razorpay_webhook_secret: Optional[str] = None
     
     # Google Service Account
-    google_service_account_file: str
+    google_service_account_file: Optional[str] = "./service-account.json"
+    google_service_account_json_base64: Optional[str] = None
     
     # Database
     database_url: str = "sqlite:///./payments.db"
     
     # Product Pricing (in paise/smallest currency unit)
-    tier_1_price: int  # e.g., 99900 for ₹999
-    tier_2_price: int  # e.g., 199900 for ₹1999
+    tier_1_price: int = 110000  # Default ₹1100
+    tier_2_price: int = 199900  # Default ₹1999
     
     # Google Sheet IDs
-    indian_sheet_id: str
-    yc_sheet_id: str
+    indian_sheet_id: Optional[str] = None
+    yc_sheet_id: Optional[str] = None
     
-    class Config:
-        env_file = ".env"
-        case_sensitive = False
+    model_config = SettingsConfigDict(
+        env_file=".env",
+        case_sensitive=False,
+        extra="ignore"
+    )
 
 
 # Global settings instance

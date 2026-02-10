@@ -49,12 +49,20 @@ class PaymentService:
         Returns:
             List of Google Sheet IDs
         """
+        sheet_ids = []
         if tier == 1:
-            return [settings.indian_sheet_id]
+            if settings.indian_sheet_id:
+                sheet_ids.append(settings.indian_sheet_id)
         elif tier == 2:
-            return [settings.indian_sheet_id, settings.yc_sheet_id]
-        else:
-            return []
+            if settings.indian_sheet_id:
+                sheet_ids.append(settings.indian_sheet_id)
+            if settings.yc_sheet_id:
+                sheet_ids.append(settings.yc_sheet_id)
+        
+        if not sheet_ids:
+            logger.warning(f"No sheet IDs configured for tier {tier}")
+            
+        return sheet_ids
     
     def process_payment(
         self,

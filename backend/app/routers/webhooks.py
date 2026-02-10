@@ -14,16 +14,33 @@ logger = logging.getLogger(__name__)
 
 router = APIRouter(prefix="/razorpay", tags=["webhooks"])
 
-# Initialize Google Drive service
-drive_service = GoogleDriveService(settings.google_service_account_file)
-payment_service = PaymentService(drive_service)
+# Service singletons (initialized lazily)
+_drive_service = None
+_payment_service = None
+
+def get_drive_service():
+    global _drive_service
+    if _drive_service is None:
+        try:
+            _drive_service = GoogleDriveService(settings.google_service_account_file)
+        except Exception as e:
+            logger.error(f"Failed to initialize GoogleDriveService: {e}")
+            raise HTTPException(status_code=500, detail="Google Drive service unconfigured")
+    return _drive_service
+
+def get_payment_service(drive_service: GoogleDriveService = Depends(get_drive_service)):
+    global _payment_service
+    if _payment_service is None:
+        _payment_service = PaymentService(drive_service)
+    return _payment_service
 
 
 @router.post("/webhook")
 async def razorpay_webhook(
     request: Request,
     x_razorpay_signature: Optional[str] = Header(None),
-    db: Session = Depends(get_db)
+    db: Session = Depends(get_db),
+    payment_service: PaymentService = Depends(get_payment_service)
 ):
     """
     Handle Razorpay payment.captured webhook.
@@ -42,6 +59,10 @@ async def razorpay_webhook(
         logger.error("Missing X-Razorpay-Signature header")
         raise HTTPException(status_code=401, detail="Missing signature header")
     
+    if not settings.razorpay_webhook_secret:
+        logger.error("RAZORPAY_WEBHOOK_SECRET is not configured")
+        raise HTTPException(status_code=500, detail="Webhook secret not configured")
+        
     if not verify_webhook_signature(
         body,
         x_razorpay_signature,
@@ -120,7 +141,8 @@ async def razorpay_webhook(
 @router.post("/revoke")
 async def revoke_access(
     email: str,
-    db: Session = Depends(get_db)
+    db: Session = Depends(get_db),
+    payment_service: PaymentService = Depends(get_payment_service)
 ):
     """
     Admin endpoint to revoke access for a specific email.

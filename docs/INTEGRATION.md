@@ -11,7 +11,7 @@
 
 2. **Payment Configuration**
    - Tier 1: ₹1,100 (110000 paise)
-   - Tier 2: ₹2,399 (239900 paise)
+   - Tier 2: ₹1,999 (199900 paise)
    - Matches backend pricing exactly
 
 3. **User Experience**
@@ -64,7 +64,7 @@ const RAZORPAY_KEY_ID = 'rzp_test_YOUR_KEY_ID';  // ⚠️ UPDATE THIS
 ```env
 RAZORPAY_WEBHOOK_SECRET=whsec_xxx  # From Razorpay webhook
 TIER_1_PRICE=110000                # Must match frontend
-TIER_2_PRICE=239900                # Must match frontend
+TIER_2_PRICE=199900                # Must match frontend
 INDIAN_SHEET_ID=xxx                # Your Google Sheet ID
 YC_SHEET_ID=xxx                    # Your Google Sheet ID
 ```
