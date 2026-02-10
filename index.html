@@ -772,8 +772,24 @@
                 handler: function (response) {
                     showSuccessModal(product.name);
                 },
+                prefill: {
+                    name: '',
+                    email: '', // Empty forces them to type it
+                    contact: ''
+                },
                 theme: { color: '#00ff88' },
-                notes: { tier: tier }
+                notes: { tier: tier },
+                config: {
+                    display: {
+                        blocks: {
+                            upi: {
+                                name: "Pay using UPI",
+                                instruments: [{ method: "upi" }]
+                            }
+                        },
+                        sequence: ["block.upi", "card", "netbanking"]
+                    }
+                }
             };
             const rzp = new Razorpay(options);
             rzp.open();
