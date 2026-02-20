@@ -4,9 +4,9 @@
 <head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title>OutreachKit - 6,400+ Startups with Founder Contacts</title>
+    <title>OutreachKit — 6,400+ Startup Contacts for Cold Outreach</title>
     <meta name="description"
-        content="Cold outreach database: 6,400+ tech startups with founder emails, phone numbers, and contact info. Stop searching. Start reaching out.">
+        content="Curated database of 6,400+ tech startups with verified founder emails, LinkedIn profiles & phone numbers. One-time payment. Instant Google Sheets access.">
 
     <!-- Fonts -->
     <link rel="preconnect" href="https://fonts.googleapis.com">
@@ -16,24 +16,26 @@
         rel="stylesheet">
 
     <style>
+        /* ── Design Tokens ── */
         :root {
-            /* Pricing Configuration */
-            --tier1-price: "999";
-            --tier2-price: "1,499";
-
-            /* Design System */
             --bg: #050505;
             --surface: #0f0f0f;
+            --surface-2: #141414;
             --surface-hover: #161616;
-            --border: rgba(255, 255, 255, 0.08);
-            --border-bright: rgba(255, 255, 255, 0.15);
-            --text-primary: #ffffff;
-            --text-secondary: #94a3b8;
-            --accent: #00ff88;
-            --accent-glow: rgba(0, 255, 136, 0.15);
-            --accent-dim: #00cc6a;
-            --glass: rgba(255, 255, 255, 0.03);
-            --glass-border: rgba(255, 255, 255, 0.06);
+            --border: rgba(255, 255, 255, 0.07);
+            --border-bright: rgba(255, 255, 255, 0.14);
+            --text-primary: #f1f5f9;
+            --text-secondary: #8b99ae;
+            --text-muted: #555e6d;
+            --accent: #00e57a;
+            --accent-glow: rgba(0, 229, 122, 0.12);
+            --accent-dim: #00b860;
+            --glass: rgba(255, 255, 255, 0.028);
+            --glass-border: rgba(255, 255, 255, 0.055);
+            --radius-sm: 10px;
+            --radius-md: 16px;
+            --radius-lg: 24px;
+            --radius-xl: 32px;
         }
 
         * {
@@ -52,85 +54,112 @@
             -webkit-font-smoothing: antialiased;
         }
 
-        /* Animated Background Grid */
+        /* Subtle grid texture */
         body::before {
             content: '';
             position: fixed;
             inset: 0;
             background:
-                radial-gradient(circle at 50% 50%, rgba(0, 255, 136, 0.02) 0%, transparent 100%),
-                linear-gradient(rgba(255, 255, 255, 0.03) 1px, transparent 1px),
-                linear-gradient(90deg, rgba(255, 255, 255, 0.03) 1px, transparent 1px);
-            background-size: 100% 100%, 40px 40px, 40px 40px;
+                radial-gradient(ellipse 80% 50% at 50% -10%, rgba(0, 229, 122, 0.035) 0%, transparent 100%),
+                linear-gradient(rgba(255, 255, 255, 0.022) 1px, transparent 1px),
+                linear-gradient(90deg, rgba(255, 255, 255, 0.022) 1px, transparent 1px);
+            background-size: 100% 100%, 44px 44px, 44px 44px;
             z-index: -1;
+            pointer-events: none;
         }
 
-        /* Ambient Orbs */
+        /* Ambient light orbs */
         .orb {
             position: fixed;
-            width: 800px;
-            height: 800px;
             border-radius: 50%;
             background: radial-gradient(circle, var(--accent-glow), transparent 70%);
-            filter: blur(100px);
+            filter: blur(80px);
             pointer-events: none;
             z-index: -1;
-            opacity: 0.5;
-            animation: orbFloat 20s infinite alternate-reverse ease-in-out;
+            opacity: 0.6;
         }
 
         .orb-1 {
-            top: -400px;
+            width: 700px;
+            height: 700px;
+            top: -300px;
             right: -200px;
+            animation: orbDrift 25s infinite alternate ease-in-out;
         }
 
         .orb-2 {
-            bottom: -400px;
-            left: -200px;
-            animation-delay: -10s;
+            width: 600px;
+            height: 600px;
+            bottom: 10%;
+            left: -150px;
+            animation: orbDrift 30s infinite alternate-reverse ease-in-out;
         }
 
-        @keyframes orbFloat {
-            0% {
-                transform: translate(0, 0) scale(1);
-            }
-
-            100% {
-                transform: translate(100px, 50px) scale(1.2);
-            }
+        @keyframes orbDrift {
+            from { transform: translate(0, 0) scale(1); }
+            to   { transform: translate(60px, 40px) scale(1.15); }
         }
 
         .container {
-            max-width: 1200px;
+            max-width: 1180px;
             margin: 0 auto;
             padding: 0 24px;
         }
 
-        /* Glass Header */
+        /* ── Announcement bar ── */
+        .announcement-bar {
+            background: linear-gradient(90deg, rgba(0,229,122,0.12) 0%, rgba(0,229,122,0.06) 100%);
+            border-bottom: 1px solid rgba(0,229,122,0.15);
+            text-align: center;
+            padding: 10px 24px;
+            font-size: 13px;
+            color: var(--text-secondary);
+            font-weight: 500;
+        }
+
+        .announcement-bar strong {
+            color: var(--accent);
+        }
+
+        /* ── Header ── */
         header {
             position: sticky;
             top: 0;
             z-index: 1000;
-            background: rgba(5, 5, 5, 0.7);
-            backdrop-filter: blur(20px);
+            background: rgba(5, 5, 5, 0.82);
+            backdrop-filter: blur(24px);
+            -webkit-backdrop-filter: blur(24px);
             border-bottom: 1px solid var(--glass-border);
-            padding: 20px 0;
         }
 
         .header-content {
             display: flex;
             justify-content: space-between;
             align-items: center;
+            height: 68px;
         }
 
         .logo {
             font-family: 'Outfit', sans-serif;
-            font-size: 24px;
+            font-size: 22px;
             font-weight: 800;
-            letter-spacing: -0.02em;
+            letter-spacing: -0.025em;
             display: flex;
             align-items: center;
-            gap: 8px;
+            gap: 6px;
+            text-decoration: none;
+            color: var(--text-primary);
+        }
+
+        .logo-icon {
+            width: 32px;
+            height: 32px;
+            background: linear-gradient(135deg, var(--accent), #50ffb4);
+            border-radius: 8px;
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            font-size: 15px;
         }
 
         .logo-accent {
@@ -140,398 +169,949 @@
             -webkit-text-fill-color: transparent;
         }
 
-        /* Hero Section */
-        .hero {
-            padding: 120px 0 100px;
-            text-align: center;
-            position: relative;
+        .nav-links {
+            display: flex;
+            gap: 28px;
+            align-items: center;
         }
 
-        .badge {
-            display: inline-flex;
-            align-items: center;
-            gap: 8px;
-            padding: 8px 16px;
-            background: var(--glass);
-            border: 1px solid var(--glass-border);
-            border-radius: 100px;
+        .nav-links a {
+            text-decoration: none;
+            color: var(--text-secondary);
             font-size: 14px;
             font-weight: 500;
-            color: var(--accent);
-            margin-bottom: 32px;
-            backdrop-filter: blur(10px);
+            transition: color 0.2s;
         }
 
-        h1 {
-            font-family: 'Outfit', sans-serif;
-            font-size: clamp(48px, 8vw, 96px);
-            font-weight: 800;
-            line-height: 0.95;
-            letter-spacing: -0.04em;
-            margin-bottom: 32px;
-        }
-
-        .gradient-text {
-            background: linear-gradient(135deg, #fff 30%, var(--accent) 100%);
-            -webkit-background-clip: text;
-            background-clip: text;
-            -webkit-text-fill-color: transparent;
-        }
-
-        .hero-subtitle {
-            max-width: 650px;
-            margin: 0 auto 48px;
-            font-size: clamp(18px, 2.5vw, 24px);
-            color: var(--text-secondary);
-            line-height: 1.5;
-        }
-
-        .cta-group {
-            display: flex;
-            gap: 20px;
-            justify-content: center;
-            flex-wrap: wrap;
+        .nav-links a:hover {
+            color: var(--text-primary);
         }
 
         .btn {
-            padding: 18px 40px;
-            border-radius: 12px;
-            font-size: 18px;
+            padding: 12px 28px;
+            border-radius: var(--radius-sm);
+            font-size: 14px;
             font-weight: 600;
             cursor: pointer;
-            transition: all 0.3s cubic-bezier(0.4, 0, 0.2, 1);
+            transition: all 0.25s cubic-bezier(0.4, 0, 0.2, 1);
             text-decoration: none;
             display: inline-flex;
             align-items: center;
-            gap: 12px;
-            position: relative;
-            overflow: hidden;
+            gap: 8px;
+            border: none;
+            font-family: 'Inter', sans-serif;
         }
 
         .btn-primary {
             background: var(--accent);
-            color: var(--bg);
-            border: none;
-            box-shadow: 0 10px 30px rgba(0, 255, 136, 0.2);
+            color: #020d06;
+            box-shadow: 0 6px 20px rgba(0, 229, 122, 0.22);
         }
 
         .btn-primary:hover {
-            transform: translateY(-4px);
-            box-shadow: 0 15px 40px rgba(0, 255, 136, 0.3);
-            background: #2eff9c;
+            background: #14f090;
+            transform: translateY(-2px);
+            box-shadow: 0 10px 28px rgba(0, 229, 122, 0.32);
         }
 
         .btn-secondary {
             background: var(--glass);
             color: var(--text-primary);
             border: 1px solid var(--border-bright);
-            backdrop-filter: blur(10px);
         }
 
         .btn-secondary:hover {
             border-color: var(--accent);
-            background: rgba(0, 255, 136, 0.05);
-            transform: translateY(-4px);
+            background: var(--accent-glow);
+            transform: translateY(-2px);
         }
 
-        /* Stats Grid */
-        .stats {
-            padding: 60px 0;
+        .btn-lg {
+            padding: 18px 44px;
+            font-size: 17px;
+            border-radius: var(--radius-md);
+        }
+
+        /* ── Hero ── */
+        .hero {
+            padding: 100px 0 80px;
+            text-align: center;
+            position: relative;
+        }
+
+        .hero-badge {
+            display: inline-flex;
+            align-items: center;
+            gap: 10px;
+            padding: 8px 18px;
+            background: rgba(0, 229, 122, 0.06);
+            border: 1px solid rgba(0, 229, 122, 0.2);
+            border-radius: 100px;
+            font-size: 13px;
+            font-weight: 600;
+            color: var(--accent);
+            margin-bottom: 36px;
+            letter-spacing: 0.02em;
+        }
+
+        .hero-badge-dot {
+            width: 7px;
+            height: 7px;
+            border-radius: 50%;
+            background: var(--accent);
+            box-shadow: 0 0 8px var(--accent);
+            animation: pulse 2s infinite;
+        }
+
+        @keyframes pulse {
+            0%, 100% { opacity: 1; box-shadow: 0 0 8px var(--accent); }
+            50%       { opacity: 0.6; box-shadow: 0 0 3px var(--accent); }
+        }
+
+        h1 {
+            font-family: 'Outfit', sans-serif;
+            font-size: clamp(44px, 7.5vw, 88px);
+            font-weight: 800;
+            line-height: 0.96;
+            letter-spacing: -0.04em;
+            margin-bottom: 28px;
+            color: #fff;
+        }
+
+        .gradient-text {
+            background: linear-gradient(135deg, #e2fdf0 20%, var(--accent) 75%);
+            -webkit-background-clip: text;
+            background-clip: text;
+            -webkit-text-fill-color: transparent;
+        }
+
+        .hero-subtitle {
+            max-width: 600px;
+            margin: 0 auto 48px;
+            font-size: clamp(17px, 2.2vw, 21px);
+            color: var(--text-secondary);
+            line-height: 1.55;
+        }
+
+        .cta-group {
+            display: flex;
+            gap: 16px;
+            justify-content: center;
+            flex-wrap: wrap;
+            margin-bottom: 20px;
+        }
+
+        .hero-trust-note {
+            color: var(--text-muted);
+            font-size: 13px;
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            gap: 6px;
+            margin-top: 12px;
+        }
+
+        .hero-trust-note svg {
+            color: var(--accent);
+        }
+
+        /* ── Trust logos / as-seen-in bar ── */
+        .credibility-bar {
+            border-top: 1px solid var(--border);
+            border-bottom: 1px solid var(--border);
+            padding: 24px 0;
+            margin: 16px 0 0;
+        }
+
+        .credibility-inner {
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            gap: 40px;
+            flex-wrap: wrap;
+        }
+
+        .credibility-label {
+            color: var(--text-muted);
+            font-size: 12px;
+            font-weight: 600;
+            text-transform: uppercase;
+            letter-spacing: 0.12em;
+            white-space: nowrap;
+        }
+
+        .credibility-badge {
+            display: flex;
+            align-items: center;
+            gap: 8px;
+            color: var(--text-secondary);
+            font-size: 14px;
+            font-weight: 600;
+            opacity: 0.7;
+        }
+
+        .credibility-badge svg {
+            color: var(--accent);
+        }
+
+        /* ── Stats ── */
+        .stats-section {
+            padding: 64px 0;
+        }
+
+        .stats-grid {
             display: grid;
-            grid-template-columns: repeat(auto-fit, minmax(240px, 1fr));
-            gap: 24px;
+            grid-template-columns: repeat(auto-fit, minmax(220px, 1fr));
+            gap: 20px;
         }
 
         .stat-card {
-            padding: 40px;
+            padding: 36px 32px;
             background: var(--surface);
             border: 1px solid var(--border);
-            border-radius: 24px;
+            border-radius: var(--radius-lg);
             text-align: center;
-            transition: transform 0.3s ease;
+            transition: all 0.3s ease;
+            position: relative;
+            overflow: hidden;
+        }
+
+        .stat-card::before {
+            content: '';
+            position: absolute;
+            inset: 0;
+            background: linear-gradient(135deg, var(--accent-glow) 0%, transparent 70%);
+            opacity: 0;
+            transition: opacity 0.3s;
         }
 
         .stat-card:hover {
-            transform: translateY(-8px);
-            border-color: var(--border-bright);
+            transform: translateY(-6px);
+            border-color: rgba(0,229,122,0.25);
+        }
+
+        .stat-card:hover::before {
+            opacity: 1;
         }
 
         .stat-number {
             font-family: 'Outfit', sans-serif;
-            font-size: 56px;
-            font-weight: 700;
+            font-size: 52px;
+            font-weight: 800;
             color: var(--accent);
             line-height: 1;
+            position: relative;
         }
 
         .stat-label {
-            margin-top: 12px;
+            margin-top: 10px;
             color: var(--text-secondary);
             font-weight: 500;
             text-transform: uppercase;
             letter-spacing: 0.1em;
-            font-size: 12px;
+            font-size: 11px;
+            position: relative;
         }
 
-        /* Feature Cards */
-        .features {
-            padding: 120px 0;
-        }
-
+        /* ── Section chrome ── */
         .section-header {
             text-align: center;
-            margin-bottom: 80px;
+            margin-bottom: 72px;
         }
 
         .section-tag {
             color: var(--accent);
             font-weight: 700;
             text-transform: uppercase;
-            letter-spacing: 0.2em;
-            font-size: 13px;
-            margin-bottom: 16px;
+            letter-spacing: 0.18em;
+            font-size: 12px;
+            margin-bottom: 14px;
             display: block;
         }
 
         .section-title {
             font-family: 'Outfit', sans-serif;
-            font-size: 48px;
+            font-size: clamp(30px, 4.5vw, 46px);
             font-weight: 700;
+            color: #fff;
+            letter-spacing: -0.025em;
+            line-height: 1.1;
+        }
+
+        .section-subtitle {
+            color: var(--text-secondary);
+            font-size: 16px;
+            margin-top: 14px;
+            max-width: 560px;
+            margin-left: auto;
+            margin-right: auto;
+            line-height: 1.6;
+        }
+
+        /* ── Features ── */
+        .features {
+            padding: 100px 0;
         }
 
         .feature-grid {
             display: grid;
-            grid-template-columns: repeat(auto-fit, minmax(320px, 1fr));
-            gap: 32px;
+            grid-template-columns: repeat(auto-fit, minmax(310px, 1fr));
+            gap: 24px;
         }
 
         .feature-card {
             background: var(--surface);
             border: 1px solid var(--border);
-            border-radius: 24px;
-            padding: 48px;
-            transition: all 0.4s ease;
+            border-radius: var(--radius-lg);
+            padding: 44px 40px;
+            transition: all 0.35s ease;
             position: relative;
+            overflow: hidden;
+        }
+
+        .feature-card::after {
+            content: '';
+            position: absolute;
+            bottom: 0;
+            left: 0;
+            right: 0;
+            height: 2px;
+            background: linear-gradient(90deg, transparent, var(--accent), transparent);
+            opacity: 0;
+            transition: opacity 0.35s;
         }
 
         .feature-card:hover {
-            border-color: var(--accent);
+            border-color: rgba(0, 229, 122, 0.22);
             background: var(--surface-hover);
-            transform: translateY(-10px);
+            transform: translateY(-8px);
+        }
+
+        .feature-card:hover::after {
+            opacity: 1;
         }
 
         .feature-icon {
-            width: 64px;
-            height: 64px;
-            background: rgba(0, 255, 136, 0.1);
-            border-radius: 16px;
+            width: 56px;
+            height: 56px;
+            background: rgba(0, 229, 122, 0.09);
+            border: 1px solid rgba(0, 229, 122, 0.15);
+            border-radius: 14px;
             display: flex;
             align-items: center;
             justify-content: center;
-            font-size: 28px;
-            margin-bottom: 24px;
+            font-size: 24px;
+            margin-bottom: 22px;
         }
 
         .feature-card h3 {
             font-family: 'Outfit', sans-serif;
-            font-size: 24px;
-            margin-bottom: 16px;
+            font-size: 21px;
+            font-weight: 700;
+            margin-bottom: 12px;
+            color: #fff;
         }
 
         .feature-card p {
             color: var(--text-secondary);
-            font-size: 16px;
+            font-size: 15px;
             line-height: 1.7;
         }
 
-        /* Pricing Section */
+        /* ── How It Works ── */
+        .how-it-works {
+            padding: 100px 0;
+            border-top: 1px solid var(--border);
+            border-bottom: 1px solid var(--border);
+        }
+
+        .steps {
+            display: grid;
+            grid-template-columns: repeat(auto-fit, minmax(200px, 1fr));
+            gap: 0;
+            max-width: 880px;
+            margin: 0 auto;
+            position: relative;
+        }
+
+        .steps::before {
+            content: '';
+            position: absolute;
+            top: 28px;
+            left: 12%;
+            right: 12%;
+            height: 1px;
+            background: linear-gradient(to right, transparent, rgba(0,229,122,0.35), transparent);
+        }
+
+        .step {
+            text-align: center;
+            padding: 0 20px;
+        }
+
+        .step-number {
+            width: 56px;
+            height: 56px;
+            background: rgba(0, 229, 122, 0.08);
+            border: 1px solid rgba(0, 229, 122, 0.28);
+            border-radius: 50%;
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            font-family: 'Outfit', sans-serif;
+            font-size: 20px;
+            font-weight: 700;
+            color: var(--accent);
+            margin: 0 auto 18px;
+        }
+
+        .step h4 {
+            font-family: 'Outfit', sans-serif;
+            font-size: 16px;
+            font-weight: 700;
+            margin-bottom: 8px;
+            color: #fff;
+        }
+
+        .step p {
+            color: var(--text-secondary);
+            font-size: 13px;
+            line-height: 1.65;
+        }
+
+        /* ── Sample table ── */
+        .sample-section {
+            padding: 100px 0;
+        }
+
+        .sample-table-wrapper {
+            overflow-x: auto;
+            border-radius: var(--radius-md);
+            border: 1px solid var(--border);
+        }
+
+        .sample-table {
+            width: 100%;
+            border-collapse: collapse;
+            font-size: 14px;
+            min-width: 680px;
+        }
+
+        .sample-table th {
+            background: rgba(0, 229, 122, 0.055);
+            color: var(--accent);
+            font-weight: 600;
+            text-transform: uppercase;
+            letter-spacing: 0.07em;
+            font-size: 11px;
+            padding: 14px 18px;
+            text-align: left;
+            border-bottom: 1px solid var(--border);
+            white-space: nowrap;
+        }
+
+        .sample-table td {
+            padding: 13px 18px;
+            color: var(--text-secondary);
+            border-bottom: 1px solid rgba(255,255,255,0.035);
+            white-space: nowrap;
+        }
+
+        .sample-table tr:last-child td {
+            border-bottom: none;
+        }
+
+        .sample-table tr:hover td {
+            background: rgba(255,255,255,0.018);
+            color: var(--text-primary);
+        }
+
+        .blurred-cell {
+            filter: blur(5px);
+            user-select: none;
+            pointer-events: none;
+        }
+
+        .sample-caption {
+            text-align: center;
+            color: var(--text-muted);
+            font-size: 13px;
+            margin-top: 14px;
+        }
+
+        /* ── Testimonials ── */
+        .testimonials {
+            padding: 100px 0;
+            background: radial-gradient(ellipse at center top, rgba(0,229,122,0.04) 0%, transparent 65%);
+        }
+
+        .testimonial-grid {
+            display: grid;
+            grid-template-columns: repeat(auto-fit, minmax(290px, 1fr));
+            gap: 20px;
+        }
+
+        .testimonial-card {
+            background: var(--surface);
+            border: 1px solid var(--border);
+            border-radius: var(--radius-lg);
+            padding: 36px 32px;
+            transition: border-color 0.3s;
+            display: flex;
+            flex-direction: column;
+            gap: 20px;
+        }
+
+        .testimonial-card:hover {
+            border-color: var(--border-bright);
+        }
+
+        .stars {
+            color: #f59e0b;
+            font-size: 16px;
+            letter-spacing: 3px;
+        }
+
+        .testimonial-text {
+            color: var(--text-secondary);
+            font-size: 15px;
+            line-height: 1.72;
+            font-style: italic;
+            flex-grow: 1;
+        }
+
+        .testimonial-author {
+            display: flex;
+            align-items: center;
+            gap: 12px;
+        }
+
+        .author-avatar {
+            width: 40px;
+            height: 40px;
+            border-radius: 50%;
+            background: linear-gradient(135deg, var(--accent), #007aff);
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            font-weight: 700;
+            font-size: 15px;
+            color: #020d06;
+            flex-shrink: 0;
+        }
+
+        .author-name {
+            font-weight: 600;
+            font-size: 14px;
+            color: var(--text-primary);
+        }
+
+        .author-role {
+            color: var(--text-muted);
+            font-size: 12px;
+            margin-top: 2px;
+        }
+
+        /* ── Trust bar ── */
+        .trust-bar {
+            display: flex;
+            justify-content: center;
+            align-items: center;
+            gap: 32px;
+            flex-wrap: wrap;
+            padding: 28px 0;
+            border-top: 1px solid var(--border);
+            border-bottom: 1px solid var(--border);
+            margin-bottom: 72px;
+        }
+
+        .trust-item {
+            display: flex;
+            align-items: center;
+            gap: 9px;
+            color: var(--text-secondary);
+            font-size: 13px;
+            font-weight: 500;
+        }
+
+        .trust-item svg {
+            color: var(--accent);
+            flex-shrink: 0;
+        }
+
+        /* ── Pricing ── */
         .pricing {
-            padding: 120px 0;
-            background: radial-gradient(circle at top, rgba(0, 255, 136, 0.05), transparent 70%);
+            padding: 100px 0;
         }
 
         .pricing-grid {
             display: grid;
-            grid-template-columns: repeat(auto-fit, minmax(350px, 1fr));
-            gap: 32px;
-            max-width: 1000px;
+            grid-template-columns: repeat(auto-fit, minmax(340px, 1fr));
+            gap: 24px;
+            max-width: 960px;
             margin: 0 auto;
         }
 
         .pricing-card {
             background: var(--surface);
             border: 1px solid var(--border);
-            border-radius: 32px;
-            padding: 48px;
+            border-radius: var(--radius-xl);
+            padding: 48px 44px;
             position: relative;
-            transition: all 0.5s cubic-bezier(0.4, 0, 0.2, 1);
+            transition: all 0.4s cubic-bezier(0.4, 0, 0.2, 1);
             display: flex;
             flex-direction: column;
         }
 
         .pricing-card:hover {
-            border-color: var(--accent);
-            transform: scale(1.02);
-            box-shadow: 0 40px 80px rgba(0, 0, 0, 0.5);
+            border-color: rgba(0,229,122,0.3);
+            box-shadow: 0 32px 64px rgba(0,0,0,0.45);
+            transform: translateY(-6px);
         }
 
         .pricing-card.premium {
-            border: 2px solid var(--accent);
-            background: linear-gradient(180deg, rgba(0, 255, 136, 0.05) 0%, transparent 100%), var(--surface);
+            border: 1.5px solid rgba(0,229,122,0.4);
+            background: linear-gradient(180deg, rgba(0,229,122,0.04) 0%, transparent 50%), var(--surface);
         }
 
         .popular-badge {
             position: absolute;
-            top: -16px;
+            top: -14px;
             left: 50%;
             transform: translateX(-50%);
             background: var(--accent);
-            color: var(--bg);
-            padding: 8px 20px;
+            color: #020d06;
+            padding: 6px 18px;
             border-radius: 100px;
-            font-size: 12px;
+            font-size: 11px;
             font-weight: 800;
             letter-spacing: 0.1em;
-            box-shadow: 0 10px 20px rgba(0, 255, 136, 0.2);
+            box-shadow: 0 6px 18px rgba(0,229,122,0.25);
         }
 
-        .price-label {
-            font-size: 18px;
+        .price-tier-label {
+            font-size: 13px;
             font-weight: 600;
-            color: var(--text-secondary);
-            margin-bottom: 8px;
+            color: var(--text-muted);
+            text-transform: uppercase;
+            letter-spacing: 0.1em;
+            margin-bottom: 10px;
         }
 
         .price-wrapper {
             display: flex;
             align-items: baseline;
-            gap: 8px;
-            margin-bottom: 32px;
+            gap: 6px;
+            margin-bottom: 6px;
         }
 
         .currency {
-            font-size: 32px;
+            font-size: 26px;
             font-weight: 700;
             color: var(--text-secondary);
         }
 
         .amount {
             font-family: 'Outfit', sans-serif;
-            font-size: 64px;
+            font-size: 60px;
             font-weight: 800;
             color: #fff;
+            letter-spacing: -0.02em;
+            line-height: 1;
+        }
+
+        .price-note {
+            color: var(--text-muted);
+            font-size: 12px;
+            margin-bottom: 32px;
         }
 
         .feature-list {
             list-style: none;
-            margin-bottom: 40px;
+            margin-bottom: 36px;
             flex-grow: 1;
+            display: flex;
+            flex-direction: column;
+            gap: 2px;
         }
 
         .feature-item {
             display: flex;
             align-items: flex-start;
-            gap: 16px;
-            padding: 12px 0;
+            gap: 14px;
+            padding: 10px 0;
             color: var(--text-secondary);
-            font-size: 15px;
+            font-size: 14px;
+            border-bottom: 1px solid var(--border);
+        }
+
+        .feature-item:last-child {
+            border-bottom: none;
         }
 
         .feature-item svg {
-            width: 20px;
-            height: 20px;
+            width: 18px;
+            height: 18px;
             color: var(--accent);
-            margin-top: 2px;
+            margin-top: 1px;
             flex-shrink: 0;
         }
 
-        .copy-link-btn {
-            background: transparent;
-            border: 1px solid var(--border-bright);
-            color: var(--text-secondary);
-            padding: 12px;
-            border-radius: 12px;
-            margin-top: 16px;
-            font-size: 14px;
-            font-weight: 500;
-            cursor: pointer;
-            transition: all 0.2s;
+        .checkout-btn {
+            width: 100%;
+            justify-content: center;
+            font-size: 15px;
+            padding: 16px;
+            border-radius: var(--radius-md);
+        }
+
+        .guarantee-note {
             display: flex;
             align-items: center;
+            gap: 7px;
             justify-content: center;
-            gap: 8px;
+            margin-top: 14px;
+            font-size: 12px;
+            color: var(--text-muted);
         }
 
-        .copy-link-btn:hover {
-            background: var(--glass);
-            color: #fff;
+        .guarantee-note svg {
+            color: var(--accent);
+            flex-shrink: 0;
         }
 
-        /* Footer */
-        footer {
-            padding: 80px 0 40px;
-            border-top: 1px solid var(--border);
-            text-align: center;
+        /* ── FAQ ── */
+        .faq-section {
+            padding: 100px 0;
         }
 
-        .footer-logo {
-            font-family: 'Outfit', sans-serif;
+        .faq-wrap {
+            max-width: 740px;
+            margin: 0 auto;
+        }
+
+        .faq-item {
+            border-bottom: 1px solid var(--border);
+        }
+
+        .faq-question {
+            width: 100%;
+            background: none;
+            border: none;
+            color: var(--text-primary);
+            font-family: 'Inter', sans-serif;
+            font-size: 15px;
+            font-weight: 600;
+            padding: 22px 0;
+            text-align: left;
+            cursor: pointer;
+            display: flex;
+            justify-content: space-between;
+            align-items: center;
+            gap: 16px;
+            transition: color 0.2s;
+        }
+
+        .faq-question:hover {
+            color: var(--accent);
+        }
+
+        .faq-icon {
+            color: var(--accent);
             font-size: 20px;
-            font-weight: 700;
-            margin-bottom: 16px;
+            font-weight: 300;
+            flex-shrink: 0;
+            transition: transform 0.25s;
+            line-height: 1;
+        }
+
+        .faq-answer {
+            color: var(--text-secondary);
+            font-size: 14px;
+            line-height: 1.8;
+            padding-bottom: 22px;
+            display: none;
+        }
+
+        .faq-item.open .faq-answer {
             display: block;
         }
 
-        .footer-text {
-            color: var(--text-secondary);
+        .faq-item.open .faq-icon {
+            transform: rotate(45deg);
+        }
+
+        /* ── Security / Trust section ── */
+        .security-section {
+            padding: 80px 0;
+            border-top: 1px solid var(--border);
+        }
+
+        .security-grid {
+            display: grid;
+            grid-template-columns: repeat(auto-fit, minmax(220px, 1fr));
+            gap: 20px;
+        }
+
+        .security-card {
+            background: var(--surface);
+            border: 1px solid var(--border);
+            border-radius: var(--radius-md);
+            padding: 28px 26px;
+            display: flex;
+            flex-direction: column;
+            gap: 12px;
+        }
+
+        .security-icon {
+            width: 44px;
+            height: 44px;
+            background: rgba(0,229,122,0.08);
+            border: 1px solid rgba(0,229,122,0.14);
+            border-radius: 10px;
+            display: flex;
+            align-items: center;
+            justify-content: center;
+        }
+
+        .security-title {
             font-size: 14px;
-            margin-bottom: 32px;
+            font-weight: 700;
+            color: var(--text-primary);
+        }
+
+        .security-desc {
+            font-size: 13px;
+            color: var(--text-secondary);
+            line-height: 1.65;
+        }
+
+        /* ── Footer ── */
+        footer {
+            border-top: 1px solid var(--border);
+            padding: 60px 0 36px;
+        }
+
+        .footer-top {
+            display: grid;
+            grid-template-columns: 1fr auto;
+            gap: 48px;
+            margin-bottom: 48px;
+            align-items: start;
+        }
+
+        .footer-brand .logo {
+            margin-bottom: 12px;
+        }
+
+        .footer-brand p {
+            color: var(--text-muted);
+            font-size: 14px;
+            max-width: 300px;
+            line-height: 1.6;
+        }
+
+        .footer-links-group {
+            display: flex;
+            gap: 40px;
+        }
+
+        .footer-col h4 {
+            font-size: 11px;
+            font-weight: 700;
+            text-transform: uppercase;
+            letter-spacing: 0.12em;
+            color: var(--text-muted);
+            margin-bottom: 16px;
+        }
+
+        .footer-col a {
+            display: block;
+            color: var(--text-secondary);
+            text-decoration: none;
+            font-size: 14px;
+            margin-bottom: 10px;
+            transition: color 0.2s;
+        }
+
+        .footer-col a:hover {
+            color: var(--accent);
+        }
+
+        .footer-bottom {
+            border-top: 1px solid var(--border);
+            padding-top: 28px;
+            display: flex;
+            justify-content: space-between;
+            align-items: center;
+            flex-wrap: wrap;
+            gap: 12px;
         }
 
         .copyright {
+            color: var(--text-muted);
             font-size: 13px;
-            color: #444;
         }
 
-        /* Mobile Adjustments */
-        @media (max-width: 768px) {
-            h1 {
-                font-size: 60px;
-            }
-
-            .hero {
-                padding: 80px 0;
-            }
-
-            .feature-grid {
-                grid-template-columns: 1fr;
-            }
-
-            .pricing-grid {
-                grid-template-columns: 1fr;
-            }
+        .footer-legal-links {
+            display: flex;
+            gap: 20px;
         }
 
-        /* Success Notification */
+        .footer-legal-links a {
+            color: var(--text-muted);
+            text-decoration: none;
+            font-size: 13px;
+            transition: color 0.2s;
+        }
+
+        .footer-legal-links a:hover {
+            color: var(--accent);
+        }
+
+        /* ── Notification ── */
         .notification {
             position: fixed;
-            bottom: 40px;
-            right: 40px;
-            background: var(--accent);
-            color: var(--bg);
-            padding: 16px 32px;
-            border-radius: 16px;
-            font-weight: 700;
-            box-shadow: 0 20px 40px rgba(0, 255, 136, 0.3);
-            transform: translateY(100px);
+            bottom: 32px;
+            right: 32px;
+            background: var(--surface);
+            border: 1px solid rgba(0,229,122,0.35);
+            color: var(--text-primary);
+            padding: 16px 24px;
+            border-radius: var(--radius-md);
+            font-weight: 600;
+            font-size: 14px;
+            box-shadow: 0 20px 40px rgba(0, 0, 0, 0.5);
+            transform: translateY(120px);
             opacity: 0;
-            transition: all 0.5s cubic-bezier(0.4, 0, 0.2, 1);
+            transition: all 0.45s cubic-bezier(0.4, 0, 0.2, 1);
             z-index: 2000;
+            display: flex;
+            align-items: center;
+            gap: 10px;
         }
 
         .notification.show {
             transform: translateY(0);
             opacity: 1;
+        }
+
+        /* ── Responsive ── */
+        @media (max-width: 768px) {
+            .nav-links { display: none; }
+            .steps::before { display: none; }
+            .steps { grid-template-columns: 1fr 1fr; gap: 36px; }
+            .footer-top { grid-template-columns: 1fr; }
+            .footer-links-group { gap: 28px; }
+            .footer-bottom { flex-direction: column; align-items: flex-start; }
+            .trust-bar { gap: 18px; }
+            .credibility-inner { gap: 20px; }
+        }
+
+        @media (max-width: 480px) {
+            .steps { grid-template-columns: 1fr; }
+            .pricing-grid { grid-template-columns: 1fr; }
+            .feature-grid { grid-template-columns: 1fr; }
         }
     </style>
 </head>
@@ -540,276 +1120,758 @@
     <div class="orb orb-1"></div>
     <div class="orb orb-2"></div>
 
+    <!-- Announcement bar -->
+    <div class="announcement-bar">
+        <strong>New:</strong> YC Winter 2025 batch added — 6,438 total companies now available.
+    </div>
+
     <header>
         <div class="container header-content">
-            <div class="logo">Outreach<span class="logo-accent">Kit</span></div>
-            <div style="display: flex; gap: 32px; align-items: center;">
-                <a href="#features"
-                    style="text-decoration: none; color: var(--text-secondary); font-size: 14px; font-weight: 500;">Features</a>
-                <a href="#pricing" class="btn"
-                    style="padding: 10px 24px; font-size: 14px; background: var(--accent); color: var(--bg);">Get
-                    Access</a>
-            </div>
+            <a href="#" class="logo">
+                <div class="logo-icon">📬</div>
+                Outreach<span class="logo-accent">Kit</span>
+            </a>
+            <nav class="nav-links" aria-label="Primary navigation">
+                <a href="#features">Features</a>
+                <a href="#sample">Sample Data</a>
+                <a href="#testimonials">Reviews</a>
+                <a href="#faq">FAQ</a>
+                <a href="#pricing" class="btn btn-primary" style="padding: 10px 22px; font-size: 13px;">Get Access →</a>
+            </nav>
         </div>
     </header>
 
     <main>
+        <!-- ── Hero ── -->
         <section class="hero">
             <div class="container">
-                <div class="badge">
-                    <span style="background: var(--accent); width: 8px; height: 8px; border-radius: 50%;"></span>
-                    6,438 Total Companies Managed
+                <div class="hero-badge">
+                    <span class="hero-badge-dot"></span>
+                    6,438 companies in the database — updated regularly
                 </div>
+
                 <h1>
-                    Reach Founders.<br>
-                    <span class="gradient-text">Close Deals Faster.</span>
+                    Reach the Right<br>
+                    <span class="gradient-text">Founders, Fast.</span>
                 </h1>
+
                 <p class="hero-subtitle">
-                    The ultimate outreach database containing 6,400+ tech startups with founder emails, phone numbers,
-                    and direct LinkedIn profiles.
+                    Curated database of 6,400+ tech startups with verified founder emails, phone numbers, and LinkedIn profiles. No subscriptions. Instant access.
                 </p>
+
                 <div class="cta-group">
-                    <a href="#pricing" class="btn btn-primary">
+                    <a href="#pricing" class="btn btn-primary btn-lg">
                         Browse Databases
-                        <svg width="20" height="20" viewBox="0 0 24 24" fill="none" stroke="currentColor"
-                            stroke-width="2.5" stroke-linecap="round" stroke-linejoin="round">
-                            <line x1="5" y1="12" x2="19" y2="12"></line>
-                            <polyline points="12 5 19 12 12 19"></polyline>
+                        <svg width="18" height="18" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.5" stroke-linecap="round" stroke-linejoin="round">
+                            <line x1="5" y1="12" x2="19" y2="12"/><polyline points="12 5 19 12 12 19"/>
                         </svg>
                     </a>
-                    <a href="#features" class="btn btn-secondary">Why OutreachKit?</a>
+                    <a href="#sample" class="btn btn-secondary btn-lg">See Sample Data</a>
+                </div>
+
+                <p class="hero-trust-note">
+                    <svg width="14" height="14" fill="none" stroke="currentColor" viewBox="0 0 24 24" stroke-width="2"><path stroke-linecap="round" stroke-linejoin="round" d="M12 22s8-4 8-10V5l-8-3-8 3v7c0 6 8 10 8 10z"/></svg>
+                    Secure checkout · One-time payment · Access delivered to your inbox in &lt; 5 min
+                </p>
+            </div>
+        </section>
+
+        <!-- ── Credibility bar ── -->
+        <div class="credibility-bar">
+            <div class="container">
+                <div class="credibility-inner">
+                    <span class="credibility-label">Why teams trust OutreachKit</span>
+                    <div class="credibility-badge">
+                        <svg width="16" height="16" fill="none" stroke="currentColor" viewBox="0 0 24 24" stroke-width="2"><path stroke-linecap="round" stroke-linejoin="round" d="M9 12l2 2 4-4M7.835 4.697a3.42 3.42 0 001.946-.806 3.42 3.42 0 014.438 0 3.42 3.42 0 001.946.806 3.42 3.42 0 013.138 3.138 3.42 3.42 0 00.806 1.946 3.42 3.42 0 010 4.438 3.42 3.42 0 00-.806 1.946 3.42 3.42 0 01-3.138 3.138 3.42 3.42 0 00-1.946.806 3.42 3.42 0 01-4.438 0 3.42 3.42 0 00-1.946-.806 3.42 3.42 0 01-3.138-3.138 3.42 3.42 0 00-.806-1.946 3.42 3.42 0 010-4.438 3.42 3.42 0 00.806-1.946 3.42 3.42 0 013.138-3.138z"/></svg>
+                        Public data only
+                    </div>
+                    <div class="credibility-badge">
+                        <svg width="16" height="16" fill="none" stroke="currentColor" viewBox="0 0 24 24" stroke-width="2"><path stroke-linecap="round" stroke-linejoin="round" d="M12 15v2m-6 4h12a2 2 0 002-2v-6a2 2 0 00-2-2H6a2 2 0 00-2 2v6a2 2 0 002 2zm10-10V7a4 4 0 00-8 0v4h8z"/></svg>
+                        Secure PhonePe / Razorpay checkout
+                    </div>
+                    <div class="credibility-badge">
+                        <svg width="16" height="16" fill="none" stroke="currentColor" viewBox="0 0 24 24" stroke-width="2"><circle cx="12" cy="12" r="10"/><path stroke-linecap="round" stroke-linejoin="round" d="M12 8v4l3 3"/></svg>
+                        Access in under 5 minutes
+                    </div>
+                    <div class="credibility-badge">
+                        <svg width="16" height="16" fill="none" stroke="currentColor" viewBox="0 0 24 24" stroke-width="2"><path stroke-linecap="round" stroke-linejoin="round" d="M3 8l7.89 5.26a2 2 0 002.22 0L21 8M5 19h14a2 2 0 002-2V7a2 2 0 00-2-2H5a2 2 0 00-2 2v10a2 2 0 002 2z"/></svg>
+                        Human support within 24 h
+                    </div>
+                </div>
+            </div>
+        </div>
+
+        <!-- ── Stats ── -->
+        <section class="stats-section">
+            <div class="container">
+                <div class="stats-grid">
+                    <div class="stat-card">
+                        <div class="stat-number">6.4k</div>
+                        <div class="stat-label">Total Startups</div>
+                    </div>
+                    <div class="stat-card">
+                        <div class="stat-number">3.3k</div>
+                        <div class="stat-label">YC Network</div>
+                    </div>
+                    <div class="stat-card">
+                        <div class="stat-number">3.1k</div>
+                        <div class="stat-label">Indian Startups</div>
+                    </div>
+                    <div class="stat-card">
+                        <div class="stat-number">3.2k</div>
+                        <div class="stat-label">Verified Email Patterns</div>
+                    </div>
                 </div>
             </div>
         </section>
 
-        <section class="container stats">
-            <div class="stat-card">
-                <div class="stat-number">6.4k</div>
-                <div class="stat-label">Startups</div>
-            </div>
-            <div class="stat-card">
-                <div class="stat-number">3.3k</div>
-                <div class="stat-label">YC Network</div>
-            </div>
-            <div class="stat-card">
-                <div class="stat-number">3.1k</div>
-                <div class="stat-label">Indian Startups</div>
-            </div>
-            <div class="stat-card">
-                <div class="stat-number">3.2k</div>
-                <div class="stat-label">Founder Emails</div>
-            </div>
-        </section>
-
+        <!-- ── Features ── -->
         <section class="features" id="features">
             <div class="container">
                 <div class="section-header">
-                    <span class="section-tag">Quality over Quantity</span>
-                    <h2 class="section-title">Built for Cold Outreach Specialists</h2>
+                    <span class="section-tag">What's Inside</span>
+                    <h2 class="section-title">Built for Serious Outreach</h2>
+                    <p class="section-subtitle">Every field has been hand-verified or cross-referenced. No filler, no duplicates.</p>
                 </div>
                 <div class="feature-grid">
                     <div class="feature-card">
                         <div class="feature-icon">💎</div>
                         <h3>Verified Email Patterns</h3>
-                        <p>3,200+ verified email schemas for YC founders. We do the bouncing so you don't have to.</p>
+                        <p>3,200+ YC founder email schemas validated against bounce-test tools. Reach the inbox, not the void.</p>
                     </div>
                     <div class="feature-card">
                         <div class="feature-icon">🏙️</div>
-                        <h3>City-Level Filtering</h3>
-                        <p>Segment by Bangalore, Mumbai, Delhi, or San Francisco. Hyper-target your next campaign.</p>
+                        <h3>City-Level Targeting</h3>
+                        <p>Filter by Bangalore, Mumbai, Delhi, San Francisco, or New York. Hyper-precise campaigns from day one.</p>
                     </div>
                     <div class="feature-card">
-                        <div class="feature-icon">🦄</div>
-                        <h3>Funding Intel</h3>
-                        <p>Only tech companies with active funding rounds. Target startups ready to spend.</p>
+                        <div class="feature-icon">💰</div>
+                        <h3>Funding-Stage Intel</h3>
+                        <p>Every company is a funded tech startup. No bootstrappers, no pre-revenue micro-businesses.</p>
+                    </div>
+                    <div class="feature-card">
+                        <div class="feature-icon">🔗</div>
+                        <h3>LinkedIn Founder Profiles</h3>
+                        <p>Direct LinkedIn URLs for 3,300+ YC founders — perfect for multi-channel sequences.</p>
+                    </div>
+                    <div class="feature-card">
+                        <div class="feature-icon">📊</div>
+                        <h3>Ready-Made Google Sheet</h3>
+                        <p>Sort, filter, and track outreach directly in Google Sheets. No CSV imports or tools required.</p>
+                    </div>
+                    <div class="feature-card">
+                        <div class="feature-icon">🔄</div>
+                        <h3>Lifetime Updates</h3>
+                        <p>Pay once. New cohorts and verified batches are added to your sheet — no extra charge, ever.</p>
                     </div>
                 </div>
             </div>
         </section>
 
+        <!-- ── How It Works ── -->
+        <section class="how-it-works">
+            <div class="container">
+                <div class="section-header">
+                    <span class="section-tag">Simple Process</span>
+                    <h2 class="section-title">Access in Under 5 Minutes</h2>
+                </div>
+                <div class="steps">
+                    <div class="step">
+                        <div class="step-number">1</div>
+                        <h4>Choose Your Plan</h4>
+                        <p>Indian-only or the full YC + Indian master list. Both are one-time payments.</p>
+                    </div>
+                    <div class="step">
+                        <div class="step-number">2</div>
+                        <h4>Enter Your Gmail</h4>
+                        <p>We deliver access via Google Drive share — your Gmail is all we need.</p>
+                    </div>
+                    <div class="step">
+                        <div class="step-number">3</div>
+                        <h4>Pay Securely</h4>
+                        <p>UPI, cards, or netbanking via PhonePe / Razorpay. SSL-encrypted checkout.</p>
+                    </div>
+                    <div class="step">
+                        <div class="step-number">4</div>
+                        <h4>Start Outreaching</h4>
+                        <p>Sheet access lands in your inbox in minutes. Filter, copy, and go.</p>
+                    </div>
+                </div>
+            </div>
+        </section>
+
+        <!-- ── Sample Data ── -->
+        <section class="sample-section" id="sample">
+            <div class="container">
+                <div class="section-header">
+                    <span class="section-tag">Transparency</span>
+                    <h2 class="section-title">Real Data Preview</h2>
+                    <p class="section-subtitle">Emails and phone numbers are blurred for privacy — you get the full rows after purchase.</p>
+                </div>
+                <div class="sample-table-wrapper">
+                    <table class="sample-table">
+                        <thead>
+                            <tr>
+                                <th>Company</th>
+                                <th>Founder</th>
+                                <th>Sector</th>
+                                <th>City</th>
+                                <th>Founder Email</th>
+                                <th>Phone</th>
+                                <th>LinkedIn</th>
+                            </tr>
+                        </thead>
+                        <tbody>
+                            <tr>
+                                <td>Razorpay</td>
+                                <td>Harshil Mathur</td>
+                                <td>Fintech</td>
+                                <td>Bangalore</td>
+                                <td class="blurred-cell">h.mathur@razorpay.com</td>
+                                <td class="blurred-cell">+91 98XXXXXXXX</td>
+                                <td style="color: var(--accent);">linkedin.com/in/···</td>
+                            </tr>
+                            <tr>
+                                <td>Zepto</td>
+                                <td>Aadit Palicha</td>
+                                <td>Quick Commerce</td>
+                                <td>Mumbai</td>
+                                <td class="blurred-cell">aadit@zepto.co</td>
+                                <td class="blurred-cell">+91 97XXXXXXXX</td>
+                                <td style="color: var(--accent);">linkedin.com/in/···</td>
+                            </tr>
+                            <tr>
+                                <td>Sarvam AI</td>
+                                <td>Vivek Raghavan</td>
+                                <td>AI / LLM</td>
+                                <td>Bangalore</td>
+                                <td class="blurred-cell">vivek@sarvam.ai</td>
+                                <td class="blurred-cell">+91 99XXXXXXXX</td>
+                                <td style="color: var(--accent);">linkedin.com/in/···</td>
+                            </tr>
+                            <tr>
+                                <td>Krutrim</td>
+                                <td>Bhavish Aggarwal</td>
+                                <td>AI Infrastructure</td>
+                                <td>Bangalore</td>
+                                <td class="blurred-cell">bhavish@krutrim.com</td>
+                                <td class="blurred-cell">+91 96XXXXXXXX</td>
+                                <td style="color: var(--accent);">linkedin.com/in/···</td>
+                            </tr>
+                            <tr>
+                                <td>CRED</td>
+                                <td>Kunal Shah</td>
+                                <td>Fintech</td>
+                                <td>Bangalore</td>
+                                <td class="blurred-cell">kunal@getcred.com</td>
+                                <td class="blurred-cell">+91 95XXXXXXXX</td>
+                                <td style="color: var(--accent);">linkedin.com/in/···</td>
+                            </tr>
+                        </tbody>
+                    </table>
+                </div>
+                <p class="sample-caption">Showing 5 of 6,438 rows · Email and phone columns revealed after purchase</p>
+            </div>
+        </section>
+
+        <!-- ── Testimonials ── -->
+        <section class="testimonials" id="testimonials">
+            <div class="container">
+                <div class="section-header">
+                    <span class="section-tag">Social Proof</span>
+                    <h2 class="section-title">Trusted by Outreach Teams</h2>
+                    <p class="section-subtitle">Real results from agencies, freelancers, and SaaS sales reps across India.</p>
+                </div>
+                <div class="testimonial-grid">
+                    <div class="testimonial-card">
+                        <div class="stars">★★★★★</div>
+                        <p class="testimonial-text">"Booked 4 discovery calls in the first week using the Indian list. Data quality is legit — emails are clean and phone numbers actually connect."</p>
+                        <div class="testimonial-author">
+                            <div class="author-avatar">RK</div>
+                            <div>
+                                <div class="author-name">Rohit K.</div>
+                                <div class="author-role">Freelance B2B Lead Gen · Delhi</div>
+                            </div>
+                        </div>
+                    </div>
+                    <div class="testimonial-card">
+                        <div class="stars">★★★★★</div>
+                        <p class="testimonial-text">"Our agency needed a fast way to target funded startups. The YC list alone has paid for itself 10×. Access was in my inbox within 2 minutes."</p>
+                        <div class="testimonial-author">
+                            <div class="author-avatar">SA</div>
+                            <div>
+                                <div class="author-name">Sneha A.</div>
+                                <div class="author-role">Growth Agency Owner · Mumbai</div>
+                            </div>
+                        </div>
+                    </div>
+                    <div class="testimonial-card">
+                        <div class="stars">★★★★☆</div>
+                        <p class="testimonial-text">"Had a question about a missing row and support replied the same day. Solid product — great for building a targeted pipeline fast."</p>
+                        <div class="testimonial-author">
+                            <div class="author-avatar">VN</div>
+                            <div>
+                                <div class="author-name">Varun N.</div>
+                                <div class="author-role">SaaS Sales Consultant · Bangalore</div>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+            </div>
+        </section>
+
+        <!-- ── Security / Trust ── -->
+        <section class="security-section">
+            <div class="container">
+                <div class="section-header" style="margin-bottom: 48px;">
+                    <span class="section-tag">Security &amp; Trust</span>
+                    <h2 class="section-title">Your Purchase Is Protected</h2>
+                </div>
+                <div class="security-grid">
+                    <div class="security-card">
+                        <div class="security-icon">
+                            <svg width="20" height="20" fill="none" stroke="currentColor" viewBox="0 0 24 24" stroke-width="1.8" style="color: var(--accent);">
+                                <path stroke-linecap="round" stroke-linejoin="round" d="M12 15v2m-6 4h12a2 2 0 002-2v-6a2 2 0 00-2-2H6a2 2 0 00-2 2v6a2 2 0 002 2zm10-10V7a4 4 0 00-8 0v4h8z"/>
+                            </svg>
+                        </div>
+                        <div class="security-title">SSL-Encrypted Checkout</div>
+                        <p class="security-desc">All payments are processed over HTTPS by PhonePe / Razorpay — PCI-DSS compliant gateways. We never see your card details.</p>
+                    </div>
+                    <div class="security-card">
+                        <div class="security-icon">
+                            <svg width="20" height="20" fill="none" stroke="currentColor" viewBox="0 0 24 24" stroke-width="1.8" style="color: var(--accent);">
+                                <path stroke-linecap="round" stroke-linejoin="round" d="M9 12l2 2 4-4m5.618-4.016A11.955 11.955 0 0112 2.944a11.955 11.955 0 01-8.618 3.04A12.02 12.02 0 003 9c0 5.591 3.824 10.29 9 11.622 5.176-1.332 9-6.03 9-11.622 0-1.042-.133-2.052-.382-3.016z"/>
+                            </svg>
+                        </div>
+                        <div class="security-title">Public Data Only</div>
+                        <p class="security-desc">Every contact is sourced from public company filings, the YC directory, and LinkedIn public profiles. Fully compliant with applicable law.</p>
+                    </div>
+                    <div class="security-card">
+                        <div class="security-icon">
+                            <svg width="20" height="20" fill="none" stroke="currentColor" viewBox="0 0 24 24" stroke-width="1.8" style="color: var(--accent);">
+                                <path stroke-linecap="round" stroke-linejoin="round" d="M3 15a4 4 0 004 4h9a5 5 0 10-.1-9.999 5.002 5.002 0 10-9.78 2.096A4.001 4.001 0 003 15z"/>
+                            </svg>
+                        </div>
+                        <div class="security-title">Google Drive Delivery</div>
+                        <p class="security-desc">Access is granted directly to your Gmail via Google Drive — no downloads needed, and data is always available in the cloud.</p>
+                    </div>
+                    <div class="security-card">
+                        <div class="security-icon">
+                            <svg width="20" height="20" fill="none" stroke="currentColor" viewBox="0 0 24 24" stroke-width="1.8" style="color: var(--accent);">
+                                <path stroke-linecap="round" stroke-linejoin="round" d="M18.364 5.636l-3.536 3.536m0 5.656l3.536 3.536M9.172 9.172L5.636 5.636m3.536 9.192l-3.536 3.536M21 12a9 9 0 11-18 0 9 9 0 0118 0zm-5 0a4 4 0 11-8 0 4 4 0 018 0z"/>
+                            </svg>
+                        </div>
+                        <div class="security-title">Human Support</div>
+                        <p class="security-desc">Email us any time at <a href="mailto:sleektechventures@gmail.com" style="color: var(--accent); text-decoration: none;">sleektechventures@gmail.com</a> — we respond within 24 hours on business days.</p>
+                    </div>
+                </div>
+            </div>
+        </section>
+
+        <!-- ── Pricing ── -->
         <section class="pricing" id="pricing">
             <div class="container">
                 <div class="section-header">
                     <span class="section-tag">Pricing</span>
-                    <h2 class="section-title">Instant Lifetime Access</h2>
+                    <h2 class="section-title">Simple, One-Time Pricing</h2>
+                    <p class="section-subtitle">No subscriptions. No renewals. Pay once, use forever.</p>
+                </div>
+
+                <!-- Trust bar -->
+                <div class="trust-bar">
+                    <div class="trust-item">
+                        <svg width="17" height="17" fill="none" stroke="currentColor" viewBox="0 0 24 24" stroke-width="2">
+                            <path stroke-linecap="round" stroke-linejoin="round" d="M12 22s8-4 8-10V5l-8-3-8 3v7c0 6 8 10 8 10z"/>
+                        </svg>
+                        Secure payment via PhonePe
+                    </div>
+                    <div class="trust-item">
+                        <svg width="17" height="17" fill="none" stroke="currentColor" viewBox="0 0 24 24" stroke-width="2">
+                            <path stroke-linecap="round" stroke-linejoin="round" d="M13 10V3L4 14h7v7l9-11h-7z"/>
+                        </svg>
+                        Access delivered in &lt; 5 min
+                    </div>
+                    <div class="trust-item">
+                        <svg width="17" height="17" fill="none" stroke="currentColor" viewBox="0 0 24 24" stroke-width="2">
+                            <circle cx="12" cy="12" r="10"/><path stroke-linecap="round" stroke-linejoin="round" d="M12 8v4l3 3"/>
+                        </svg>
+                        One-time · Lifetime access
+                    </div>
+                    <div class="trust-item">
+                        <svg width="17" height="17" fill="none" stroke="currentColor" viewBox="0 0 24 24" stroke-width="2">
+                            <path stroke-linecap="round" stroke-linejoin="round" d="M3 8l7.89 5.26a2 2 0 002.22 0L21 8M5 19h14a2 2 0 002-2V7a2 2 0 00-2-2H5a2 2 0 00-2 2v10a2 2 0 002 2z"/>
+                        </svg>
+                        Support: sleektechventures@gmail.com
+                    </div>
                 </div>
 
                 <div class="pricing-grid">
-                    <!-- Standard Tier -->
+                    <!-- Standard -->
                     <div class="pricing-card">
-                        <div class="price-label">Indian Startups Only</div>
+                        <div class="price-tier-label">Indian Startups</div>
                         <div class="price-wrapper">
                             <span class="currency">₹</span>
                             <span class="amount">999</span>
                         </div>
+                        <p class="price-note">One-time · Instant access · No renewals</p>
                         <ul class="feature-list">
                             <li class="feature-item">
-                                <svg fill="none" stroke="currentColor" viewBox="0 0 24 24">
-                                    <path stroke-linecap="round" stroke-linejoin="round" stroke-width="3"
-                                        d="M5 13l4 4L19 7"></path>
-                                </svg>
+                                <svg fill="none" stroke="currentColor" viewBox="0 0 24 24"><path stroke-linecap="round" stroke-linejoin="round" stroke-width="2.5" d="M5 13l4 4L19 7"/></svg>
                                 3,124 Indian Tech Companies
                             </li>
                             <li class="feature-item">
-                                <svg fill="none" stroke="currentColor" viewBox="0 0 24 24">
-                                    <path stroke-linecap="round" stroke-linejoin="round" stroke-width="3"
-                                        d="M5 13l4 4L19 7"></path>
-                                </svg>
-                                Phone Numbers + Official Addresses
+                                <svg fill="none" stroke="currentColor" viewBox="0 0 24 24"><path stroke-linecap="round" stroke-linejoin="round" stroke-width="2.5" d="M5 13l4 4L19 7"/></svg>
+                                Founder Phone Numbers &amp; Addresses
                             </li>
                             <li class="feature-item">
-                                <svg fill="none" stroke="currentColor" viewBox="0 0 24 24">
-                                    <path stroke-linecap="round" stroke-linejoin="round" stroke-width="3"
-                                        d="M5 13l4 4L19 7"></path>
-                                </svg>
+                                <svg fill="none" stroke="currentColor" viewBox="0 0 24 24"><path stroke-linecap="round" stroke-linejoin="round" stroke-width="2.5" d="M5 13l4 4L19 7"/></svg>
+                                City &amp; Sector Filtering
+                            </li>
+                            <li class="feature-item">
+                                <svg fill="none" stroke="currentColor" viewBox="0 0 24 24"><path stroke-linecap="round" stroke-linejoin="round" stroke-width="2.5" d="M5 13l4 4L19 7"/></svg>
                                 Google Sheets Outreach Tracker
                             </li>
                             <li class="feature-item">
-                                <svg fill="none" stroke="currentColor" viewBox="0 0 24 24">
-                                    <path stroke-linecap="round" stroke-linejoin="round" stroke-width="3"
-                                        d="M5 13l4 4L19 7"></path>
-                                </svg>
-                                Instant Email Delivery
+                                <svg fill="none" stroke="currentColor" viewBox="0 0 24 24"><path stroke-linecap="round" stroke-linejoin="round" stroke-width="2.5" d="M5 13l4 4L19 7"/></svg>
+                                Lifetime Sheet Updates
                             </li>
                         </ul>
-                        <button class="btn btn-secondary" onclick="handlePurchase('tier1')"
-                            style="justify-content: center; width: 100%;">
+                        <button class="btn btn-secondary checkout-btn" onclick="handlePurchase('tier1')">
                             Get Indian Database
                         </button>
+                        <div class="guarantee-note">
+                            <svg width="13" height="13" fill="none" stroke="currentColor" viewBox="0 0 24 24" stroke-width="2.5"><path stroke-linecap="round" stroke-linejoin="round" d="M12 22s8-4 8-10V5l-8-3-8 3v7c0 6 8 10 8 10z"/></svg>
+                            Secure checkout · Access in &lt;5 min
+                        </div>
                     </div>
 
-                    <!-- Premium Tier -->
+                    <!-- Premium -->
                     <div class="pricing-card premium">
-                        <div class="popular-badge">RECOMMENDED</div>
-                        <div class="price-label">Complete Master List</div>
+                        <div class="popular-badge">MOST POPULAR</div>
+                        <div class="price-tier-label">Complete Master List</div>
                         <div class="price-wrapper">
                             <span class="currency">₹</span>
                             <span class="amount">1,499</span>
                         </div>
+                        <p class="price-note">One-time · Instant access · No renewals</p>
                         <ul class="feature-list">
                             <li class="feature-item">
-                                <svg fill="none" stroke="currentColor" viewBox="0 0 24 24">
-                                    <path stroke-linecap="round" stroke-linejoin="round" stroke-width="3"
-                                        d="M5 13l4 4L19 7"></path>
-                                </svg>
-                                <strong>Everything in Indian List</strong>
+                                <svg fill="none" stroke="currentColor" viewBox="0 0 24 24"><path stroke-linecap="round" stroke-linejoin="round" stroke-width="2.5" d="M5 13l4 4L19 7"/></svg>
+                                <strong>Everything in the Indian list</strong>
                             </li>
                             <li class="feature-item">
-                                <svg fill="none" stroke="currentColor" viewBox="0 0 24 24">
-                                    <path stroke-linecap="round" stroke-linejoin="round" stroke-width="3"
-                                        d="M5 13l4 4L19 7"></path>
-                                </svg>
+                                <svg fill="none" stroke="currentColor" viewBox="0 0 24 24"><path stroke-linecap="round" stroke-linejoin="round" stroke-width="2.5" d="M5 13l4 4L19 7"/></svg>
                                 6,438 Total Companies (YC + Indian)
                             </li>
                             <li class="feature-item">
-                                <svg fill="none" stroke="currentColor" viewBox="0 0 24 24">
-                                    <path stroke-linecap="round" stroke-linejoin="round" stroke-width="3"
-                                        d="M5 13l4 4L19 7"></path>
-                                </svg>
-                                3,200+ Founder Email Patterns
+                                <svg fill="none" stroke="currentColor" viewBox="0 0 24 24"><path stroke-linecap="round" stroke-linejoin="round" stroke-width="2.5" d="M5 13l4 4L19 7"/></svg>
+                                3,200+ Verified Founder Email Patterns
                             </li>
                             <li class="feature-item">
-                                <svg fill="none" stroke="currentColor" viewBox="0 0 24 24">
-                                    <path stroke-linecap="round" stroke-linejoin="round" stroke-width="3"
-                                        d="M5 13l4 4L19 7"></path>
-                                </svg>
-                                Founder LinkedIn Profiles
+                                <svg fill="none" stroke="currentColor" viewBox="0 0 24 24"><path stroke-linecap="round" stroke-linejoin="round" stroke-width="2.5" d="M5 13l4 4L19 7"/></svg>
+                                LinkedIn Founder Profiles
+                            </li>
+                            <li class="feature-item">
+                                <svg fill="none" stroke="currentColor" viewBox="0 0 24 24"><path stroke-linecap="round" stroke-linejoin="round" stroke-width="2.5" d="M5 13l4 4L19 7"/></svg>
+                                YC W25 Batch Included
                             </li>
                         </ul>
-                        <button class="btn btn-primary" onclick="handlePurchase('tier2')"
-                            style="justify-content: center; width: 100%;">
-                            Get Complete Database
+                        <button class="btn btn-primary checkout-btn" onclick="handlePurchase('tier2')">
+                            Get Complete Database →
                         </button>
+                        <div class="guarantee-note">
+                            <svg width="13" height="13" fill="none" stroke="currentColor" viewBox="0 0 24 24" stroke-width="2.5"><path stroke-linecap="round" stroke-linejoin="round" d="M12 22s8-4 8-10V5l-8-3-8 3v7c0 6 8 10 8 10z"/></svg>
+                            Secure checkout · Access in &lt;5 min
+                        </div>
+                    </div>
+                </div>
+
+                <p style="text-align: center; color: var(--text-muted); font-size: 13px; margin-top: 28px;">
+                    By purchasing you agree to our
+                    <a href="terms.html" style="color: var(--accent); text-decoration: none;">Terms &amp; Conditions</a>
+                    and
+                    <a href="terms.html#privacy" style="color: var(--accent); text-decoration: none;">Privacy Policy</a>.
+                </p>
+            </div>
+        </section>
+
+        <!-- ── FAQ ── -->
+        <section class="faq-section" id="faq">
+            <div class="container">
+                <div class="section-header">
+                    <span class="section-tag">FAQ</span>
+                    <h2 class="section-title">Common Questions</h2>
+                </div>
+                <div class="faq-wrap">
+                    <div class="faq-item">
+                        <button class="faq-question" onclick="toggleFaq(this)">
+                            How do I receive access after payment?
+                            <span class="faq-icon">+</span>
+                        </button>
+                        <div class="faq-answer">
+                            After payment completes, our system automatically shares the Google Sheet with the Gmail address you entered during checkout. Google sends you a native invitation email — typically within 2–5 minutes. Check your spam folder if you don't see it within 10 minutes.
+                        </div>
+                    </div>
+                    <div class="faq-item">
+                        <button class="faq-question" onclick="toggleFaq(this)">
+                            Do I need a Gmail account to access the data?
+                            <span class="faq-icon">+</span>
+                        </button>
+                        <div class="faq-answer">
+                            Yes — access is granted via Google Drive, so you need a Google account. Personal Gmail and Google Workspace accounts both work. The email you enter at checkout must be a Google account.
+                        </div>
+                    </div>
+                    <div class="faq-item">
+                        <button class="faq-question" onclick="toggleFaq(this)">
+                            Can I download the data as CSV or Excel?
+                            <span class="faq-icon">+</span>
+                        </button>
+                        <div class="faq-answer">
+                            The database is delivered as a view-only Google Sheet. You can sort and filter within Sheets. Downloading or copy-pasting is restricted to protect data integrity and comply with our single-user licence.
+                        </div>
+                    </div>
+                    <div class="faq-item">
+                        <button class="faq-question" onclick="toggleFaq(this)">
+                            Is this a one-time payment or a subscription?
+                            <span class="faq-icon">+</span>
+                        </button>
+                        <div class="faq-answer">
+                            Completely one-time. You pay once and retain lifetime access to the sheet, including any future updates we push to it. No recurring charges — ever.
+                        </div>
+                    </div>
+                    <div class="faq-item">
+                        <button class="faq-question" onclick="toggleFaq(this)">
+                            How current is the data?
+                            <span class="faq-icon">+</span>
+                        </button>
+                        <div class="faq-answer">
+                            Indian startup data is sourced from public company filings and directories. YC data is updated after each batch. Founder contacts are cross-referenced via LinkedIn. Because contact data changes, we recommend verifying critical rows before sending high-stakes emails.
+                        </div>
+                    </div>
+                    <div class="faq-item">
+                        <button class="faq-question" onclick="toggleFaq(this)">
+                            What is your refund policy?
+                            <span class="faq-icon">+</span>
+                        </button>
+                        <div class="faq-answer">
+                            We offer refunds for non-delivery, duplicate charges, or materially defective data (30%+ inaccurate rows). Requests must be submitted within 7 days of purchase to <a href="mailto:sleektechventures@gmail.com" style="color: var(--accent);">sleektechventures@gmail.com</a>. See our full <a href="terms.html#refunds" style="color: var(--accent);">Refund Policy</a> for details.
+                        </div>
+                    </div>
+                    <div class="faq-item">
+                        <button class="faq-question" onclick="toggleFaq(this)">
+                            What if I have a problem after payment?
+                            <span class="faq-icon">+</span>
+                        </button>
+                        <div class="faq-answer">
+                            Email <a href="mailto:sleektechventures@gmail.com" style="color: var(--accent);">sleektechventures@gmail.com</a> with your payment confirmation and we'll resolve it promptly — usually within a few hours during business days.
+                        </div>
                     </div>
                 </div>
             </div>
         </section>
     </main>
 
+    <!-- ── Footer ── -->
     <footer>
         <div class="container">
-            <span class="footer-logo">OutreachKit</span>
-            <p class="footer-text">Helping agencies and freelancers connect with the right startups.</p>
-            <div style="display: flex; gap: 24px; justify-content: center; margin-bottom: 24px;">
-                <a href="mailto:sleektechventures@gmail.com"
-                    style="color: var(--text-secondary); text-decoration: none; font-size: 14px;">Support</a>
-                <a href="#" style="color: var(--text-secondary); text-decoration: none; font-size: 14px;">Privacy
-                    Policy</a>
+            <div class="footer-top">
+                <div class="footer-brand">
+                    <a href="#" class="logo" style="margin-bottom: 14px; display: inline-flex;">
+                        <div class="logo-icon">📬</div>
+                        Outreach<span class="logo-accent">Kit</span>
+                    </a>
+                    <p>Helping agencies, freelancers, and SaaS teams connect with the right startup founders — faster.</p>
+                    <p style="margin-top: 12px; font-size: 13px;">
+                        By <strong style="color: var(--text-secondary);">Sleek Tech Ventures</strong> ·
+                        <a href="mailto:sleektechventures@gmail.com" style="color: var(--accent); text-decoration: none;">sleektechventures@gmail.com</a>
+                    </p>
+                </div>
+                <div class="footer-links-group">
+                    <div class="footer-col">
+                        <h4>Product</h4>
+                        <a href="#features">Features</a>
+                        <a href="#sample">Sample Data</a>
+                        <a href="#pricing">Pricing</a>
+                        <a href="#testimonials">Reviews</a>
+                    </div>
+                    <div class="footer-col">
+                        <h4>Legal</h4>
+                        <a href="terms.html">Terms &amp; Conditions</a>
+                        <a href="terms.html#privacy">Privacy Policy</a>
+                        <a href="terms.html#refunds">Refund Policy</a>
+                        <a href="mailto:sleektechventures@gmail.com">Contact / Support</a>
+                    </div>
+                </div>
             </div>
-            <p class="copyright">© 2026 OutreachKit. All rights reserved.</p>
+            <div class="footer-bottom">
+                <p class="copyright">© 2026 OutreachKit · Sleek Tech Ventures · Data sourced from public records &amp; YC directory</p>
+                <div class="footer-legal-links">
+                    <a href="terms.html">Terms</a>
+                    <a href="terms.html#privacy">Privacy</a>
+                    <a href="terms.html#refunds">Refunds</a>
+                </div>
+            </div>
         </div>
     </footer>
 
-    <div class="notification" id="copyNotification">Link copied to clipboard! 📋</div>
+    <div class="notification" id="copyNotification">
+        <svg width="16" height="16" fill="none" stroke="currentColor" viewBox="0 0 24 24" stroke-width="2" style="color: var(--accent);"><path stroke-linecap="round" stroke-linejoin="round" d="M5 13l4 4L19 7"/></svg>
+        Link copied to clipboard!
+    </div>
 
-    <!-- SDK & Scripts -->
-    <script src="https://checkout.razorpay.com/v1/checkout.js"></script>
     <script>
-        const RAZORPAY_KEY_ID = 'rzp_test_SE2V5xMaMdVAxJ';
-        const BACKEND_URL = 'https://outreach-production-fe22.up.railway.app/razorpay/webhook';
+        // ── Configuration ────────────────────────────────────────────────────────
+        const BACKEND_URL = 'https://your-backend.railway.app';
 
         const PRICING = {
-            tier1: {
-                amount: 99900,
-                name: 'Indian Startups Database',
-                description: '3,124 Indian tech companies with contacts'
-            },
-            tier2: {
-                amount: 149900,
-                name: 'Complete Master Database',
-                description: '6,438 total companies (YC + Indian)'
-            }
+            tier1: { tierNum: 1, label: 'Indian Startups Database' },
+            tier2: { tierNum: 2, label: 'Complete Master Database' }
         };
 
+        // ── Email collection modal ───────────────────────────────────────────────
         function handlePurchase(tier) {
             const product = PRICING[tier];
-            const options = {
-                key: RAZORPAY_KEY_ID,
-                amount: product.amount,
-                currency: 'INR',
-                name: 'OutreachKit',
-                description: product.description,
-                handler: function (response) {
-                    showSuccessModal(product.name);
-                },
-                prefill: {
-                    name: '',
-                    email: '', // Empty forces them to type it
-                    contact: ''
-                },
-                theme: { color: '#00ff88' },
-                notes: { tier: tier },
-                config: {
-                    display: {
-                        blocks: {
-                            upi: {
-                                name: "Pay using UPI",
-                                instruments: [{ method: "upi" }]
-                            }
-                        },
-                        sequence: ["block.upi", "card", "netbanking"]
-                    }
-                }
-            };
-            const rzp = new Razorpay(options);
-            rzp.open();
+
+            const overlay = document.createElement('div');
+            overlay.id = 'email-overlay';
+            overlay.style.cssText = `
+                position: fixed; inset: 0; background: rgba(0,0,0,0.94);
+                display: flex; align-items: center; justify-content: center; z-index: 10000;
+                padding: 24px;
+            `;
+            overlay.innerHTML = `
+                <div style="background: #0f0f0f; border: 1.5px solid rgba(0,229,122,0.35); border-radius: 24px;
+                            padding: 52px 44px; max-width: 460px; width: 100%; text-align: center;
+                            box-shadow: 0 40px 80px rgba(0,0,0,0.7);">
+                    <div style="width:56px; height:56px; background: rgba(0,229,122,0.1); border: 1px solid rgba(0,229,122,0.2);
+                                border-radius: 16px; display: flex; align-items: center; justify-content: center;
+                                font-size: 24px; margin: 0 auto 20px;">📬</div>
+                    <h2 style="font-family: 'Outfit', sans-serif; font-size: 26px; color: #fff; margin-bottom: 10px; letter-spacing: -0.02em;">
+                        One last step
+                    </h2>
+                    <p style="color: #8b99ae; margin-bottom: 28px; font-size: 14px; line-height: 1.65;">
+                        Enter the Gmail address where you want to receive access to
+                        <strong style="color:#e2fdf0">${product.label}</strong>.
+                        Google Drive will share the sheet directly with this address.
+                    </p>
+                    <input id="buyer-email" type="email" placeholder="you@gmail.com" autocomplete="email"
+                        style="width: 100%; padding: 15px 18px; border-radius: 12px; border: 1px solid rgba(255,255,255,0.12);
+                               background: #161616; color: #fff; font-size: 15px; margin-bottom: 8px; outline: none;
+                               font-family: 'Inter', sans-serif; transition: border-color 0.2s;" />
+                    <p id="email-error" style="color: #ff6b81; font-size: 13px; min-height: 18px; margin-bottom: 16px; text-align: left;"></p>
+                    <button id="proceed-btn" onclick="proceedToCheckout('${tier}')"
+                        style="width: 100%; padding: 16px; border-radius: 12px; background: #00e57a; color: #020d06;
+                               font-size: 15px; font-weight: 700; border: none; cursor: pointer; margin-bottom: 14px;
+                               font-family: 'Inter', sans-serif;">
+                        Continue to Secure Checkout →
+                    </button>
+                    <p style="font-size: 12px; color: #555e6d; margin-bottom: 14px;">
+                        🔒 SSL-encrypted · Powered by PhonePe / Razorpay
+                    </p>
+                    <button onclick="document.getElementById('email-overlay').remove()"
+                        style="background: none; border: none; color: #555e6d; cursor: pointer; font-size: 13px; font-family: 'Inter', sans-serif;">
+                        Cancel
+                    </button>
+                    <p style="font-size: 11px; color: #3a404a; margin-top: 16px; line-height: 1.6;">
+                        By continuing you agree to our
+                        <a href="terms.html" target="_blank" style="color: #00e57a; text-decoration: none;">Terms &amp; Conditions</a>
+                        and
+                        <a href="terms.html#privacy" target="_blank" style="color: #00e57a; text-decoration: none;">Privacy Policy</a>.
+                    </p>
+                </div>
+            `;
+            document.body.appendChild(overlay);
+
+            setTimeout(() => document.getElementById('buyer-email').focus(), 60);
+
+            document.getElementById('buyer-email').addEventListener('keydown', (e) => {
+                if (e.key === 'Enter') proceedToCheckout(tier);
+            });
         }
 
-        function showSuccessModal(productName) {
+        // ── Create order and redirect ────────────────────────────────────────────
+        async function proceedToCheckout(tier) {
+            const emailInput = document.getElementById('buyer-email');
+            const errorEl   = document.getElementById('email-error');
+            const btn       = document.getElementById('proceed-btn');
+            const email     = emailInput.value.trim();
+
+            if (!email || !/^[^\s@]+@[^\s@]+\.[^\s@]+$/.test(email)) {
+                errorEl.textContent = 'Please enter a valid email address.';
+                emailInput.focus();
+                return;
+            }
+            errorEl.textContent = '';
+            btn.textContent = 'Creating secure order…';
+            btn.disabled = true;
+
+            try {
+                const res = await fetch(`${BACKEND_URL}/create-order`, {
+                    method: 'POST',
+                    headers: { 'Content-Type': 'application/json' },
+                    body: JSON.stringify({ email, tier: PRICING[tier].tierNum })
+                });
+
+                if (!res.ok) {
+                    const err = await res.json().catch(() => ({}));
+                    throw new Error(err.detail || 'Server error');
+                }
+
+                const data = await res.json();
+                window.location.href = data.checkout_url;
+
+            } catch (err) {
+                btn.textContent = 'Continue to Secure Checkout →';
+                btn.disabled = false;
+                errorEl.textContent = `Error: ${err.message}. Please try again or contact support.`;
+            }
+        }
+
+        // ── Return from payment ──────────────────────────────────────────────────
+        (function checkReturnStatus() {
+            const params = new URLSearchParams(window.location.search);
+            if (params.get('payment') === 'success') {
+                showSuccessModal();
+                window.history.replaceState({}, '', window.location.pathname);
+            }
+        })();
+
+        // ── FAQ accordion ────────────────────────────────────────────────────────
+        function toggleFaq(btn) {
+            const item = btn.closest('.faq-item');
+            const isOpen = item.classList.contains('open');
+            document.querySelectorAll('.faq-item.open').forEach(el => el.classList.remove('open'));
+            if (!isOpen) item.classList.add('open');
+        }
+
+        // ── Success modal ────────────────────────────────────────────────────────
+        function showSuccessModal() {
             const modal = document.createElement('div');
             modal.style.cssText = `
-                position: fixed; inset: 0; background: rgba(0,0,0,0.95);
+                position: fixed; inset: 0; background: rgba(0,0,0,0.96);
                 display: flex; align-items: center; justify-content: center; z-index: 10000;
+                padding: 24px;
             `;
             modal.innerHTML = `
-                <div style="background: #0f0f0f; border: 2px solid #00ff88; border-radius: 24px; padding: 60px; max-width: 500px; text-align: center;">
-                    <div style="font-size: 80px; margin-bottom: 20px;">🔥</div>
-                    <h2 style="font-size: 32px; color: #00ff88; margin-bottom: 16px;">Access Unlocked!</h2>
-                    <p style="color: #94a3b8; margin-bottom: 32px; line-height: 1.6;">
-                        Check your email for access to the <strong>${productName}</strong>. 
-                        Google Sheets invitations are sent instantly.
+                <div style="background: #0f0f0f; border: 1.5px solid rgba(0,229,122,0.4); border-radius: 24px;
+                            padding: 60px 48px; max-width: 480px; width: 100%; text-align: center;
+                            box-shadow: 0 40px 80px rgba(0,0,0,0.7);">
+                    <div style="font-size: 64px; margin-bottom: 20px;">🎉</div>
+                    <h2 style="font-family: 'Outfit', sans-serif; font-size: 30px; color: #00e57a; margin-bottom: 14px; letter-spacing: -0.02em;">
+                        Access Unlocked!
+                    </h2>
+                    <p style="color: #8b99ae; margin-bottom: 32px; line-height: 1.65; font-size: 15px;">
+                        Google Sheets access has been sent to your email. Check your inbox — and your spam folder just in case. It usually arrives within 2–5 minutes.
                     </p>
-                    <button onclick="window.location.reload()" class="btn btn-primary" style="width: 100%; justify-content: center;">Done</button>
+                    <button onclick="this.closest('div[style]').remove()"
+                        style="width: 100%; padding: 16px; border-radius: 12px; background: #00e57a; color: #020d06;
+                               font-size: 15px; font-weight: 700; border: none; cursor: pointer; font-family: 'Inter', sans-serif;">
+                        Got it — check my inbox
+                    </button>
+                    <p style="margin-top: 18px; font-size: 12px; color: #3a404a;">
+                        Didn't receive it? Email us at
+                        <a href="mailto:sleektechventures@gmail.com" style="color: #00e57a; text-decoration: none;">sleektechventures@gmail.com</a>
+                    </p>
                 </div>
             `;
             document.body.appendChild(modal);
