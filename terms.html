@@ -13,16 +13,16 @@
 
     <style>
         :root {
-            --bg: #050505;
-            --surface: #0f0f0f;
-            --border: rgba(255, 255, 255, 0.08);
-            --border-bright: rgba(255, 255, 255, 0.15);
-            --text-primary: #ffffff;
-            --text-secondary: #94a3b8;
-            --accent: #00ff88;
-            --accent-glow: rgba(0, 255, 136, 0.15);
-            --glass: rgba(255, 255, 255, 0.03);
-            --glass-border: rgba(255, 255, 255, 0.06);
+            --bg: #DDD0C8;
+            --surface: #EEDDDB;
+            --border: rgba(0, 0, 0, 0.08);
+            --border-bright: rgba(0, 0, 0, 0.15);
+            --text-primary: #323232;
+            --text-secondary: #4A4A4A;
+            --accent: #7C9082;
+            --accent-glow: rgba(124, 144, 130, 0.15);
+            --glass: rgba(255, 255, 255, 0.6);
+            --glass-border: rgba(0, 0, 0, 0.05);
         }
 
         * {
@@ -44,9 +44,9 @@
             position: fixed;
             inset: 0;
             background:
-                radial-gradient(circle at 50% 0%, rgba(0, 255, 136, 0.03) 0%, transparent 60%),
-                linear-gradient(rgba(255, 255, 255, 0.025) 1px, transparent 1px),
-                linear-gradient(90deg, rgba(255, 255, 255, 0.025) 1px, transparent 1px);
+                radial-gradient(circle at 50% 0%, rgba(124, 144, 130, 0.03) 0%, transparent 60%),
+                linear-gradient(rgba(0, 0, 0, 0.03) 1px, transparent 1px),
+                linear-gradient(90deg, rgba(0, 0, 0, 0.03) 1px, transparent 1px);
             background-size: 100% 100%, 40px 40px, 40px 40px;
             z-index: -1;
             pointer-events: none;
@@ -56,7 +56,7 @@
             position: sticky;
             top: 0;
             z-index: 1000;
-            background: rgba(5, 5, 5, 0.8);
+            background: rgba(221, 208, 200, 0.82);
             backdrop-filter: blur(20px);
             border-bottom: 1px solid var(--glass-border);
             padding: 20px 0;
@@ -78,16 +78,16 @@
         }
 
         .logo {
-            font-family: 'Outfit', sans-serif;
+            font-family: 'Inter', sans-serif;
             font-size: 22px;
-            font-weight: 800;
+            font-weight: 400;
             letter-spacing: -0.02em;
             text-decoration: none;
             color: var(--text-primary);
         }
 
         .logo-accent {
-            background: linear-gradient(to right, var(--accent), #50ffb4);
+            background: linear-gradient(to right, var(--accent), #94A89A);
             -webkit-background-clip: text;
             background-clip: text;
             -webkit-text-fill-color: transparent;
@@ -100,7 +100,7 @@
             color: var(--text-secondary);
             text-decoration: none;
             font-size: 14px;
-            font-weight: 500;
+            font-weight: 300;
             transition: color 0.2s;
         }
 
@@ -118,11 +118,11 @@
             align-items: center;
             gap: 8px;
             padding: 6px 14px;
-            background: rgba(0, 255, 136, 0.07);
-            border: 1px solid rgba(0, 255, 136, 0.2);
+            background: rgba(124, 144, 130, 0.07);
+            border: 1px solid rgba(124, 144, 130, 0.2);
             border-radius: 100px;
             font-size: 12px;
-            font-weight: 600;
+            font-weight: 400;
             color: var(--accent);
             letter-spacing: 0.08em;
             text-transform: uppercase;
@@ -130,9 +130,9 @@
         }
 
         h1 {
-            font-family: 'Outfit', sans-serif;
+            font-family: 'Inter', sans-serif;
             font-size: clamp(36px, 5vw, 52px);
-            font-weight: 800;
+            font-weight: 300;
             letter-spacing: -0.03em;
             line-height: 1.1;
             margin-bottom: 16px;
@@ -146,7 +146,7 @@
 
         .doc-meta span {
             color: var(--text-primary);
-            font-weight: 500;
+            font-weight: 300;
         }
 
         /* TOC */
@@ -159,9 +159,9 @@
         }
 
         .toc-title {
-            font-family: 'Outfit', sans-serif;
+            font-family: 'Inter', sans-serif;
             font-size: 14px;
-            font-weight: 700;
+            font-weight: 400;
             text-transform: uppercase;
             letter-spacing: 0.12em;
             color: var(--accent);
@@ -201,9 +201,9 @@
         }
 
         .doc-section h2 {
-            font-family: 'Outfit', sans-serif;
+            font-family: 'Inter', sans-serif;
             font-size: 24px;
-            font-weight: 700;
+            font-weight: 400;
             color: var(--text-primary);
             margin-bottom: 20px;
             padding-bottom: 12px;
@@ -219,11 +219,11 @@
             justify-content: center;
             width: 32px;
             height: 32px;
-            background: rgba(0, 255, 136, 0.1);
-            border: 1px solid rgba(0, 255, 136, 0.25);
+            background: rgba(124, 144, 130, 0.1);
+            border: 1px solid rgba(124, 144, 130, 0.25);
             border-radius: 8px;
             font-size: 13px;
-            font-weight: 700;
+            font-weight: 400;
             color: var(--accent);
             flex-shrink: 0;
         }
@@ -248,7 +248,7 @@
 
         .doc-section strong {
             color: var(--text-primary);
-            font-weight: 600;
+            font-weight: 400;
         }
 
         .doc-section a {
@@ -261,8 +261,8 @@
         }
 
         .highlight-box {
-            background: rgba(0, 255, 136, 0.05);
-            border: 1px solid rgba(0, 255, 136, 0.18);
+            background: rgba(124, 144, 130, 0.05);
+            border: 1px solid rgba(124, 144, 130, 0.18);
             border-radius: 12px;
             padding: 20px 24px;
             margin: 20px 0;
@@ -320,7 +320,7 @@
         }
 
         .copyright {
-            color: #444;
+            color: #8A837A;
             font-size: 13px;
         }
     </style>
