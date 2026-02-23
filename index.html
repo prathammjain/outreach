@@ -18,15 +18,15 @@
     <style>
         /* ── Design Tokens ── */
         :root {
-            --bg: #FAFAF7;
-            --surface: #FFFFFF;
-            --surface-2: #F3F1EA;
-            --surface-hover: #F0EEE5;
+            --bg: #DDD0C8;
+            --surface: #EEDDDB;
+            --surface-2: #E1D2CB;
+            --surface-hover: #E8D8D3;
             --border: rgba(0, 0, 0, 0.08);
             --border-bright: rgba(0, 0, 0, 0.15);
-            --text-primary: #2C2A28;
-            --text-secondary: #6B655F;
-            --text-muted: #9C968F;
+            --text-primary: #323232;
+            --text-secondary: #4A4A4A;
+            --text-muted: #626262;
             --accent: #7C9082;
             --accent-glow: rgba(124, 144, 130, 0.12);
             --accent-dim: #617467;
@@ -126,7 +126,7 @@
             position: sticky;
             top: 0;
             z-index: 1000;
-            background: rgba(250, 250, 247, 0.82);
+            background: rgba(221, 208, 200, 0.82);
             backdrop-filter: blur(24px);
             -webkit-backdrop-filter: blur(24px);
             border-bottom: 1px solid var(--glass-border);
@@ -1735,12 +1735,12 @@
             const overlay = document.createElement('div');
             overlay.id = 'email-overlay';
             overlay.style.cssText = `
-                position: fixed; inset: 0; background: rgba(250,250,247,0.94);
+                position: fixed; inset: 0; background: rgba(221, 208, 200,0.94);
                 display: flex; align-items: center; justify-content: center; z-index: 10000;
                 padding: 24px;
             `;
             overlay.innerHTML = `
-                <div style="background: #FFFFFF; border: 1.5px solid rgba(124,144,130,0.35); border-radius: 24px;
+                <div style="background: #EEDDDB; border: 1.5px solid rgba(124,144,130,0.35); border-radius: 24px;
                             padding: 52px 44px; max-width: 460px; width: 100%; text-align: center;
                             box-shadow: 0 40px 80px rgba(0,0,0,0.1);">
                     <div style="width:56px; height:56px; background: rgba(124,144,130,0.1); border: 1px solid rgba(124,144,130,0.2);
@@ -1848,12 +1848,12 @@
         function showSuccessModal() {
             const modal = document.createElement('div');
             modal.style.cssText = `
-                position: fixed; inset: 0; background: rgba(250,250,247,0.96);
+                position: fixed; inset: 0; background: rgba(221, 208, 200,0.96);
                 display: flex; align-items: center; justify-content: center; z-index: 10000;
                 padding: 24px;
             `;
             modal.innerHTML = `
-                <div style="background: #FFFFFF; border: 1.5px solid rgba(124,144,130,0.4); border-radius: 24px;
+                <div style="background: #EEDDDB; border: 1.5px solid rgba(124,144,130,0.4); border-radius: 24px;
                             padding: 60px 48px; max-width: 480px; width: 100%; text-align: center;
                             box-shadow: 0 40px 80px rgba(0,0,0,0.1);">
                     <div style="font-size: 64px; margin-bottom: 20px;">🎉</div>
