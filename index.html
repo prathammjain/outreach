@@ -18,20 +18,20 @@
     <style>
         /* ── Design Tokens ── */
         :root {
-            --bg: #050505;
-            --surface: #0f0f0f;
-            --surface-2: #141414;
-            --surface-hover: #161616;
-            --border: rgba(255, 255, 255, 0.07);
-            --border-bright: rgba(255, 255, 255, 0.14);
-            --text-primary: #f1f5f9;
-            --text-secondary: #8b99ae;
-            --text-muted: #555e6d;
-            --accent: #00e57a;
-            --accent-glow: rgba(0, 229, 122, 0.12);
-            --accent-dim: #00b860;
-            --glass: rgba(255, 255, 255, 0.028);
-            --glass-border: rgba(255, 255, 255, 0.055);
+            --bg: #FAFAF7;
+            --surface: #FFFFFF;
+            --surface-2: #F3F1EA;
+            --surface-hover: #F0EEE5;
+            --border: rgba(0, 0, 0, 0.08);
+            --border-bright: rgba(0, 0, 0, 0.15);
+            --text-primary: #2C2A28;
+            --text-secondary: #6B655F;
+            --text-muted: #9C968F;
+            --accent: #7C9082;
+            --accent-glow: rgba(124, 144, 130, 0.12);
+            --accent-dim: #617467;
+            --glass: rgba(255, 255, 255, 0.6);
+            --glass-border: rgba(0, 0, 0, 0.05);
             --radius-sm: 10px;
             --radius-md: 16px;
             --radius-lg: 24px;
@@ -60,9 +60,9 @@
             position: fixed;
             inset: 0;
             background:
-                radial-gradient(ellipse 80% 50% at 50% -10%, rgba(0, 229, 122, 0.035) 0%, transparent 100%),
-                linear-gradient(rgba(255, 255, 255, 0.022) 1px, transparent 1px),
-                linear-gradient(90deg, rgba(255, 255, 255, 0.022) 1px, transparent 1px);
+                radial-gradient(ellipse 80% 50% at 50% -10%, rgba(124, 144, 130, 0.035) 0%, transparent 100%),
+                linear-gradient(rgba(0, 0, 0, 0.03) 1px, transparent 1px),
+                linear-gradient(90deg, rgba(0, 0, 0, 0.03) 1px, transparent 1px);
             background-size: 100% 100%, 44px 44px, 44px 44px;
             z-index: -1;
             pointer-events: none;
@@ -108,8 +108,8 @@
 
         /* ── Announcement bar ── */
         .announcement-bar {
-            background: linear-gradient(90deg, rgba(0,229,122,0.12) 0%, rgba(0,229,122,0.06) 100%);
-            border-bottom: 1px solid rgba(0,229,122,0.15);
+            background: linear-gradient(90deg, rgba(124,144,130,0.12) 0%, rgba(124,144,130,0.06) 100%);
+            border-bottom: 1px solid rgba(124,144,130,0.15);
             text-align: center;
             padding: 10px 24px;
             font-size: 13px;
@@ -126,7 +126,7 @@
             position: sticky;
             top: 0;
             z-index: 1000;
-            background: rgba(5, 5, 5, 0.82);
+            background: rgba(250, 250, 247, 0.82);
             backdrop-filter: blur(24px);
             -webkit-backdrop-filter: blur(24px);
             border-bottom: 1px solid var(--glass-border);
@@ -154,7 +154,7 @@
         .logo-icon {
             width: 32px;
             height: 32px;
-            background: linear-gradient(135deg, var(--accent), #50ffb4);
+            background: linear-gradient(135deg, var(--accent), #A8BDB0);
             border-radius: 8px;
             display: flex;
             align-items: center;
@@ -163,7 +163,7 @@
         }
 
         .logo-accent {
-            background: linear-gradient(to right, var(--accent), #50ffb4);
+            background: linear-gradient(to right, var(--accent), #A8BDB0);
             -webkit-background-clip: text;
             background-clip: text;
             -webkit-text-fill-color: transparent;
@@ -204,14 +204,14 @@
 
         .btn-primary {
             background: var(--accent);
-            color: #020d06;
-            box-shadow: 0 6px 20px rgba(0, 229, 122, 0.22);
+            color: #FFFFFF;
+            box-shadow: 0 6px 20px rgba(124, 144, 130, 0.22);
         }
 
         .btn-primary:hover {
-            background: #14f090;
+            background: #94A89A;
             transform: translateY(-2px);
-            box-shadow: 0 10px 28px rgba(0, 229, 122, 0.32);
+            box-shadow: 0 10px 28px rgba(124, 144, 130, 0.32);
         }
 
         .btn-secondary {
@@ -244,8 +244,8 @@
             align-items: center;
             gap: 10px;
             padding: 8px 18px;
-            background: rgba(0, 229, 122, 0.06);
-            border: 1px solid rgba(0, 229, 122, 0.2);
+            background: rgba(124, 144, 130, 0.06);
+            border: 1px solid rgba(124, 144, 130, 0.2);
             border-radius: 100px;
             font-size: 13px;
             font-weight: 600;
@@ -275,11 +275,11 @@
             line-height: 0.96;
             letter-spacing: -0.04em;
             margin-bottom: 28px;
-            color: #fff;
+            color: var(--text-primary);
         }
 
         .gradient-text {
-            background: linear-gradient(135deg, #e2fdf0 20%, var(--accent) 75%);
+            background: linear-gradient(135deg, #617467 20%, #A8BDB0 75%);
             -webkit-background-clip: text;
             background-clip: text;
             -webkit-text-fill-color: transparent;
@@ -387,7 +387,7 @@
 
         .stat-card:hover {
             transform: translateY(-6px);
-            border-color: rgba(0,229,122,0.25);
+            border-color: rgba(124,144,130,0.25);
         }
 
         .stat-card:hover::before {
@@ -433,7 +433,7 @@
             font-family: 'Outfit', sans-serif;
             font-size: clamp(30px, 4.5vw, 46px);
             font-weight: 700;
-            color: #fff;
+            color: var(--text-primary);
             letter-spacing: -0.025em;
             line-height: 1.1;
         }
@@ -482,7 +482,7 @@
         }
 
         .feature-card:hover {
-            border-color: rgba(0, 229, 122, 0.22);
+            border-color: rgba(124, 144, 130, 0.22);
             background: var(--surface-hover);
             transform: translateY(-8px);
         }
@@ -494,8 +494,8 @@
         .feature-icon {
             width: 56px;
             height: 56px;
-            background: rgba(0, 229, 122, 0.09);
-            border: 1px solid rgba(0, 229, 122, 0.15);
+            background: rgba(124, 144, 130, 0.09);
+            border: 1px solid rgba(124, 144, 130, 0.15);
             border-radius: 14px;
             display: flex;
             align-items: center;
@@ -509,7 +509,7 @@
             font-size: 21px;
             font-weight: 700;
             margin-bottom: 12px;
-            color: #fff;
+            color: var(--text-primary);
         }
 
         .feature-card p {
@@ -541,7 +541,7 @@
             left: 12%;
             right: 12%;
             height: 1px;
-            background: linear-gradient(to right, transparent, rgba(0,229,122,0.35), transparent);
+            background: linear-gradient(to right, transparent, rgba(124,144,130,0.35), transparent);
         }
 
         .step {
@@ -552,8 +552,8 @@
         .step-number {
             width: 56px;
             height: 56px;
-            background: rgba(0, 229, 122, 0.08);
-            border: 1px solid rgba(0, 229, 122, 0.28);
+            background: rgba(124, 144, 130, 0.08);
+            border: 1px solid rgba(124, 144, 130, 0.28);
             border-radius: 50%;
             display: flex;
             align-items: center;
@@ -570,7 +570,7 @@
             font-size: 16px;
             font-weight: 700;
             margin-bottom: 8px;
-            color: #fff;
+            color: var(--text-primary);
         }
 
         .step p {
@@ -598,7 +598,7 @@
         }
 
         .sample-table th {
-            background: rgba(0, 229, 122, 0.055);
+            background: rgba(124, 144, 130, 0.055);
             color: var(--accent);
             font-weight: 600;
             text-transform: uppercase;
@@ -613,7 +613,7 @@
         .sample-table td {
             padding: 13px 18px;
             color: var(--text-secondary);
-            border-bottom: 1px solid rgba(255,255,255,0.035);
+            border-bottom: 1px solid rgba(0,0,0,0.04);
             white-space: nowrap;
         }
 
@@ -622,7 +622,7 @@
         }
 
         .sample-table tr:hover td {
-            background: rgba(255,255,255,0.018);
+            background: rgba(0,0,0,0.02);
             color: var(--text-primary);
         }
 
@@ -642,7 +642,7 @@
         /* ── Testimonials ── */
         .testimonials {
             padding: 100px 0;
-            background: radial-gradient(ellipse at center top, rgba(0,229,122,0.04) 0%, transparent 65%);
+            background: radial-gradient(ellipse at center top, rgba(124,144,130,0.04) 0%, transparent 65%);
         }
 
         .testimonial-grid {
@@ -696,7 +696,7 @@
             justify-content: center;
             font-weight: 700;
             font-size: 15px;
-            color: #020d06;
+            color: #FFFFFF;
             flex-shrink: 0;
         }
 
@@ -764,14 +764,14 @@
         }
 
         .pricing-card:hover {
-            border-color: rgba(0,229,122,0.3);
-            box-shadow: 0 32px 64px rgba(0,0,0,0.45);
+            border-color: rgba(124,144,130,0.3);
+            box-shadow: 0 32px 64px rgba(0,0,0,0.08);
             transform: translateY(-6px);
         }
 
         .pricing-card.premium {
-            border: 1.5px solid rgba(0,229,122,0.4);
-            background: linear-gradient(180deg, rgba(0,229,122,0.04) 0%, transparent 50%), var(--surface);
+            border: 1.5px solid rgba(124,144,130,0.4);
+            background: linear-gradient(180deg, rgba(124,144,130,0.04) 0%, transparent 50%), var(--surface);
         }
 
         .popular-badge {
@@ -780,13 +780,13 @@
             left: 50%;
             transform: translateX(-50%);
             background: var(--accent);
-            color: #020d06;
+            color: #FFFFFF;
             padding: 6px 18px;
             border-radius: 100px;
             font-size: 11px;
             font-weight: 800;
             letter-spacing: 0.1em;
-            box-shadow: 0 6px 18px rgba(0,229,122,0.25);
+            box-shadow: 0 6px 18px rgba(124,144,130,0.25);
         }
 
         .price-tier-label {
@@ -815,7 +815,7 @@
             font-family: 'Outfit', sans-serif;
             font-size: 60px;
             font-weight: 800;
-            color: #fff;
+            color: var(--text-primary);
             letter-spacing: -0.02em;
             line-height: 1;
         }
@@ -966,8 +966,8 @@
         .security-icon {
             width: 44px;
             height: 44px;
-            background: rgba(0,229,122,0.08);
-            border: 1px solid rgba(0,229,122,0.14);
+            background: rgba(124,144,130,0.08);
+            border: 1px solid rgba(124,144,130,0.14);
             border-radius: 10px;
             display: flex;
             align-items: center;
@@ -1075,13 +1075,13 @@
             bottom: 32px;
             right: 32px;
             background: var(--surface);
-            border: 1px solid rgba(0,229,122,0.35);
+            border: 1px solid rgba(124,144,130,0.35);
             color: var(--text-primary);
             padding: 16px 24px;
             border-radius: var(--radius-md);
             font-weight: 600;
             font-size: 14px;
-            box-shadow: 0 20px 40px rgba(0, 0, 0, 0.5);
+            box-shadow: 0 20px 40px rgba(0, 0, 0, 0.08);
             transform: translateY(120px);
             opacity: 0;
             transition: all 0.45s cubic-bezier(0.4, 0, 0.2, 1);
@@ -1735,48 +1735,48 @@
             const overlay = document.createElement('div');
             overlay.id = 'email-overlay';
             overlay.style.cssText = `
-                position: fixed; inset: 0; background: rgba(0,0,0,0.94);
+                position: fixed; inset: 0; background: rgba(250,250,247,0.94);
                 display: flex; align-items: center; justify-content: center; z-index: 10000;
                 padding: 24px;
             `;
             overlay.innerHTML = `
-                <div style="background: #0f0f0f; border: 1.5px solid rgba(0,229,122,0.35); border-radius: 24px;
+                <div style="background: #FFFFFF; border: 1.5px solid rgba(124,144,130,0.35); border-radius: 24px;
                             padding: 52px 44px; max-width: 460px; width: 100%; text-align: center;
-                            box-shadow: 0 40px 80px rgba(0,0,0,0.7);">
-                    <div style="width:56px; height:56px; background: rgba(0,229,122,0.1); border: 1px solid rgba(0,229,122,0.2);
+                            box-shadow: 0 40px 80px rgba(0,0,0,0.1);">
+                    <div style="width:56px; height:56px; background: rgba(124,144,130,0.1); border: 1px solid rgba(124,144,130,0.2);
                                 border-radius: 16px; display: flex; align-items: center; justify-content: center;
                                 font-size: 24px; margin: 0 auto 20px;">📬</div>
-                    <h2 style="font-family: 'Outfit', sans-serif; font-size: 26px; color: #fff; margin-bottom: 10px; letter-spacing: -0.02em;">
+                    <h2 style="font-family: 'Outfit', sans-serif; font-size: 26px; color: var(--text-primary); margin-bottom: 10px; letter-spacing: -0.02em;">
                         One last step
                     </h2>
-                    <p style="color: #8b99ae; margin-bottom: 28px; font-size: 14px; line-height: 1.65;">
+                    <p style="color: #6B655F; margin-bottom: 28px; font-size: 14px; line-height: 1.65;">
                         Enter the Gmail address where you want to receive access to
                         <strong style="color:#e2fdf0">${product.label}</strong>.
                         Google Drive will share the sheet directly with this address.
                     </p>
                     <input id="buyer-email" type="email" placeholder="you@gmail.com" autocomplete="email"
-                        style="width: 100%; padding: 15px 18px; border-radius: 12px; border: 1px solid rgba(255,255,255,0.12);
-                               background: #161616; color: #fff; font-size: 15px; margin-bottom: 8px; outline: none;
+                        style="width: 100%; padding: 15px 18px; border-radius: 12px; border: 1px solid rgba(0,0,0,0.12);
+                               background: #F3F1EA; color: var(--text-primary); font-size: 15px; margin-bottom: 8px; outline: none;
                                font-family: 'Inter', sans-serif; transition: border-color 0.2s;" />
-                    <p id="email-error" style="color: #ff6b81; font-size: 13px; min-height: 18px; margin-bottom: 16px; text-align: left;"></p>
+                    <p id="email-error" style="color: #D44D5C; font-size: 13px; min-height: 18px; margin-bottom: 16px; text-align: left;"></p>
                     <button id="proceed-btn" onclick="proceedToCheckout('${tier}')"
-                        style="width: 100%; padding: 16px; border-radius: 12px; background: #00e57a; color: #020d06;
+                        style="width: 100%; padding: 16px; border-radius: 12px; background: #7C9082; color: #FFFFFF;
                                font-size: 15px; font-weight: 700; border: none; cursor: pointer; margin-bottom: 14px;
                                font-family: 'Inter', sans-serif;">
                         Continue to Secure Checkout →
                     </button>
-                    <p style="font-size: 12px; color: #555e6d; margin-bottom: 14px;">
+                    <p style="font-size: 12px; color: #9C968F; margin-bottom: 14px;">
                         🔒 SSL-encrypted · Powered by PhonePe / Razorpay
                     </p>
                     <button onclick="document.getElementById('email-overlay').remove()"
-                        style="background: none; border: none; color: #555e6d; cursor: pointer; font-size: 13px; font-family: 'Inter', sans-serif;">
+                        style="background: none; border: none; color: #9C968F; cursor: pointer; font-size: 13px; font-family: 'Inter', sans-serif;">
                         Cancel
                     </button>
-                    <p style="font-size: 11px; color: #3a404a; margin-top: 16px; line-height: 1.6;">
+                    <p style="font-size: 11px; color: #8A837A; margin-top: 16px; line-height: 1.6;">
                         By continuing you agree to our
-                        <a href="terms.html" target="_blank" style="color: #00e57a; text-decoration: none;">Terms &amp; Conditions</a>
+                        <a href="terms.html" target="_blank" style="color: #7C9082; text-decoration: none;">Terms &amp; Conditions</a>
                         and
-                        <a href="terms.html#privacy" target="_blank" style="color: #00e57a; text-decoration: none;">Privacy Policy</a>.
+                        <a href="terms.html#privacy" target="_blank" style="color: #7C9082; text-decoration: none;">Privacy Policy</a>.
                     </p>
                 </div>
             `;
@@ -1848,29 +1848,29 @@
         function showSuccessModal() {
             const modal = document.createElement('div');
             modal.style.cssText = `
-                position: fixed; inset: 0; background: rgba(0,0,0,0.96);
+                position: fixed; inset: 0; background: rgba(250,250,247,0.96);
                 display: flex; align-items: center; justify-content: center; z-index: 10000;
                 padding: 24px;
             `;
             modal.innerHTML = `
-                <div style="background: #0f0f0f; border: 1.5px solid rgba(0,229,122,0.4); border-radius: 24px;
+                <div style="background: #FFFFFF; border: 1.5px solid rgba(124,144,130,0.4); border-radius: 24px;
                             padding: 60px 48px; max-width: 480px; width: 100%; text-align: center;
-                            box-shadow: 0 40px 80px rgba(0,0,0,0.7);">
+                            box-shadow: 0 40px 80px rgba(0,0,0,0.1);">
                     <div style="font-size: 64px; margin-bottom: 20px;">🎉</div>
-                    <h2 style="font-family: 'Outfit', sans-serif; font-size: 30px; color: #00e57a; margin-bottom: 14px; letter-spacing: -0.02em;">
+                    <h2 style="font-family: 'Outfit', sans-serif; font-size: 30px; color: #7C9082; margin-bottom: 14px; letter-spacing: -0.02em;">
                         Access Unlocked!
                     </h2>
-                    <p style="color: #8b99ae; margin-bottom: 32px; line-height: 1.65; font-size: 15px;">
+                    <p style="color: #6B655F; margin-bottom: 32px; line-height: 1.65; font-size: 15px;">
                         Google Sheets access has been sent to your email. Check your inbox — and your spam folder just in case. It usually arrives within 2–5 minutes.
                     </p>
                     <button onclick="this.closest('div[style]').remove()"
-                        style="width: 100%; padding: 16px; border-radius: 12px; background: #00e57a; color: #020d06;
+                        style="width: 100%; padding: 16px; border-radius: 12px; background: #7C9082; color: #FFFFFF;
                                font-size: 15px; font-weight: 700; border: none; cursor: pointer; font-family: 'Inter', sans-serif;">
                         Got it — check my inbox
                     </button>
-                    <p style="margin-top: 18px; font-size: 12px; color: #3a404a;">
+                    <p style="margin-top: 18px; font-size: 12px; color: #8A837A;">
                         Didn't receive it? Email us at
-                        <a href="mailto:sleektechventures@gmail.com" style="color: #00e57a; text-decoration: none;">sleektechventures@gmail.com</a>
+                        <a href="mailto:sleektechventures@gmail.com" style="color: #7C9082; text-decoration: none;">sleektechventures@gmail.com</a>
                     </p>
                 </div>
             `;
