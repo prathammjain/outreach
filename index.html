@@ -96,8 +96,13 @@
         }
 
         @keyframes orbDrift {
-            from { transform: translate(0, 0) scale(1); }
-            to   { transform: translate(60px, 40px) scale(1.15); }
+            from {
+                transform: translate(0, 0) scale(1);
+            }
+
+            to {
+                transform: translate(60px, 40px) scale(1.15);
+            }
         }
 
         .container {
@@ -108,8 +113,8 @@
 
         /* ── Announcement bar ── */
         .announcement-bar {
-            background: linear-gradient(90deg, rgba(124,144,130,0.12) 0%, rgba(124,144,130,0.06) 100%);
-            border-bottom: 1px solid rgba(124,144,130,0.15);
+            background: linear-gradient(90deg, rgba(124, 144, 130, 0.12) 0%, rgba(124, 144, 130, 0.06) 100%);
+            border-bottom: 1px solid rgba(124, 144, 130, 0.15);
             text-align: center;
             padding: 10px 24px;
             font-size: 13px;
@@ -264,8 +269,17 @@
         }
 
         @keyframes pulse {
-            0%, 100% { opacity: 1; box-shadow: 0 0 8px var(--accent); }
-            50%       { opacity: 0.6; box-shadow: 0 0 3px var(--accent); }
+
+            0%,
+            100% {
+                opacity: 1;
+                box-shadow: 0 0 8px var(--accent);
+            }
+
+            50% {
+                opacity: 0.6;
+                box-shadow: 0 0 3px var(--accent);
+            }
         }
 
         h1 {
@@ -385,7 +399,7 @@
 
         .stat-card:hover {
             transform: translateY(-6px);
-            border-color: rgba(124,144,130,0.25);
+            border-color: rgba(124, 144, 130, 0.25);
         }
 
         .stat-card:hover::before {
@@ -539,7 +553,7 @@
             left: 12%;
             right: 12%;
             height: 1px;
-            background: linear-gradient(to right, transparent, rgba(124,144,130,0.35), transparent);
+            background: linear-gradient(to right, transparent, rgba(124, 144, 130, 0.35), transparent);
         }
 
         .step {
@@ -611,7 +625,7 @@
         .sample-table td {
             padding: 13px 18px;
             color: var(--text-secondary);
-            border-bottom: 1px solid rgba(0,0,0,0.04);
+            border-bottom: 1px solid rgba(0, 0, 0, 0.04);
             white-space: nowrap;
         }
 
@@ -620,7 +634,7 @@
         }
 
         .sample-table tr:hover td {
-            background: rgba(0,0,0,0.02);
+            background: rgba(0, 0, 0, 0.02);
             color: var(--text-primary);
         }
 
@@ -640,7 +654,7 @@
         /* ── Testimonials ── */
         .testimonials {
             padding: 100px 0;
-            background: radial-gradient(ellipse at center top, rgba(124,144,130,0.04) 0%, transparent 65%);
+            background: radial-gradient(ellipse at center top, rgba(124, 144, 130, 0.04) 0%, transparent 65%);
         }
 
         .testimonial-grid {
@@ -762,14 +776,14 @@
         }
 
         .pricing-card:hover {
-            border-color: rgba(124,144,130,0.3);
-            box-shadow: 0 32px 64px rgba(0,0,0,0.08);
+            border-color: rgba(124, 144, 130, 0.3);
+            box-shadow: 0 32px 64px rgba(0, 0, 0, 0.08);
             transform: translateY(-6px);
         }
 
         .pricing-card.premium {
-            border: 1.5px solid rgba(124,144,130,0.4);
-            background: linear-gradient(180deg, rgba(124,144,130,0.04) 0%, transparent 50%), var(--surface);
+            border: 1.5px solid rgba(124, 144, 130, 0.4);
+            background: linear-gradient(180deg, rgba(124, 144, 130, 0.04) 0%, transparent 50%), var(--surface);
         }
 
         .popular-badge {
@@ -784,7 +798,7 @@
             font-size: 11px;
             font-weight: 400;
             letter-spacing: 0.1em;
-            box-shadow: 0 6px 18px rgba(124,144,130,0.25);
+            box-shadow: 0 6px 18px rgba(124, 144, 130, 0.25);
         }
 
         .price-tier-label {
@@ -964,8 +978,8 @@
         .security-icon {
             width: 44px;
             height: 44px;
-            background: rgba(124,144,130,0.08);
-            border: 1px solid rgba(124,144,130,0.14);
+            background: rgba(124, 144, 130, 0.08);
+            border: 1px solid rgba(124, 144, 130, 0.14);
             border-radius: 10px;
             display: flex;
             align-items: center;
@@ -1073,7 +1087,7 @@
             bottom: 32px;
             right: 32px;
             background: var(--surface);
-            border: 1px solid rgba(124,144,130,0.35);
+            border: 1px solid rgba(124, 144, 130, 0.35);
             color: var(--text-primary);
             padding: 16px 24px;
             border-radius: var(--radius-md);
@@ -1096,20 +1110,139 @@
 
         /* ── Responsive ── */
         @media (max-width: 768px) {
-            .nav-links { display: none; }
-            .steps::before { display: none; }
-            .steps { grid-template-columns: 1fr 1fr; gap: 36px; }
-            .footer-top { grid-template-columns: 1fr; }
-            .footer-links-group { gap: 28px; }
-            .footer-bottom { flex-direction: column; align-items: flex-start; }
-            .trust-bar { gap: 18px; }
-            .credibility-inner { gap: 20px; }
+            .nav-links a:not(.btn) {
+                display: none;
+            }
+
+            .hero {
+                padding: 60px 0 40px;
+            }
+
+            h1 {
+                font-size: clamp(36px, 10vw, 48px);
+                margin-bottom: 20px;
+            }
+
+            .hero-subtitle {
+                font-size: 16px;
+                margin-bottom: 32px;
+            }
+
+            .hero-badge {
+                margin-bottom: 24px;
+                font-size: 12px;
+            }
+
+            .features,
+            .how-it-works,
+            .sample-section,
+            .testimonials,
+            .pricing {
+                padding: 60px 0;
+            }
+
+            .section-header {
+                margin-bottom: 40px;
+            }
+
+            .section-title {
+                font-size: clamp(26px, 7vw, 32px);
+            }
+
+            .steps::before {
+                display: none;
+            }
+
+            .steps {
+                grid-template-columns: 1fr 1fr;
+                gap: 36px;
+            }
+
+            .footer-top {
+                grid-template-columns: 1fr;
+            }
+
+            .footer-links-group {
+                gap: 28px;
+            }
+
+            .footer-bottom {
+                flex-direction: column;
+                align-items: flex-start;
+                gap: 20px;
+            }
+
+            .trust-bar {
+                gap: 18px;
+                padding: 20px 0;
+            }
+
+            .credibility-inner {
+                gap: 20px;
+            }
+
+            .pricing-card {
+                padding: 36px 24px;
+            }
+
+            .feature-card {
+                padding: 32px 24px;
+            }
+
+            .stat-card {
+                padding: 24px;
+            }
+
+            .cta-group {
+                margin-bottom: 12px;
+            }
+
+            /* Modal Optimization */
+            .checkout-modal {
+                padding: 40px 24px !important;
+            }
+
+            .checkout-modal h2 {
+                font-size: 22px !important;
+                margin-bottom: 8px !important;
+            }
+
+            .checkout-modal p {
+                font-size: 13px !important;
+            }
         }
 
         @media (max-width: 480px) {
-            .steps { grid-template-columns: 1fr; }
-            .pricing-grid { grid-template-columns: 1fr; }
-            .feature-grid { grid-template-columns: 1fr; }
+            .cta-group {
+                flex-direction: column;
+                align-items: stretch;
+                width: 100%;
+            }
+
+            .cta-group .btn {
+                width: 100%;
+                justify-content: center;
+            }
+
+            .stats-grid {
+                grid-template-columns: 1fr 1fr;
+            }
+
+            .steps {
+                grid-template-columns: 1fr;
+            }
+
+            .pricing-grid {
+                grid-template-columns: 1fr;
+            }
+
+            .feature-grid {
+                grid-template-columns: 1fr;
+            }
+
+            .testimonial-grid {
+                grid-template-columns: 1fr;
+            }
         }
     </style>
 </head>
@@ -1154,21 +1287,27 @@
                 </h1>
 
                 <p class="hero-subtitle">
-                    Curated database of 6,400+ tech startups with verified founder emails, phone numbers, and LinkedIn profiles. No subscriptions. Instant access.
+                    Curated database of 6,400+ tech startups with verified founder emails, phone numbers, and LinkedIn
+                    profiles. No subscriptions. Instant access.
                 </p>
 
                 <div class="cta-group">
                     <a href="#pricing" class="btn btn-primary btn-lg">
                         Browse Databases
-                        <svg width="18" height="18" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.5" stroke-linecap="round" stroke-linejoin="round">
-                            <line x1="5" y1="12" x2="19" y2="12"/><polyline points="12 5 19 12 12 19"/>
+                        <svg width="18" height="18" viewBox="0 0 24 24" fill="none" stroke="currentColor"
+                            stroke-width="2.5" stroke-linecap="round" stroke-linejoin="round">
+                            <line x1="5" y1="12" x2="19" y2="12" />
+                            <polyline points="12 5 19 12 12 19" />
                         </svg>
                     </a>
                     <a href="#sample" class="btn btn-secondary btn-lg">See Sample Data</a>
                 </div>
 
                 <p class="hero-trust-note">
-                    <svg width="14" height="14" fill="none" stroke="currentColor" viewBox="0 0 24 24" stroke-width="2"><path stroke-linecap="round" stroke-linejoin="round" d="M12 22s8-4 8-10V5l-8-3-8 3v7c0 6 8 10 8 10z"/></svg>
+                    <svg width="14" height="14" fill="none" stroke="currentColor" viewBox="0 0 24 24" stroke-width="2">
+                        <path stroke-linecap="round" stroke-linejoin="round"
+                            d="M12 22s8-4 8-10V5l-8-3-8 3v7c0 6 8 10 8 10z" />
+                    </svg>
                     Secure checkout · One-time payment · Access delivered to your inbox in &lt; 5 min
                 </p>
             </div>
@@ -1180,19 +1319,35 @@
                 <div class="credibility-inner">
                     <span class="credibility-label">Why teams trust OutreachKit</span>
                     <div class="credibility-badge">
-                        <svg width="16" height="16" fill="none" stroke="currentColor" viewBox="0 0 24 24" stroke-width="2"><path stroke-linecap="round" stroke-linejoin="round" d="M9 12l2 2 4-4M7.835 4.697a3.42 3.42 0 001.946-.806 3.42 3.42 0 014.438 0 3.42 3.42 0 001.946.806 3.42 3.42 0 013.138 3.138 3.42 3.42 0 00.806 1.946 3.42 3.42 0 010 4.438 3.42 3.42 0 00-.806 1.946 3.42 3.42 0 01-3.138 3.138 3.42 3.42 0 00-1.946.806 3.42 3.42 0 01-4.438 0 3.42 3.42 0 00-1.946-.806 3.42 3.42 0 01-3.138-3.138 3.42 3.42 0 00-.806-1.946 3.42 3.42 0 010-4.438 3.42 3.42 0 00.806-1.946 3.42 3.42 0 013.138-3.138z"/></svg>
+                        <svg width="16" height="16" fill="none" stroke="currentColor" viewBox="0 0 24 24"
+                            stroke-width="2">
+                            <path stroke-linecap="round" stroke-linejoin="round"
+                                d="M9 12l2 2 4-4M7.835 4.697a3.42 3.42 0 001.946-.806 3.42 3.42 0 014.438 0 3.42 3.42 0 001.946.806 3.42 3.42 0 013.138 3.138 3.42 3.42 0 00.806 1.946 3.42 3.42 0 010 4.438 3.42 3.42 0 00-.806 1.946 3.42 3.42 0 01-3.138 3.138 3.42 3.42 0 00-1.946.806 3.42 3.42 0 01-4.438 0 3.42 3.42 0 00-1.946-.806 3.42 3.42 0 01-3.138-3.138 3.42 3.42 0 00-.806-1.946 3.42 3.42 0 010-4.438 3.42 3.42 0 00.806-1.946 3.42 3.42 0 013.138-3.138z" />
+                        </svg>
                         Public data only
                     </div>
                     <div class="credibility-badge">
-                        <svg width="16" height="16" fill="none" stroke="currentColor" viewBox="0 0 24 24" stroke-width="2"><path stroke-linecap="round" stroke-linejoin="round" d="M12 15v2m-6 4h12a2 2 0 002-2v-6a2 2 0 00-2-2H6a2 2 0 00-2 2v6a2 2 0 002 2zm10-10V7a4 4 0 00-8 0v4h8z"/></svg>
+                        <svg width="16" height="16" fill="none" stroke="currentColor" viewBox="0 0 24 24"
+                            stroke-width="2">
+                            <path stroke-linecap="round" stroke-linejoin="round"
+                                d="M12 15v2m-6 4h12a2 2 0 002-2v-6a2 2 0 00-2-2H6a2 2 0 00-2 2v6a2 2 0 002 2zm10-10V7a4 4 0 00-8 0v4h8z" />
+                        </svg>
                         Secure PhonePe / Razorpay checkout
                     </div>
                     <div class="credibility-badge">
-                        <svg width="16" height="16" fill="none" stroke="currentColor" viewBox="0 0 24 24" stroke-width="2"><circle cx="12" cy="12" r="10"/><path stroke-linecap="round" stroke-linejoin="round" d="M12 8v4l3 3"/></svg>
+                        <svg width="16" height="16" fill="none" stroke="currentColor" viewBox="0 0 24 24"
+                            stroke-width="2">
+                            <circle cx="12" cy="12" r="10" />
+                            <path stroke-linecap="round" stroke-linejoin="round" d="M12 8v4l3 3" />
+                        </svg>
                         Access in under 5 minutes
                     </div>
                     <div class="credibility-badge">
-                        <svg width="16" height="16" fill="none" stroke="currentColor" viewBox="0 0 24 24" stroke-width="2"><path stroke-linecap="round" stroke-linejoin="round" d="M3 8l7.89 5.26a2 2 0 002.22 0L21 8M5 19h14a2 2 0 002-2V7a2 2 0 00-2-2H5a2 2 0 00-2 2v10a2 2 0 002 2z"/></svg>
+                        <svg width="16" height="16" fill="none" stroke="currentColor" viewBox="0 0 24 24"
+                            stroke-width="2">
+                            <path stroke-linecap="round" stroke-linejoin="round"
+                                d="M3 8l7.89 5.26a2 2 0 002.22 0L21 8M5 19h14a2 2 0 002-2V7a2 2 0 00-2-2H5a2 2 0 00-2 2v10a2 2 0 002 2z" />
+                        </svg>
                         Human support within 24 h
                     </div>
                 </div>
@@ -1229,23 +1384,27 @@
                 <div class="section-header">
                     <span class="section-tag">What's Inside</span>
                     <h2 class="section-title">Built for Serious Outreach</h2>
-                    <p class="section-subtitle">Every field has been hand-verified or cross-referenced. No filler, no duplicates.</p>
+                    <p class="section-subtitle">Every field has been hand-verified or cross-referenced. No filler, no
+                        duplicates.</p>
                 </div>
                 <div class="feature-grid">
                     <div class="feature-card">
                         <div class="feature-icon">💎</div>
                         <h3>Verified Email Patterns</h3>
-                        <p>3,200+ YC founder email schemas validated against bounce-test tools. Reach the inbox, not the void.</p>
+                        <p>3,200+ YC founder email schemas validated against bounce-test tools. Reach the inbox, not the
+                            void.</p>
                     </div>
                     <div class="feature-card">
                         <div class="feature-icon">🏙️</div>
                         <h3>City-Level Targeting</h3>
-                        <p>Filter by Bangalore, Mumbai, Delhi, San Francisco, or New York. Hyper-precise campaigns from day one.</p>
+                        <p>Filter by Bangalore, Mumbai, Delhi, San Francisco, or New York. Hyper-precise campaigns from
+                            day one.</p>
                     </div>
                     <div class="feature-card">
                         <div class="feature-icon">💰</div>
                         <h3>Funding-Stage Intel</h3>
-                        <p>Every company is a funded tech startup. No bootstrappers, no pre-revenue micro-businesses.</p>
+                        <p>Every company is a funded tech startup. No bootstrappers, no pre-revenue micro-businesses.
+                        </p>
                     </div>
                     <div class="feature-card">
                         <div class="feature-icon">🔗</div>
@@ -1255,12 +1414,14 @@
                     <div class="feature-card">
                         <div class="feature-icon">📊</div>
                         <h3>Ready-Made Google Sheet</h3>
-                        <p>Sort, filter, and track outreach directly in Google Sheets. No CSV imports or tools required.</p>
+                        <p>Sort, filter, and track outreach directly in Google Sheets. No CSV imports or tools required.
+                        </p>
                     </div>
                     <div class="feature-card">
                         <div class="feature-icon">🔄</div>
                         <h3>Lifetime Updates</h3>
-                        <p>Pay once. New cohorts and verified batches are added to your sheet — no extra charge, ever.</p>
+                        <p>Pay once. New cohorts and verified batches are added to your sheet — no extra charge, ever.
+                        </p>
                     </div>
                 </div>
             </div>
@@ -1304,7 +1465,8 @@
                 <div class="section-header">
                     <span class="section-tag">Transparency</span>
                     <h2 class="section-title">Real Data Preview</h2>
-                    <p class="section-subtitle">Emails and phone numbers are blurred for privacy — you get the full rows after purchase.</p>
+                    <p class="section-subtitle">Emails and phone numbers are blurred for privacy — you get the full rows
+                        after purchase.</p>
                 </div>
                 <div class="sample-table-wrapper">
                     <table class="sample-table">
@@ -1378,12 +1540,14 @@
                 <div class="section-header">
                     <span class="section-tag">Social Proof</span>
                     <h2 class="section-title">Trusted by Outreach Teams</h2>
-                    <p class="section-subtitle">Real results from agencies, freelancers, and SaaS sales reps across India.</p>
+                    <p class="section-subtitle">Real results from agencies, freelancers, and SaaS sales reps across
+                        India.</p>
                 </div>
                 <div class="testimonial-grid">
                     <div class="testimonial-card">
                         <div class="stars">★★★★★</div>
-                        <p class="testimonial-text">"Booked 4 discovery calls in the first week using the Indian list. Data quality is legit — emails are clean and phone numbers actually connect."</p>
+                        <p class="testimonial-text">"Booked 4 discovery calls in the first week using the Indian list.
+                            Data quality is legit — emails are clean and phone numbers actually connect."</p>
                         <div class="testimonial-author">
                             <div class="author-avatar">RK</div>
                             <div>
@@ -1394,7 +1558,8 @@
                     </div>
                     <div class="testimonial-card">
                         <div class="stars">★★★★★</div>
-                        <p class="testimonial-text">"Our agency needed a fast way to target funded startups. The YC list alone has paid for itself 10×. Access was in my inbox within 2 minutes."</p>
+                        <p class="testimonial-text">"Our agency needed a fast way to target funded startups. The YC list
+                            alone has paid for itself 10×. Access was in my inbox within 2 minutes."</p>
                         <div class="testimonial-author">
                             <div class="author-avatar">SA</div>
                             <div>
@@ -1405,7 +1570,8 @@
                     </div>
                     <div class="testimonial-card">
                         <div class="stars">★★★★☆</div>
-                        <p class="testimonial-text">"Had a question about a missing row and support replied the same day. Solid product — great for building a targeted pipeline fast."</p>
+                        <p class="testimonial-text">"Had a question about a missing row and support replied the same
+                            day. Solid product — great for building a targeted pipeline fast."</p>
                         <div class="testimonial-author">
                             <div class="author-avatar">VN</div>
                             <div>
@@ -1428,39 +1594,52 @@
                 <div class="security-grid">
                     <div class="security-card">
                         <div class="security-icon">
-                            <svg width="20" height="20" fill="none" stroke="currentColor" viewBox="0 0 24 24" stroke-width="1.8" style="color: var(--accent);">
-                                <path stroke-linecap="round" stroke-linejoin="round" d="M12 15v2m-6 4h12a2 2 0 002-2v-6a2 2 0 00-2-2H6a2 2 0 00-2 2v6a2 2 0 002 2zm10-10V7a4 4 0 00-8 0v4h8z"/>
+                            <svg width="20" height="20" fill="none" stroke="currentColor" viewBox="0 0 24 24"
+                                stroke-width="1.8" style="color: var(--accent);">
+                                <path stroke-linecap="round" stroke-linejoin="round"
+                                    d="M12 15v2m-6 4h12a2 2 0 002-2v-6a2 2 0 00-2-2H6a2 2 0 00-2 2v6a2 2 0 002 2zm10-10V7a4 4 0 00-8 0v4h8z" />
                             </svg>
                         </div>
                         <div class="security-title">SSL-Encrypted Checkout</div>
-                        <p class="security-desc">All payments are processed over HTTPS by PhonePe / Razorpay — PCI-DSS compliant gateways. We never see your card details.</p>
+                        <p class="security-desc">All payments are processed over HTTPS by PhonePe / Razorpay — PCI-DSS
+                            compliant gateways. We never see your card details.</p>
                     </div>
                     <div class="security-card">
                         <div class="security-icon">
-                            <svg width="20" height="20" fill="none" stroke="currentColor" viewBox="0 0 24 24" stroke-width="1.8" style="color: var(--accent);">
-                                <path stroke-linecap="round" stroke-linejoin="round" d="M9 12l2 2 4-4m5.618-4.016A11.955 11.955 0 0112 2.944a11.955 11.955 0 01-8.618 3.04A12.02 12.02 0 003 9c0 5.591 3.824 10.29 9 11.622 5.176-1.332 9-6.03 9-11.622 0-1.042-.133-2.052-.382-3.016z"/>
+                            <svg width="20" height="20" fill="none" stroke="currentColor" viewBox="0 0 24 24"
+                                stroke-width="1.8" style="color: var(--accent);">
+                                <path stroke-linecap="round" stroke-linejoin="round"
+                                    d="M9 12l2 2 4-4m5.618-4.016A11.955 11.955 0 0112 2.944a11.955 11.955 0 01-8.618 3.04A12.02 12.02 0 003 9c0 5.591 3.824 10.29 9 11.622 5.176-1.332 9-6.03 9-11.622 0-1.042-.133-2.052-.382-3.016z" />
                             </svg>
                         </div>
                         <div class="security-title">Public Data Only</div>
-                        <p class="security-desc">Every contact is sourced from public company filings, the YC directory, and LinkedIn public profiles. Fully compliant with applicable law.</p>
+                        <p class="security-desc">Every contact is sourced from public company filings, the YC directory,
+                            and LinkedIn public profiles. Fully compliant with applicable law.</p>
                     </div>
                     <div class="security-card">
                         <div class="security-icon">
-                            <svg width="20" height="20" fill="none" stroke="currentColor" viewBox="0 0 24 24" stroke-width="1.8" style="color: var(--accent);">
-                                <path stroke-linecap="round" stroke-linejoin="round" d="M3 15a4 4 0 004 4h9a5 5 0 10-.1-9.999 5.002 5.002 0 10-9.78 2.096A4.001 4.001 0 003 15z"/>
+                            <svg width="20" height="20" fill="none" stroke="currentColor" viewBox="0 0 24 24"
+                                stroke-width="1.8" style="color: var(--accent);">
+                                <path stroke-linecap="round" stroke-linejoin="round"
+                                    d="M3 15a4 4 0 004 4h9a5 5 0 10-.1-9.999 5.002 5.002 0 10-9.78 2.096A4.001 4.001 0 003 15z" />
                             </svg>
                         </div>
                         <div class="security-title">Google Drive Delivery</div>
-                        <p class="security-desc">Access is granted directly to your Gmail via Google Drive — no downloads needed, and data is always available in the cloud.</p>
+                        <p class="security-desc">Access is granted directly to your Gmail via Google Drive — no
+                            downloads needed, and data is always available in the cloud.</p>
                     </div>
                     <div class="security-card">
                         <div class="security-icon">
-                            <svg width="20" height="20" fill="none" stroke="currentColor" viewBox="0 0 24 24" stroke-width="1.8" style="color: var(--accent);">
-                                <path stroke-linecap="round" stroke-linejoin="round" d="M18.364 5.636l-3.536 3.536m0 5.656l3.536 3.536M9.172 9.172L5.636 5.636m3.536 9.192l-3.536 3.536M21 12a9 9 0 11-18 0 9 9 0 0118 0zm-5 0a4 4 0 11-8 0 4 4 0 018 0z"/>
+                            <svg width="20" height="20" fill="none" stroke="currentColor" viewBox="0 0 24 24"
+                                stroke-width="1.8" style="color: var(--accent);">
+                                <path stroke-linecap="round" stroke-linejoin="round"
+                                    d="M18.364 5.636l-3.536 3.536m0 5.656l3.536 3.536M9.172 9.172L5.636 5.636m3.536 9.192l-3.536 3.536M21 12a9 9 0 11-18 0 9 9 0 0118 0zm-5 0a4 4 0 11-8 0 4 4 0 018 0z" />
                             </svg>
                         </div>
                         <div class="security-title">Human Support</div>
-                        <p class="security-desc">Email us any time at <a href="mailto:sleektechventures@gmail.com" style="color: var(--accent); text-decoration: none;">sleektechventures@gmail.com</a> — we respond within 24 hours on business days.</p>
+                        <p class="security-desc">Email us any time at <a href="mailto:sleektechventures@gmail.com"
+                                style="color: var(--accent); text-decoration: none;">sleektechventures@gmail.com</a> —
+                            we respond within 24 hours on business days.</p>
                     </div>
                 </div>
             </div>
@@ -1478,26 +1657,33 @@
                 <!-- Trust bar -->
                 <div class="trust-bar">
                     <div class="trust-item">
-                        <svg width="17" height="17" fill="none" stroke="currentColor" viewBox="0 0 24 24" stroke-width="2">
-                            <path stroke-linecap="round" stroke-linejoin="round" d="M12 22s8-4 8-10V5l-8-3-8 3v7c0 6 8 10 8 10z"/>
+                        <svg width="17" height="17" fill="none" stroke="currentColor" viewBox="0 0 24 24"
+                            stroke-width="2">
+                            <path stroke-linecap="round" stroke-linejoin="round"
+                                d="M12 22s8-4 8-10V5l-8-3-8 3v7c0 6 8 10 8 10z" />
                         </svg>
                         Secure payment via PhonePe
                     </div>
                     <div class="trust-item">
-                        <svg width="17" height="17" fill="none" stroke="currentColor" viewBox="0 0 24 24" stroke-width="2">
-                            <path stroke-linecap="round" stroke-linejoin="round" d="M13 10V3L4 14h7v7l9-11h-7z"/>
+                        <svg width="17" height="17" fill="none" stroke="currentColor" viewBox="0 0 24 24"
+                            stroke-width="2">
+                            <path stroke-linecap="round" stroke-linejoin="round" d="M13 10V3L4 14h7v7l9-11h-7z" />
                         </svg>
                         Access delivered in &lt; 5 min
                     </div>
                     <div class="trust-item">
-                        <svg width="17" height="17" fill="none" stroke="currentColor" viewBox="0 0 24 24" stroke-width="2">
-                            <circle cx="12" cy="12" r="10"/><path stroke-linecap="round" stroke-linejoin="round" d="M12 8v4l3 3"/>
+                        <svg width="17" height="17" fill="none" stroke="currentColor" viewBox="0 0 24 24"
+                            stroke-width="2">
+                            <circle cx="12" cy="12" r="10" />
+                            <path stroke-linecap="round" stroke-linejoin="round" d="M12 8v4l3 3" />
                         </svg>
                         One-time · Lifetime access
                     </div>
                     <div class="trust-item">
-                        <svg width="17" height="17" fill="none" stroke="currentColor" viewBox="0 0 24 24" stroke-width="2">
-                            <path stroke-linecap="round" stroke-linejoin="round" d="M3 8l7.89 5.26a2 2 0 002.22 0L21 8M5 19h14a2 2 0 002-2V7a2 2 0 00-2-2H5a2 2 0 00-2 2v10a2 2 0 002 2z"/>
+                        <svg width="17" height="17" fill="none" stroke="currentColor" viewBox="0 0 24 24"
+                            stroke-width="2">
+                            <path stroke-linecap="round" stroke-linejoin="round"
+                                d="M3 8l7.89 5.26a2 2 0 002.22 0L21 8M5 19h14a2 2 0 002-2V7a2 2 0 00-2-2H5a2 2 0 00-2 2v10a2 2 0 002 2z" />
                         </svg>
                         Support: sleektechventures@gmail.com
                     </div>
@@ -1514,23 +1700,38 @@
                         <p class="price-note">One-time · Instant access · No renewals</p>
                         <ul class="feature-list">
                             <li class="feature-item">
-                                <svg fill="none" stroke="currentColor" viewBox="0 0 24 24"><path stroke-linecap="round" stroke-linejoin="round" stroke-width="2.5" d="M5 13l4 4L19 7"/></svg>
+                                <svg fill="none" stroke="currentColor" viewBox="0 0 24 24">
+                                    <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2.5"
+                                        d="M5 13l4 4L19 7" />
+                                </svg>
                                 3,124 Indian Tech Companies
                             </li>
                             <li class="feature-item">
-                                <svg fill="none" stroke="currentColor" viewBox="0 0 24 24"><path stroke-linecap="round" stroke-linejoin="round" stroke-width="2.5" d="M5 13l4 4L19 7"/></svg>
+                                <svg fill="none" stroke="currentColor" viewBox="0 0 24 24">
+                                    <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2.5"
+                                        d="M5 13l4 4L19 7" />
+                                </svg>
                                 Founder Phone Numbers &amp; Addresses
                             </li>
                             <li class="feature-item">
-                                <svg fill="none" stroke="currentColor" viewBox="0 0 24 24"><path stroke-linecap="round" stroke-linejoin="round" stroke-width="2.5" d="M5 13l4 4L19 7"/></svg>
+                                <svg fill="none" stroke="currentColor" viewBox="0 0 24 24">
+                                    <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2.5"
+                                        d="M5 13l4 4L19 7" />
+                                </svg>
                                 City &amp; Sector Filtering
                             </li>
                             <li class="feature-item">
-                                <svg fill="none" stroke="currentColor" viewBox="0 0 24 24"><path stroke-linecap="round" stroke-linejoin="round" stroke-width="2.5" d="M5 13l4 4L19 7"/></svg>
+                                <svg fill="none" stroke="currentColor" viewBox="0 0 24 24">
+                                    <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2.5"
+                                        d="M5 13l4 4L19 7" />
+                                </svg>
                                 Google Sheets Outreach Tracker
                             </li>
                             <li class="feature-item">
-                                <svg fill="none" stroke="currentColor" viewBox="0 0 24 24"><path stroke-linecap="round" stroke-linejoin="round" stroke-width="2.5" d="M5 13l4 4L19 7"/></svg>
+                                <svg fill="none" stroke="currentColor" viewBox="0 0 24 24">
+                                    <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2.5"
+                                        d="M5 13l4 4L19 7" />
+                                </svg>
                                 Lifetime Sheet Updates
                             </li>
                         </ul>
@@ -1538,7 +1739,11 @@
                             Get Indian Database
                         </button>
                         <div class="guarantee-note">
-                            <svg width="13" height="13" fill="none" stroke="currentColor" viewBox="0 0 24 24" stroke-width="2.5"><path stroke-linecap="round" stroke-linejoin="round" d="M12 22s8-4 8-10V5l-8-3-8 3v7c0 6 8 10 8 10z"/></svg>
+                            <svg width="13" height="13" fill="none" stroke="currentColor" viewBox="0 0 24 24"
+                                stroke-width="2.5">
+                                <path stroke-linecap="round" stroke-linejoin="round"
+                                    d="M12 22s8-4 8-10V5l-8-3-8 3v7c0 6 8 10 8 10z" />
+                            </svg>
                             Secure checkout · Access in &lt;5 min
                         </div>
                     </div>
@@ -1554,23 +1759,38 @@
                         <p class="price-note">One-time · Instant access · No renewals</p>
                         <ul class="feature-list">
                             <li class="feature-item">
-                                <svg fill="none" stroke="currentColor" viewBox="0 0 24 24"><path stroke-linecap="round" stroke-linejoin="round" stroke-width="2.5" d="M5 13l4 4L19 7"/></svg>
+                                <svg fill="none" stroke="currentColor" viewBox="0 0 24 24">
+                                    <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2.5"
+                                        d="M5 13l4 4L19 7" />
+                                </svg>
                                 <strong>Everything in the Indian list</strong>
                             </li>
                             <li class="feature-item">
-                                <svg fill="none" stroke="currentColor" viewBox="0 0 24 24"><path stroke-linecap="round" stroke-linejoin="round" stroke-width="2.5" d="M5 13l4 4L19 7"/></svg>
+                                <svg fill="none" stroke="currentColor" viewBox="0 0 24 24">
+                                    <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2.5"
+                                        d="M5 13l4 4L19 7" />
+                                </svg>
                                 6,438 Total Companies (YC + Indian)
                             </li>
                             <li class="feature-item">
-                                <svg fill="none" stroke="currentColor" viewBox="0 0 24 24"><path stroke-linecap="round" stroke-linejoin="round" stroke-width="2.5" d="M5 13l4 4L19 7"/></svg>
+                                <svg fill="none" stroke="currentColor" viewBox="0 0 24 24">
+                                    <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2.5"
+                                        d="M5 13l4 4L19 7" />
+                                </svg>
                                 3,200+ Verified Founder Email Patterns
                             </li>
                             <li class="feature-item">
-                                <svg fill="none" stroke="currentColor" viewBox="0 0 24 24"><path stroke-linecap="round" stroke-linejoin="round" stroke-width="2.5" d="M5 13l4 4L19 7"/></svg>
+                                <svg fill="none" stroke="currentColor" viewBox="0 0 24 24">
+                                    <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2.5"
+                                        d="M5 13l4 4L19 7" />
+                                </svg>
                                 LinkedIn Founder Profiles
                             </li>
                             <li class="feature-item">
-                                <svg fill="none" stroke="currentColor" viewBox="0 0 24 24"><path stroke-linecap="round" stroke-linejoin="round" stroke-width="2.5" d="M5 13l4 4L19 7"/></svg>
+                                <svg fill="none" stroke="currentColor" viewBox="0 0 24 24">
+                                    <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2.5"
+                                        d="M5 13l4 4L19 7" />
+                                </svg>
                                 YC W25 Batch Included
                             </li>
                         </ul>
@@ -1578,7 +1798,11 @@
                             Get Complete Database →
                         </button>
                         <div class="guarantee-note">
-                            <svg width="13" height="13" fill="none" stroke="currentColor" viewBox="0 0 24 24" stroke-width="2.5"><path stroke-linecap="round" stroke-linejoin="round" d="M12 22s8-4 8-10V5l-8-3-8 3v7c0 6 8 10 8 10z"/></svg>
+                            <svg width="13" height="13" fill="none" stroke="currentColor" viewBox="0 0 24 24"
+                                stroke-width="2.5">
+                                <path stroke-linecap="round" stroke-linejoin="round"
+                                    d="M12 22s8-4 8-10V5l-8-3-8 3v7c0 6 8 10 8 10z" />
+                            </svg>
                             Secure checkout · Access in &lt;5 min
                         </div>
                     </div>
@@ -1588,7 +1812,8 @@
                     By purchasing you agree to our
                     <a href="terms.html" style="color: var(--accent); text-decoration: none;">Terms &amp; Conditions</a>
                     and
-                    <a href="terms.html#privacy" style="color: var(--accent); text-decoration: none;">Privacy Policy</a>.
+                    <a href="terms.html#privacy" style="color: var(--accent); text-decoration: none;">Privacy
+                        Policy</a>.
                 </p>
             </div>
         </section>
@@ -1607,7 +1832,9 @@
                             <span class="faq-icon">+</span>
                         </button>
                         <div class="faq-answer">
-                            After payment completes, our system automatically shares the Google Sheet with the Gmail address you entered during checkout. Google sends you a native invitation email — typically within 2–5 minutes. Check your spam folder if you don't see it within 10 minutes.
+                            After payment completes, our system automatically shares the Google Sheet with the Gmail
+                            address you entered during checkout. Google sends you a native invitation email — typically
+                            within 2–5 minutes. Check your spam folder if you don't see it within 10 minutes.
                         </div>
                     </div>
                     <div class="faq-item">
@@ -1616,7 +1843,9 @@
                             <span class="faq-icon">+</span>
                         </button>
                         <div class="faq-answer">
-                            Yes — access is granted via Google Drive, so you need a Google account. Personal Gmail and Google Workspace accounts both work. The email you enter at checkout must be a Google account.
+                            Yes — access is granted via Google Drive, so you need a Google account. Personal Gmail and
+                            Google Workspace accounts both work. The email you enter at checkout must be a Google
+                            account.
                         </div>
                     </div>
                     <div class="faq-item">
@@ -1625,7 +1854,9 @@
                             <span class="faq-icon">+</span>
                         </button>
                         <div class="faq-answer">
-                            The database is delivered as a view-only Google Sheet. You can sort and filter within Sheets. Downloading or copy-pasting is restricted to protect data integrity and comply with our single-user licence.
+                            The database is delivered as a view-only Google Sheet. You can sort and filter within
+                            Sheets. Downloading or copy-pasting is restricted to protect data integrity and comply with
+                            our single-user licence.
                         </div>
                     </div>
                     <div class="faq-item">
@@ -1634,7 +1865,8 @@
                             <span class="faq-icon">+</span>
                         </button>
                         <div class="faq-answer">
-                            Completely one-time. You pay once and retain lifetime access to the sheet, including any future updates we push to it. No recurring charges — ever.
+                            Completely one-time. You pay once and retain lifetime access to the sheet, including any
+                            future updates we push to it. No recurring charges — ever.
                         </div>
                     </div>
                     <div class="faq-item">
@@ -1643,7 +1875,10 @@
                             <span class="faq-icon">+</span>
                         </button>
                         <div class="faq-answer">
-                            Indian startup data is sourced from public company filings and directories. YC data is updated after each batch. Founder contacts are cross-referenced via LinkedIn. Because contact data changes, we recommend verifying critical rows before sending high-stakes emails.
+                            Indian startup data is sourced from public company filings and directories. YC data is
+                            updated after each batch. Founder contacts are cross-referenced via LinkedIn. Because
+                            contact data changes, we recommend verifying critical rows before sending high-stakes
+                            emails.
                         </div>
                     </div>
                     <div class="faq-item">
@@ -1652,7 +1887,11 @@
                             <span class="faq-icon">+</span>
                         </button>
                         <div class="faq-answer">
-                            We offer refunds for non-delivery, duplicate charges, or materially defective data (30%+ inaccurate rows). Requests must be submitted within 7 days of purchase to <a href="mailto:sleektechventures@gmail.com" style="color: var(--accent);">sleektechventures@gmail.com</a>. See our full <a href="terms.html#refunds" style="color: var(--accent);">Refund Policy</a> for details.
+                            We offer refunds for non-delivery, duplicate charges, or materially defective data (30%+
+                            inaccurate rows). Requests must be submitted within 7 days of purchase to <a
+                                href="mailto:sleektechventures@gmail.com"
+                                style="color: var(--accent);">sleektechventures@gmail.com</a>. See our full <a
+                                href="terms.html#refunds" style="color: var(--accent);">Refund Policy</a> for details.
                         </div>
                     </div>
                     <div class="faq-item">
@@ -1661,7 +1900,10 @@
                             <span class="faq-icon">+</span>
                         </button>
                         <div class="faq-answer">
-                            Email <a href="mailto:sleektechventures@gmail.com" style="color: var(--accent);">sleektechventures@gmail.com</a> with your payment confirmation and we'll resolve it promptly — usually within a few hours during business days.
+                            Email <a href="mailto:sleektechventures@gmail.com"
+                                style="color: var(--accent);">sleektechventures@gmail.com</a> with your payment
+                            confirmation and we'll resolve it promptly — usually within a few hours during business
+                            days.
                         </div>
                     </div>
                 </div>
@@ -1678,10 +1920,12 @@
                         <div class="logo-icon">📬</div>
                         Outreach<span class="logo-accent">Kit</span>
                     </a>
-                    <p>Helping agencies, freelancers, and SaaS teams connect with the right startup founders — faster.</p>
+                    <p>Helping agencies, freelancers, and SaaS teams connect with the right startup founders — faster.
+                    </p>
                     <p style="margin-top: 12px; font-size: 13px;">
                         By <strong style="color: var(--text-secondary);">Sleek Tech Ventures</strong> ·
-                        <a href="mailto:sleektechventures@gmail.com" style="color: var(--accent); text-decoration: none;">sleektechventures@gmail.com</a>
+                        <a href="mailto:sleektechventures@gmail.com"
+                            style="color: var(--accent); text-decoration: none;">sleektechventures@gmail.com</a>
                     </p>
                 </div>
                 <div class="footer-links-group">
@@ -1702,7 +1946,13 @@
                 </div>
             </div>
             <div class="footer-bottom">
-                <p class="copyright">© 2026 OutreachKit · Sleek Tech Ventures · Data sourced from public records &amp; YC directory</p>
+                <div style="display: flex; flex-direction: column; gap: 4px;">
+                    <p class="copyright">© 2026 OutreachKit · SleekTech Ventures · Data sourced from public records
+                        &amp; YC directory</p>
+                    <a href="mailto:prathamjain1127@gmail.com"
+                        style="font-size: 9px; color: var(--text-muted); opacity: 0.25; text-decoration: none;">This
+                        website is operated by PRATHAM JAIN</a>
+                </div>
                 <div class="footer-legal-links">
                     <a href="terms.html">Terms</a>
                     <a href="terms.html#privacy">Privacy</a>
@@ -1713,7 +1963,10 @@
     </footer>
 
     <div class="notification" id="copyNotification">
-        <svg width="16" height="16" fill="none" stroke="currentColor" viewBox="0 0 24 24" stroke-width="2" style="color: var(--accent);"><path stroke-linecap="round" stroke-linejoin="round" d="M5 13l4 4L19 7"/></svg>
+        <svg width="16" height="16" fill="none" stroke="currentColor" viewBox="0 0 24 24" stroke-width="2"
+            style="color: var(--accent);">
+            <path stroke-linecap="round" stroke-linejoin="round" d="M5 13l4 4L19 7" />
+        </svg>
         Link copied to clipboard!
     </div>
 
@@ -1738,7 +1991,7 @@
                 padding: 24px;
             `;
             overlay.innerHTML = `
-                <div style="background: #EEDDDB; border: 1.5px solid rgba(124,144,130,0.35); border-radius: 24px;
+                <div class="checkout-modal" style="background: #EEDDDB; border: 1.5px solid rgba(124,144,130,0.35); border-radius: 24px;
                             padding: 52px 44px; max-width: 460px; width: 100%; text-align: center;
                             box-shadow: 0 40px 80px rgba(0,0,0,0.1);">
                     <div style="width:56px; height:56px; background: rgba(124,144,130,0.1); border: 1px solid rgba(124,144,130,0.2);
@@ -1790,9 +2043,9 @@
         // ── Create order and redirect ────────────────────────────────────────────
         async function proceedToCheckout(tier) {
             const emailInput = document.getElementById('buyer-email');
-            const errorEl   = document.getElementById('email-error');
-            const btn       = document.getElementById('proceed-btn');
-            const email     = emailInput.value.trim();
+            const errorEl = document.getElementById('email-error');
+            const btn = document.getElementById('proceed-btn');
+            const email = emailInput.value.trim();
 
             if (!email || !/^[^\s@]+@[^\s@]+\.[^\s@]+$/.test(email)) {
                 errorEl.textContent = 'Please enter a valid email address.';

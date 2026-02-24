@@ -68,24 +68,24 @@ class PaymentService:
         self,
         db: Session,
         payment_id: str,
-        order_id: Optional[str],
+        transaction_id: Optional[str],
         email: str,
         amount: int
     ) -> Dict[str, Any]:
         """
         Process a successful payment and grant access.
-        
+
         Args:
-            db: Database session
-            payment_id: Razorpay payment ID
-            order_id: Razorpay order ID
-            email: Buyer's email
-            amount: Payment amount
-            
+            db:             Database session
+            payment_id:     Merchant order ID (used as idempotency key)
+            transaction_id: PhonePe transaction ID
+            email:          Buyer's email
+            amount:         Payment amount in paise
+
         Returns:
             Dictionary with success status and details
         """
-        # Check if payment already processed
+        # Check if payment already processed (idempotency)
         existing = db.query(Payment).filter(Payment.payment_id == payment_id).first()
         if existing:
             logger.info(f"Payment {payment_id} already processed")
@@ -94,7 +94,7 @@ class PaymentService:
                 "message": "Payment already processed",
                 "payment_id": payment_id
             }
-        
+
         # Determine tier
         tier = self.determine_tier(amount)
         if tier is None:
@@ -104,7 +104,7 @@ class PaymentService:
                 "message": f"Invalid payment amount: {amount}",
                 "payment_id": payment_id
             }
-        
+
         # Get sheet IDs for tier
         sheet_ids = self.get_sheet_ids_for_tier(tier)
         if not sheet_ids:
@@ -114,10 +114,10 @@ class PaymentService:
                 "message": f"No resources configured for tier {tier}",
                 "payment_id": payment_id
             }
-        
+
         # Grant access to sheets
         granted_sheets = self.drive_service.grant_multiple_access(sheet_ids, email)
-        
+
         if not granted_sheets:
             logger.error(f"Failed to grant access for payment {payment_id}")
             return {
@@ -125,12 +125,12 @@ class PaymentService:
                 "message": "Failed to grant access to resources",
                 "payment_id": payment_id
             }
-        
+
         # Persist payment record
         try:
             payment = Payment(
                 payment_id=payment_id,
-                razorpay_order_id=order_id,
+                phonepe_transaction_id=transaction_id,
                 email=email,
                 amount=amount,
                 product_tier=tier,
@@ -138,7 +138,7 @@ class PaymentService:
             )
             db.add(payment)
             db.commit()
-            
+
             logger.info(f"Successfully processed payment {payment_id} for {email}, tier {tier}")
             return {
                 "success": True,
@@ -147,7 +147,7 @@ class PaymentService:
                 "tier": tier,
                 "granted_resources": granted_sheets
             }
-            
+
         except Exception as e:
             db.rollback()
             logger.error(f"Database error for payment {payment_id}: {e}")

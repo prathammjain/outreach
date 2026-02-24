@@ -1,9 +1,12 @@
-from fastapi import FastAPI
-from fastapi.middleware.cors import CORSMiddleware
+from contextlib import asynccontextmanager
 import logging
 
-from app.routers import webhooks
+from fastapi import FastAPI
+from fastapi.middleware.cors import CORSMiddleware
+
+from app.config import settings
 from app.database import init_db
+from app.routers import webhooks
 
 # Configure logging
 logging.basicConfig(
@@ -13,35 +16,32 @@ logging.basicConfig(
 
 logger = logging.getLogger(__name__)
 
-from contextlib import asynccontextmanager
 
 @asynccontextmanager
 async def lifespan(app: FastAPI):
     """Lifecycle events for the FastAPI application."""
-    # Startup logic
     logger.info("Initializing database...")
     init_db()
     logger.info("Database initialized successfully")
-    
     yield
-    
-    # Shutdown logic
     logger.info("Shutting down application...")
+
 
 # Create FastAPI app
 app = FastAPI(
-    title="Google Sheets Access Control API",
-    description="Backend for managing Google Sheets access via Razorpay payments",
-    version="1.0.0",
-    lifespan=lifespan
+    title="OutreachKit Access Control API",
+    description="Backend for managing Google Sheets access via PhonePe payments",
+    version="2.0.0",
+    lifespan=lifespan,
 )
 
-# Configure CORS (adjust origins for production)
+# CORS: restrict to configured origins in production; allow all in dev
+_origins = [o.strip() for o in settings.allowed_origins.split(",") if o.strip()]
 app.add_middleware(
     CORSMiddleware,
-    allow_origins=["*"],  # TODO: Restrict to your frontend domain in production
+    allow_origins=_origins if _origins else ["*"],
     allow_credentials=True,
-    allow_methods=["*"],
+    allow_methods=["GET", "POST"],
     allow_headers=["*"],
 )
 
