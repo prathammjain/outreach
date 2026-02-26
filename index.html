@@ -35,10 +35,10 @@
       "applicationCategory": "BusinessApplication",
       "offers": {
         "@type": "AggregateOffer",
-        "lowPrice": "999.00",
-        "highPrice": "1499.00",
-        "priceCurrency": "INR",
-        "offerCount": "2"
+        "lowPrice": "13.00",
+        "highPrice": "18.00",
+        "priceCurrency": "USD",
+        "offerCount": "3"
       },
       "aggregateRating": {
         "@type": "AggregateRating",
@@ -798,9 +798,9 @@
 
         .pricing-grid {
             display: grid;
-            grid-template-columns: repeat(auto-fit, minmax(340px, 1fr));
+            grid-template-columns: repeat(auto-fit, minmax(300px, 1fr));
             gap: 24px;
-            max-width: 960px;
+            max-width: 1100px;
             margin: 0 auto;
         }
 
@@ -1372,7 +1372,7 @@
                             <path stroke-linecap="round" stroke-linejoin="round"
                                 d="M12 15v2m-6 4h12a2 2 0 002-2v-6a2 2 0 00-2-2H6a2 2 0 00-2 2v6a2 2 0 002 2zm10-10V7a4 4 0 00-8 0v4h8z" />
                         </svg>
-                        Secure PhonePe / Razorpay checkout
+                        Secure Gumroad checkout
                     </div>
                     <div class="credibility-badge">
                         <svg width="16" height="16" fill="none" stroke="currentColor" viewBox="0 0 24 24"
@@ -1478,18 +1478,18 @@
                 <div class="steps">
                     <div class="step">
                         <div class="step-number">1</div>
-                        <h4>Choose Your Plan</h4>
-                        <p>Indian-only or the full YC + Indian master list. Both are one-time payments.</p>
+                        <h4>Choose Your Database</h4>
+                        <p>Indian Startups, YC Companies, or UK Startups. Each is a one-time purchase.</p>
                     </div>
                     <div class="step">
                         <div class="step-number">2</div>
-                        <h4>Enter Your Gmail</h4>
-                        <p>We deliver access via Google Drive share — your Gmail is all we need.</p>
+                        <h4>Pay on Gumroad</h4>
+                        <p>Secure checkout via Gumroad. Enter your Google email and payment details.</p>
                     </div>
                     <div class="step">
                         <div class="step-number">3</div>
-                        <h4>Pay Securely</h4>
-                        <p>UPI, cards, or netbanking via PhonePe / Razorpay. SSL-encrypted checkout.</p>
+                        <h4>We Grant Access</h4>
+                        <p>Our system shares the Google Sheet with the email you used on Gumroad.</p>
                     </div>
                     <div class="step">
                         <div class="step-number">4</div>
@@ -1642,8 +1642,8 @@
                             </svg>
                         </div>
                         <div class="security-title">SSL-Encrypted Checkout</div>
-                        <p class="security-desc">All payments are processed over HTTPS by PhonePe / Razorpay — PCI-DSS
-                            compliant gateways. We never see your card details.</p>
+                        <p class="security-desc">All payments are processed securely via Gumroad — PCI-DSS
+                            compliant. We never see your card details.</p>
                     </div>
                     <div class="security-card">
                         <div class="security-icon">
@@ -1703,7 +1703,7 @@
                             <path stroke-linecap="round" stroke-linejoin="round"
                                 d="M12 22s8-4 8-10V5l-8-3-8 3v7c0 6 8 10 8 10z" />
                         </svg>
-                        Secure payment via PhonePe
+                        Secure payment via Gumroad
                     </div>
                     <div class="trust-item">
                         <svg width="17" height="17" fill="none" stroke="currentColor" viewBox="0 0 24 24"
@@ -1731,12 +1731,12 @@
                 </div>
 
                 <div class="pricing-grid">
-                    <!-- Standard -->
+                    <!-- Indian Startups -->
                     <div class="pricing-card">
                         <div class="price-tier-label">Indian Startups</div>
                         <div class="price-wrapper">
-                            <span class="currency">₹</span>
-                            <span class="amount">999</span>
+                            <span class="currency">$</span>
+                            <span class="amount">13</span>
                         </div>
                         <p class="price-note">One-time · Instant access · No renewals</p>
                         <ul class="feature-list">
@@ -1776,9 +1776,10 @@
                                 Lifetime Sheet Updates
                             </li>
                         </ul>
-                        <button class="btn btn-secondary checkout-btn" onclick="handlePurchase('tier1')">
+                        <a href="https://prathami4.gumroad.com/l/vtoipk" target="_blank"
+                            class="btn btn-secondary checkout-btn" style="text-decoration:none; text-align:center;">
                             Get Indian Database
-                        </button>
+                        </a>
                         <div class="guarantee-note">
                             <svg width="13" height="13" fill="none" stroke="currentColor" viewBox="0 0 24 24"
                                 stroke-width="2.5">
@@ -1789,13 +1790,13 @@
                         </div>
                     </div>
 
-                    <!-- Premium -->
+                    <!-- YC Database -->
                     <div class="pricing-card premium">
                         <div class="popular-badge">MOST POPULAR</div>
-                        <div class="price-tier-label">Complete Master List</div>
+                        <div class="price-tier-label">YC Database</div>
                         <div class="price-wrapper">
-                            <span class="currency">₹</span>
-                            <span class="amount">1,499</span>
+                            <span class="currency">$</span>
+                            <span class="amount">18</span>
                         </div>
                         <p class="price-note">One-time · Instant access · No renewals</p>
                         <ul class="feature-list">
@@ -1804,14 +1805,7 @@
                                     <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2.5"
                                         d="M5 13l4 4L19 7" />
                                 </svg>
-                                <strong>Everything in the Indian list</strong>
-                            </li>
-                            <li class="feature-item">
-                                <svg fill="none" stroke="currentColor" viewBox="0 0 24 24">
-                                    <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2.5"
-                                        d="M5 13l4 4L19 7" />
-                                </svg>
-                                6,438 Total Companies (YC + Indian)
+                                3,300+ YC-Backed Companies
                             </li>
                             <li class="feature-item">
                                 <svg fill="none" stroke="currentColor" viewBox="0 0 24 24">
@@ -1834,10 +1828,77 @@
                                 </svg>
                                 YC W25 Batch Included
                             </li>
+                            <li class="feature-item">
+                                <svg fill="none" stroke="currentColor" viewBox="0 0 24 24">
+                                    <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2.5"
+                                        d="M5 13l4 4L19 7" />
+                                </svg>
+                                Lifetime Sheet Updates
+                            </li>
                         </ul>
-                        <button class="btn btn-primary checkout-btn" onclick="handlePurchase('tier2')">
-                            Get Complete Database →
-                        </button>
+                        <a href="https://prathami4.gumroad.com/l/kgeoqg" target="_blank"
+                            class="btn btn-primary checkout-btn" style="text-decoration:none; text-align:center;">
+                            Get YC Database
+                        </a>
+                        <div class="guarantee-note">
+                            <svg width="13" height="13" fill="none" stroke="currentColor" viewBox="0 0 24 24"
+                                stroke-width="2.5">
+                                <path stroke-linecap="round" stroke-linejoin="round"
+                                    d="M12 22s8-4 8-10V5l-8-3-8 3v7c0 6 8 10 8 10z" />
+                            </svg>
+                            Secure checkout · Access in &lt;5 min
+                        </div>
+                    </div>
+
+                    <!-- UK Database -->
+                    <div class="pricing-card">
+                        <div class="price-tier-label">UK Startups</div>
+                        <div class="price-wrapper">
+                            <span class="currency">$</span>
+                            <span class="amount">18</span>
+                        </div>
+                        <p class="price-note">One-time · Instant access · No renewals</p>
+                        <ul class="feature-list">
+                            <li class="feature-item">
+                                <svg fill="none" stroke="currentColor" viewBox="0 0 24 24">
+                                    <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2.5"
+                                        d="M5 13l4 4L19 7" />
+                                </svg>
+                                UK Startup Companies
+                            </li>
+                            <li class="feature-item">
+                                <svg fill="none" stroke="currentColor" viewBox="0 0 24 24">
+                                    <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2.5"
+                                        d="M5 13l4 4L19 7" />
+                                </svg>
+                                Founder Contact Details
+                            </li>
+                            <li class="feature-item">
+                                <svg fill="none" stroke="currentColor" viewBox="0 0 24 24">
+                                    <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2.5"
+                                        d="M5 13l4 4L19 7" />
+                                </svg>
+                                Sector &amp; Location Filtering
+                            </li>
+                            <li class="feature-item">
+                                <svg fill="none" stroke="currentColor" viewBox="0 0 24 24">
+                                    <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2.5"
+                                        d="M5 13l4 4L19 7" />
+                                </svg>
+                                Google Sheets Format
+                            </li>
+                            <li class="feature-item">
+                                <svg fill="none" stroke="currentColor" viewBox="0 0 24 24">
+                                    <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2.5"
+                                        d="M5 13l4 4L19 7" />
+                                </svg>
+                                Lifetime Sheet Updates
+                            </li>
+                        </ul>
+                        <a href="https://prathami4.gumroad.com/l/pxkeh" target="_blank"
+                            class="btn btn-secondary checkout-btn" style="text-decoration:none; text-align:center;">
+                            Get UK Database
+                        </a>
                         <div class="guarantee-note">
                             <svg width="13" height="13" fill="none" stroke="currentColor" viewBox="0 0 24 24"
                                 stroke-width="2.5">
@@ -1873,8 +1934,8 @@
                             <span class="faq-icon">+</span>
                         </button>
                         <div class="faq-answer">
-                            After payment completes, our system automatically shares the Google Sheet with the Gmail
-                            address you entered during checkout. Google sends you a native invitation email — typically
+                            After payment completes on Gumroad, our system automatically shares the Google Sheet with the
+                            email address you used during checkout. Google sends you a native invitation email — typically
                             within 2–5 minutes. Check your spam folder if you don't see it within 10 minutes.
                         </div>
                     </div>
@@ -1885,8 +1946,8 @@
                         </button>
                         <div class="faq-answer">
                             Yes — access is granted via Google Drive, so you need a Google account. Personal Gmail and
-                            Google Workspace accounts both work. The email you enter at checkout must be a Google
-                            account.
+                            Google Workspace accounts both work. Make sure to use a Google email when purchasing
+                            on Gumroad.
                         </div>
                     </div>
                     <div class="faq-item">
@@ -1917,9 +1978,9 @@
                         </button>
                         <div class="faq-answer">
                             Indian startup data is sourced from public company filings and directories. YC data is
-                            updated after each batch. Founder contacts are cross-referenced via LinkedIn. Because
-                            contact data changes, we recommend verifying critical rows before sending high-stakes
-                            emails.
+                            updated after each batch. UK data is sourced from Companies House and public directories.
+                            Founder contacts are cross-referenced via LinkedIn. Because contact data changes, we
+                            recommend verifying critical rows before sending high-stakes emails.
                         </div>
                     </div>
                     <div class="faq-item">
@@ -2012,113 +2073,6 @@
     </div>
 
     <script>
-        // ── Configuration ────────────────────────────────────────────────────────
-        const BACKEND_URL = 'https://your-backend.railway.app';
-
-        const PRICING = {
-            tier1: { tierNum: 1, label: 'Indian Startups Database' },
-            tier2: { tierNum: 2, label: 'Complete Master Database' }
-        };
-
-        // ── Email collection modal ───────────────────────────────────────────────
-        function handlePurchase(tier) {
-            const product = PRICING[tier];
-
-            const overlay = document.createElement('div');
-            overlay.id = 'email-overlay';
-            overlay.style.cssText = `
-                position: fixed; inset: 0; background: rgba(221, 208, 200,0.94);
-                display: flex; align-items: center; justify-content: center; z-index: 10000;
-                padding: 24px;
-            `;
-            overlay.innerHTML = `
-                <div class="checkout-modal" style="background: #EEDDDB; border: 1.5px solid rgba(124,144,130,0.35); border-radius: 24px;
-                            padding: 52px 44px; max-width: 460px; width: 100%; text-align: center;
-                            box-shadow: 0 40px 80px rgba(0,0,0,0.1);">
-                    <div style="width:56px; height:56px; background: rgba(124,144,130,0.1); border: 1px solid rgba(124,144,130,0.2);
-                                border-radius: 16px; display: flex; align-items: center; justify-content: center;
-                                font-size: 24px; margin: 0 auto 20px;">📬</div>
-                    <h2 style="font-family: 'Inter', sans-serif; font-size: 26px; color: var(--text-primary); margin-bottom: 10px; letter-spacing: -0.02em;">
-                        One last step
-                    </h2>
-                    <p style="color: #6B655F; margin-bottom: 28px; font-size: 14px; line-height: 1.65;">
-                        Enter the Gmail address where you want to receive access to
-                        <strong style="color:#e2fdf0">${product.label}</strong>.
-                        Google Drive will share the sheet directly with this address.
-                    </p>
-                    <input id="buyer-email" type="email" placeholder="you@gmail.com" autocomplete="email"
-                        style="width: 100%; padding: 15px 18px; border-radius: 12px; border: 1px solid rgba(0,0,0,0.12);
-                               background: #F3F1EA; color: var(--text-primary); font-size: 15px; margin-bottom: 8px; outline: none;
-                               font-family: 'Inter', sans-serif; transition: border-color 0.2s;" />
-                    <p id="email-error" style="color: #D44D5C; font-size: 13px; min-height: 18px; margin-bottom: 16px; text-align: left;"></p>
-                    <button id="proceed-btn" onclick="proceedToCheckout('${tier}')"
-                        style="width: 100%; padding: 16px; border-radius: 12px; background: #7C9082; color: #FFFFFF;
-                               font-size: 15px; font-weight: 400; border: none; cursor: pointer; margin-bottom: 14px;
-                               font-family: 'Inter', sans-serif;">
-                        Continue to Secure Checkout →
-                    </button>
-                    <p style="font-size: 12px; color: #9C968F; margin-bottom: 14px;">
-                        🔒 SSL-encrypted · Powered by PhonePe / Razorpay
-                    </p>
-                    <button onclick="document.getElementById('email-overlay').remove()"
-                        style="background: none; border: none; color: #9C968F; cursor: pointer; font-size: 13px; font-family: 'Inter', sans-serif;">
-                        Cancel
-                    </button>
-                    <p style="font-size: 11px; color: #8A837A; margin-top: 16px; line-height: 1.6;">
-                        By continuing you agree to our
-                        <a href="terms.html" target="_blank" style="color: #7C9082; text-decoration: none;">Terms &amp; Conditions</a>
-                        and
-                        <a href="terms.html#privacy" target="_blank" style="color: #7C9082; text-decoration: none;">Privacy Policy</a>.
-                    </p>
-                </div>
-            `;
-            document.body.appendChild(overlay);
-
-            setTimeout(() => document.getElementById('buyer-email').focus(), 60);
-
-            document.getElementById('buyer-email').addEventListener('keydown', (e) => {
-                if (e.key === 'Enter') proceedToCheckout(tier);
-            });
-        }
-
-        // ── Create order and redirect ────────────────────────────────────────────
-        async function proceedToCheckout(tier) {
-            const emailInput = document.getElementById('buyer-email');
-            const errorEl = document.getElementById('email-error');
-            const btn = document.getElementById('proceed-btn');
-            const email = emailInput.value.trim();
-
-            if (!email || !/^[^\s@]+@[^\s@]+\.[^\s@]+$/.test(email)) {
-                errorEl.textContent = 'Please enter a valid email address.';
-                emailInput.focus();
-                return;
-            }
-            errorEl.textContent = '';
-            btn.textContent = 'Creating secure order…';
-            btn.disabled = true;
-
-            try {
-                const res = await fetch(`${BACKEND_URL}/create-order`, {
-                    method: 'POST',
-                    headers: { 'Content-Type': 'application/json' },
-                    body: JSON.stringify({ email, tier: PRICING[tier].tierNum })
-                });
-
-                if (!res.ok) {
-                    const err = await res.json().catch(() => ({}));
-                    throw new Error(err.detail || 'Server error');
-                }
-
-                const data = await res.json();
-                window.location.href = data.checkout_url;
-
-            } catch (err) {
-                btn.textContent = 'Continue to Secure Checkout →';
-                btn.disabled = false;
-                errorEl.textContent = `Error: ${err.message}. Please try again or contact support.`;
-            }
-        }
-
         // ── Return from payment ──────────────────────────────────────────────────
         (function checkReturnStatus() {
             const params = new URLSearchParams(window.location.search);

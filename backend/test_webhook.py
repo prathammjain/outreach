@@ -1,49 +1,25 @@
-import hmac
-import hashlib
-import json
+"""Quick script to test the Gumroad ping endpoint locally."""
+
 import requests
 
-# Test configuration (matching .env)
-SECRET = "test_secret"
-URL = "http://localhost:8000/razorpay/webhook"
+URL = "http://localhost:8000/gumroad/ping"
 
-# Mock Razorpay Payload
+# Mock Gumroad Ping payload (form-encoded)
 payload = {
-    "event": "payment.captured",
-    "payload": {
-        "payment": {
-            "entity": {
-                "id": "pay_TEST12345",
-                "amount": 110000,
-                "currency": "INR",
-                "status": "captured",
-                "order_id": "order_TEST678",
-                "email": "test@example.com",
-                "method": "card"
-            }
-        }
-    }
+    "seller_id": "your_test_seller_id",
+    "product_id": "test_product_123",
+    "product_permalink": "indian-startups-db",
+    "email": "test@example.com",
+    "price": "13.00",
+    "sale_id": "test_sale_abc123",
+    "sale_timestamp": "2026-02-26T12:00:00Z",
+    "order_number": "1234567890",
 }
 
-body = json.dumps(payload)
-
-# Generate valid signature
-signature = hmac.new(
-    SECRET.encode('utf-8'),
-    body.encode('utf-8'),
-    hashlib.sha256
-).hexdigest()
-
-print(f"Sending request to {URL}...")
-print(f"Signature: {signature}")
-
-headers = {
-    "Content-Type": "application/json",
-    "X-Razorpay-Signature": signature
-}
+print(f"Sending POST to {URL}...")
 
 try:
-    response = requests.post(URL, data=body, headers=headers)
+    response = requests.post(URL, data=payload)
     print(f"Status: {response.status_code}")
     print(f"Response: {response.text}")
 except Exception as e:

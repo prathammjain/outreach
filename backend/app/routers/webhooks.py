@@ -1,5 +1,4 @@
 import logging
-import uuid
 from typing import Optional
 
 from fastapi import APIRouter, Depends, Header, HTTPException, Request
@@ -10,7 +9,7 @@ from app.config import settings
 from app.database import get_db
 from app.services.google_drive_service import GoogleDriveService
 from app.services.payment_service import PaymentService
-from app.services.phonepe_service import extract_payment_data, verify_callback
+from app.services.gumroad_service import verify_ping, extract_ping_data
 
 logger = logging.getLogger(__name__)
 
@@ -52,153 +51,66 @@ def require_admin_key(x_admin_key: Optional[str] = Header(None)) -> None:
         raise HTTPException(status_code=401, detail="Invalid admin API key")
 
 
-# ── PhonePe: create order ─────────────────────────────────────────────────────
+# ── Gumroad: ping webhook ─────────────────────────────────────────────────────
 
-class CreateOrderRequest(BaseModel):
-    email: str
-    tier: int  # 1 or 2
-
-
-@router.post("/create-order")
-async def create_order(body: CreateOrderRequest):
-    """
-    Called by the frontend when the user clicks "Buy".
-    Creates a PhonePe order and returns the checkout redirect URL.
-
-    The buyer's email is embedded in metaInfo.udf1 so PhonePe passes it
-    back in the S2S callback — no session state required.
-    """
-    if body.tier not in (1, 2):
-        raise HTTPException(status_code=400, detail="tier must be 1 or 2")
-    if not body.email or "@" not in body.email:
-        raise HTTPException(status_code=400, detail="Valid email is required")
-
-    amount = settings.tier_1_price if body.tier == 1 else settings.tier_2_price
-    merchant_order_id = str(uuid.uuid4())
-
-    if not settings.phonepe_client_id:
-        raise HTTPException(status_code=503, detail="PhonePe not configured")
-
-    try:
-        from phonepe.sdk.pg.payments.v2.standard_checkout_client import StandardCheckoutClient
-        from phonepe.sdk.pg.payments.v2.models.request.standard_checkout_pay_request import (
-            StandardCheckoutPayRequest,
-        )
-        from phonepe.sdk.pg.env import Env
-
-        env = Env.PRODUCTION if settings.phonepe_env.upper() == "PRODUCTION" else Env.SANDBOX
-
-        client = StandardCheckoutClient.get_instance(
-            client_id=settings.phonepe_client_id,
-            client_secret=settings.phonepe_client_secret,
-            client_version=settings.phonepe_client_version,
-            env=env,
-        )
-
-        # redirect_url: where the user lands after payment (frontend success page)
-        redirect_url = f"{settings.backend_url.rstrip('/')}/payment-complete"
-
-        pay_request = StandardCheckoutPayRequest.build_request(
-            merchant_order_id=merchant_order_id,
-            amount=amount,
-            redirect_url=redirect_url,
-            meta_info={"udf1": body.email},   # carry email through checkout
-        )
-
-        response = client.pay(pay_request)
-        logger.info(f"PhonePe order created: {merchant_order_id} for {body.email}, tier {body.tier}")
-
-        return {
-            "merchant_order_id": merchant_order_id,
-            "checkout_url": response.redirect_url,
-        }
-
-    except Exception as e:
-        logger.exception(f"Failed to create PhonePe order: {e}")
-        raise HTTPException(status_code=502, detail="Failed to create payment order")
-
-
-# ── PhonePe: S2S callback ─────────────────────────────────────────────────────
-
-@router.post("/phonepe/callback")
-async def phonepe_callback(
+@router.post("/gumroad/ping")
+async def gumroad_ping(
     request: Request,
-    authorization: Optional[str] = Header(None),
     db: Session = Depends(get_db),
     payment_service: PaymentService = Depends(get_payment_service),
 ):
     """
-    PhonePe Server-to-Server callback endpoint.
+    Gumroad Ping endpoint.
 
-    PhonePe authenticates itself by sending:
-        Authorization: SHA256(username:password)
-
-    We verify that hash matches our stored credentials, then grant
-    Google Sheets access to the buyer.
-
-    Always returns 200 so PhonePe doesn't retry unnecessarily.
+    Gumroad sends a POST with form-encoded data after each sale.
+    We verify seller_id, extract the buyer email and product,
+    then grant Google Sheets access.
     """
-    body_bytes = await request.body()
-    body_str = body_bytes.decode("utf-8")
+    form_data = await request.form()
+    ping_data = extract_ping_data(dict(form_data))
 
-    # ── Verify authenticity ───────────────────────────────────────────────────
-    if not settings.phonepe_callback_username or not settings.phonepe_callback_password:
-        logger.error("PhonePe callback credentials not configured")
-        return {"status": "misconfigured"}
-
-    if not verify_callback(
-        callback_body=body_str,
-        authorization_header=authorization or "",
-        username=settings.phonepe_callback_username,
-        password=settings.phonepe_callback_password,
-    ):
-        logger.error("PhonePe callback verification failed – possible spoofed request")
-        # Return 200 to avoid leaking whether we rejected it, but don't process
+    # Verify seller_id
+    if not verify_ping(ping_data["seller_id"], settings.gumroad_seller_id):
+        logger.error("Gumroad ping verification failed - seller_id mismatch")
         return {"status": "rejected"}
 
-    # ── Parse payload ─────────────────────────────────────────────────────────
-    payment_data = extract_payment_data(body_str)
-    event = payment_data.get("event", "")
-    state = payment_data.get("state", "")
-
-    logger.info(f"PhonePe callback: event={event} state={state} order={payment_data.get('merchant_order_id')}")
-
-    # Only process completed payments
-    if state != "COMPLETED":
-        logger.info(f"Ignoring non-completed state: {state}")
-        return {"status": "ignored", "state": state}
-
-    # Validate required fields
-    email = payment_data.get("email")
-    merchant_order_id = payment_data.get("merchant_order_id")
+    email = ping_data["email"]
+    sale_id = ping_data["sale_id"]
+    product_permalink = ping_data["product_permalink"]
 
     if not email:
-        logger.error("Missing email in PhonePe callback (check metaInfo.udf1)")
+        logger.error("Missing email in Gumroad ping")
         return {"status": "error", "reason": "missing email"}
 
-    if not merchant_order_id:
-        logger.error("Missing merchantOrderId in PhonePe callback")
-        return {"status": "error", "reason": "missing order id"}
+    if not sale_id:
+        logger.error("Missing sale_id in Gumroad ping")
+        return {"status": "error", "reason": "missing sale_id"}
 
-    # ── Process payment and grant access ──────────────────────────────────────
+    # Parse price (Gumroad sends as string like "13.00")
+    try:
+        amount_cents = int(float(ping_data["price"]) * 100)
+    except (ValueError, TypeError):
+        amount_cents = 0
+
     try:
         result = payment_service.process_payment(
             db=db,
-            payment_id=merchant_order_id,
-            transaction_id=payment_data.get("transaction_id"),
+            payment_id=sale_id,
+            transaction_id=sale_id,
             email=email,
-            amount=payment_data["amount"],
+            amount=amount_cents,
+            product_permalink=product_permalink,
         )
 
         if result["success"]:
-            logger.info(f"Access granted: {result}")
+            logger.info(f"Gumroad sale processed: {result}")
         else:
-            logger.error(f"Payment processing failed: {result}")
+            logger.error(f"Gumroad sale processing failed: {result}")
 
         return {"status": "received"}
 
     except Exception as e:
-        logger.exception(f"Unexpected error processing PhonePe callback: {e}")
+        logger.exception(f"Unexpected error processing Gumroad ping: {e}")
         return {"status": "error"}
 
 
@@ -224,16 +136,3 @@ async def revoke_access(
     if result["success"]:
         return result
     raise HTTPException(status_code=404, detail=result["message"])
-
-
-# ── Frontend redirect landing page ────────────────────────────────────────────
-
-@router.get("/payment-complete")
-async def payment_complete():
-    """
-    PhonePe redirects the user here after checkout.
-    The frontend should poll /check-status?order_id=... or show a generic
-    'check your email' message. This is a minimal JSON response that the
-    frontend can detect to show its success modal.
-    """
-    return {"status": "redirect_received", "message": "Payment processed. Check your email for access."}

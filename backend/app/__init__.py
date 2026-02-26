@@ -1,1 +1,1 @@
-# FastAPI backend for Google Sheets access control via PhonePe
+# FastAPI backend for Google Sheets access control via Gumroad

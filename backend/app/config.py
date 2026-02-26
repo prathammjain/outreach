@@ -5,15 +5,13 @@ from typing import Optional
 class Settings(BaseSettings):
     """Application configuration loaded from environment variables."""
 
-    # ── PhonePe Configuration ──────────────────────────────────────────────
-    phonepe_client_id: Optional[str] = None
-    phonepe_client_secret: Optional[str] = None
-    phonepe_client_version: int = 1           # Integer version given by PhonePe
-    phonepe_env: str = "SANDBOX"              # "SANDBOX" or "PRODUCTION"
+    # ── Gumroad Configuration ─────────────────────────────────────────────
+    gumroad_seller_id: Optional[str] = None
 
-    # Callback authentication (set these in PhonePe dashboard → Developer Settings → Webhook)
-    phonepe_callback_username: Optional[str] = None
-    phonepe_callback_password: Optional[str] = None
+    # Product permalinks (the short code in the Gumroad product URL)
+    gumroad_indian_permalink: Optional[str] = None
+    gumroad_yc_permalink: Optional[str] = None
+    gumroad_uk_permalink: Optional[str] = None
 
     # ── Google Service Account ─────────────────────────────────────────────
     google_service_account_file: Optional[str] = "./service-account.json"
@@ -22,13 +20,10 @@ class Settings(BaseSettings):
     # ── Database ───────────────────────────────────────────────────────────
     database_url: str = "sqlite:////data/payments.db"   # mounted volume path
 
-    # ── Product Pricing (in paise) ─────────────────────────────────────────
-    tier_1_price: int = 99900    # ₹999
-    tier_2_price: int = 149900   # ₹1,499
-
     # ── Google Sheet IDs ───────────────────────────────────────────────────
     indian_sheet_id: Optional[str] = None
     yc_sheet_id: Optional[str] = None
+    uk_sheet_id: Optional[str] = None
 
     # ── Admin / Security ───────────────────────────────────────────────────
     # API key required to call the /admin/revoke endpoint
@@ -38,9 +33,6 @@ class Settings(BaseSettings):
     # Example: "https://outreachkit.in,https://www.outreachkit.in"
     # Leave empty to allow all (dev only).
     allowed_origins: str = ""
-
-    # Public URL of this backend – used to build the callback URL sent to PhonePe
-    backend_url: str = "https://your-backend.railway.app"
 
     model_config = SettingsConfigDict(
         env_file=".env",

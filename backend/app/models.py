@@ -9,11 +9,11 @@ class Payment(Base):
     __tablename__ = "payments"
 
     id = Column(Integer, primary_key=True, autoincrement=True)
-    payment_id = Column(String(255), unique=True, nullable=False, index=True)  # merchant_order_id
-    phonepe_transaction_id = Column(String(255), nullable=True)                # PhonePe txn ID
+    payment_id = Column(String(255), unique=True, nullable=False, index=True)  # Gumroad sale_id
+    gateway_transaction_id = Column(String(255), nullable=True)                # Gumroad sale_id
     email = Column(String(255), nullable=False, index=True)
-    amount = Column(Integer, nullable=False)   # in paise
-    product_tier = Column(Integer, nullable=False)  # 1 or 2
+    amount = Column(Integer, nullable=False)   # in cents (USD)
+    product_tier = Column(Integer, nullable=False)  # 1, 2, or 3
     granted_resources = Column(Text, nullable=False)  # JSON array of sheet IDs
     timestamp = Column(DateTime, default=datetime.utcnow, nullable=False)
 

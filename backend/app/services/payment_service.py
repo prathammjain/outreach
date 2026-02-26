@@ -21,47 +21,40 @@ class PaymentService:
         """
         self.drive_service = drive_service
     
-    def determine_tier(self, amount: int) -> Optional[int]:
+    def determine_tier(self, product_permalink: str) -> Optional[int]:
         """
-        Determine product tier from payment amount.
-        
-        Args:
-            amount: Payment amount in paise/smallest currency unit
-            
+        Determine product tier from Gumroad product permalink.
+
         Returns:
-            Tier number (1 or 2) or None if amount doesn't match
+            Tier number (1, 2, or 3) or None if permalink doesn't match
         """
-        if amount == settings.tier_1_price:
+        if product_permalink == settings.gumroad_indian_permalink:
             return 1
-        elif amount == settings.tier_2_price:
+        elif product_permalink == settings.gumroad_yc_permalink:
             return 2
+        elif product_permalink == settings.gumroad_uk_permalink:
+            return 3
         else:
-            logger.warning(f"Unknown payment amount: {amount}")
+            logger.warning(f"Unknown product permalink: {product_permalink}")
             return None
     
     def get_sheet_ids_for_tier(self, tier: int) -> List[str]:
         """
         Get list of sheet IDs for a given tier.
-        
-        Args:
-            tier: Product tier (1 or 2)
-            
-        Returns:
-            List of Google Sheet IDs
+
+        Each tier maps to exactly one Google Sheet.
         """
         sheet_ids = []
-        if tier == 1:
-            if settings.indian_sheet_id:
-                sheet_ids.append(settings.indian_sheet_id)
-        elif tier == 2:
-            if settings.indian_sheet_id:
-                sheet_ids.append(settings.indian_sheet_id)
-            if settings.yc_sheet_id:
-                sheet_ids.append(settings.yc_sheet_id)
-        
+        if tier == 1 and settings.indian_sheet_id:
+            sheet_ids.append(settings.indian_sheet_id)
+        elif tier == 2 and settings.yc_sheet_id:
+            sheet_ids.append(settings.yc_sheet_id)
+        elif tier == 3 and settings.uk_sheet_id:
+            sheet_ids.append(settings.uk_sheet_id)
+
         if not sheet_ids:
             logger.warning(f"No sheet IDs configured for tier {tier}")
-            
+
         return sheet_ids
     
     def process_payment(
@@ -70,17 +63,19 @@ class PaymentService:
         payment_id: str,
         transaction_id: Optional[str],
         email: str,
-        amount: int
+        amount: int,
+        product_permalink: str,
     ) -> Dict[str, Any]:
         """
         Process a successful payment and grant access.
 
         Args:
-            db:             Database session
-            payment_id:     Merchant order ID (used as idempotency key)
-            transaction_id: PhonePe transaction ID
-            email:          Buyer's email
-            amount:         Payment amount in paise
+            db:                Database session
+            payment_id:        Gumroad sale_id (used as idempotency key)
+            transaction_id:    Gumroad sale_id
+            email:             Buyer's email
+            amount:            Payment amount in cents (USD)
+            product_permalink: Gumroad product permalink for tier detection
 
         Returns:
             Dictionary with success status and details
@@ -96,12 +91,12 @@ class PaymentService:
             }
 
         # Determine tier
-        tier = self.determine_tier(amount)
+        tier = self.determine_tier(product_permalink)
         if tier is None:
-            logger.error(f"Invalid amount {amount} for payment {payment_id}")
+            logger.error(f"Unknown product '{product_permalink}' for payment {payment_id}")
             return {
                 "success": False,
-                "message": f"Invalid payment amount: {amount}",
+                "message": f"Unknown product: {product_permalink}",
                 "payment_id": payment_id
             }
 
@@ -130,7 +125,7 @@ class PaymentService:
         try:
             payment = Payment(
                 payment_id=payment_id,
-                phonepe_transaction_id=transaction_id,
+                gateway_transaction_id=transaction_id,
                 email=email,
                 amount=amount,
                 product_tier=tier,

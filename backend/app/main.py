@@ -30,7 +30,7 @@ async def lifespan(app: FastAPI):
 # Create FastAPI app
 app = FastAPI(
     title="OutreachKit Access Control API",
-    description="Backend for managing Google Sheets access via PhonePe payments",
+    description="Backend for managing Google Sheets access via Gumroad payments",
     version="2.0.0",
     lifespan=lifespan,
 )
