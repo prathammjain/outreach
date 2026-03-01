@@ -384,7 +384,7 @@ For issues:
 2. **Access Issues**: Check backend logs
 3. **Frontend Issues**: Check browser console
 
-**Contact**: sleektechventures@gmail.com
+**Contact**: prathamjainn@sleektechventures.com
 
 ---
 
