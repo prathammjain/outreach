@@ -8,7 +8,7 @@ URL = "http://localhost:8000/gumroad/ping"
 payload = {
     "seller_id": "your_test_seller_id",
     "product_id": "test_product_123",
-    "product_permalink": "indian-startups-db",
+    "product_permalink": "vtoipk",
     "email": "test@example.com",
     "price": "13.00",
     "sale_id": "test_sale_abc123",

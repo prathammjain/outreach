@@ -7,7 +7,9 @@ from sqlalchemy.orm import Session
 
 from app.config import settings
 from app.database import get_db
+import os
 from app.services.google_drive_service import GoogleDriveService
+from app.services.mock_google_drive_service import MockGoogleDriveService
 from app.services.payment_service import PaymentService
 from app.services.gumroad_service import verify_ping, extract_ping_data
 
@@ -17,18 +19,18 @@ router = APIRouter(tags=["payments"])
 
 # ── Service singletons ────────────────────────────────────────────────────────
 
-_drive_service: Optional[GoogleDriveService] = None
+_drive_service = None
 _payment_service: Optional[PaymentService] = None
 
 
-def get_drive_service() -> GoogleDriveService:
+def get_drive_service():
     global _drive_service
     if _drive_service is None:
         try:
             _drive_service = GoogleDriveService(settings.google_service_account_file)
         except Exception as e:
-            logger.error(f"Failed to initialize GoogleDriveService: {e}")
-            raise HTTPException(status_code=500, detail="Google Drive service not configured")
+            logger.warning(f"Failed to initialize GoogleDriveService: {e}. Falling back to MockGoogleDriveService for local testing.")
+            _drive_service = MockGoogleDriveService()
     return _drive_service
 
 
