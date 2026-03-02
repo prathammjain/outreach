@@ -62,16 +62,15 @@
             --surface: #FFFFFF;
             --surface-2: #FAF8F6;
             --surface-hover: #F0EDE9;
-            --border: rgba(0, 0, 0, 0.06);
-            --border-bright: rgba(0, 0, 0, 0.12);
-            --text-primary: #33302E;
-            --text-secondary: #5C5854;
-            --text-muted: #8C8681;
-            --accent: #B6A697;
-            --accent-glow: rgba(182, 166, 151, 0.12);
-            --accent-dim: #9E8D7E;
-            --glass: rgba(255, 255, 255, 0.7);
-            --glass-border: rgba(0, 0, 0, 0.04);
+            --border: rgba(0, 0, 0, 0.12);
+            --border-bright: rgba(0, 0, 0, 0.22);
+            --text-primary: #121212;
+            --text-secondary: #2A2A2A;
+            --text-muted: #555555;
+            --accent: #121212;
+            --accent-glow: rgba(18, 18, 18, 0.08);
+            --glass: rgba(255, 255, 255, 0.75);
+            --glass-border: rgba(0, 0, 0, 0.08);
             --radius-sm: 10px;
             --radius-md: 16px;
             --radius-lg: 24px;
@@ -100,7 +99,7 @@
             position: fixed;
             inset: 0;
             background:
-                radial-gradient(ellipse 80% 50% at 50% -10%, rgba(182, 166, 151, 0.035) 0%, transparent 100%),
+                radial-gradient(ellipse 80% 50% at 50% -10%, rgba(18, 18, 18, 0.035) 0%, transparent 100%),
                 linear-gradient(rgba(0, 0, 0, 0.03) 1px, transparent 1px),
                 linear-gradient(90deg, rgba(0, 0, 0, 0.03) 1px, transparent 1px);
             background-size: 100% 100%, 44px 44px, 44px 44px;
@@ -153,8 +152,8 @@
 
         /* ── Announcement bar ── */
         .announcement-bar {
-            background: linear-gradient(90deg, rgba(182, 166, 151, 0.12) 0%, rgba(182, 166, 151, 0.06) 100%);
-            border-bottom: 1px solid rgba(182, 166, 151, 0.15);
+            background: linear-gradient(90deg, rgba(18, 18, 18, 0.12) 0%, rgba(18, 18, 18, 0.06) 100%);
+            border-bottom: 1px solid rgba(18, 18, 18, 0.15);
             text-align: center;
             padding: 10px 24px;
             font-size: 13px;
@@ -250,13 +249,13 @@
         .btn-primary {
             background: var(--accent);
             color: #FFFFFF;
-            box-shadow: 0 6px 20px rgba(182, 166, 151, 0.22);
+            box-shadow: 0 6px 20px rgba(18, 18, 18, 0.22);
         }
 
         .btn-primary:hover {
-            background: #9E8D7E;
+            background: #000000;
             transform: translateY(-2px);
-            box-shadow: 0 10px 28px rgba(182, 166, 151, 0.32);
+            box-shadow: 0 10px 28px rgba(18, 18, 18, 0.32);
         }
 
         .btn-secondary {
@@ -289,8 +288,8 @@
             align-items: center;
             gap: 10px;
             padding: 8px 18px;
-            background: rgba(182, 166, 151, 0.06);
-            border: 1px solid rgba(182, 166, 151, 0.2);
+            background: rgba(18, 18, 18, 0.06);
+            border: 1px solid rgba(18, 18, 18, 0.2);
             border-radius: 100px;
             font-size: 13px;
             font-weight: 400;
@@ -439,7 +438,7 @@
 
         .stat-card:hover {
             transform: translateY(-6px);
-            border-color: rgba(182, 166, 151, 0.25);
+            border-color: rgba(18, 18, 18, 0.25);
         }
 
         .stat-card:hover::before {
@@ -534,7 +533,7 @@
         }
 
         .feature-card:hover {
-            border-color: rgba(182, 166, 151, 0.22);
+            border-color: rgba(18, 18, 18, 0.22);
             background: var(--surface-hover);
             transform: translateY(-8px);
         }
@@ -546,8 +545,8 @@
         .feature-icon {
             width: 56px;
             height: 56px;
-            background: rgba(182, 166, 151, 0.09);
-            border: 1px solid rgba(182, 166, 151, 0.15);
+            background: rgba(18, 18, 18, 0.09);
+            border: 1px solid rgba(18, 18, 18, 0.15);
             border-radius: 14px;
             display: flex;
             align-items: center;
@@ -593,7 +592,7 @@
             left: 12%;
             right: 12%;
             height: 1px;
-            background: linear-gradient(to right, transparent, rgba(182, 166, 151, 0.35), transparent);
+            background: linear-gradient(to right, transparent, rgba(18, 18, 18, 0.35), transparent);
         }
 
         .step {
@@ -604,8 +603,8 @@
         .step-number {
             width: 56px;
             height: 56px;
-            background: rgba(182, 166, 151, 0.08);
-            border: 1px solid rgba(182, 166, 151, 0.28);
+            background: rgba(18, 18, 18, 0.08);
+            border: 1px solid rgba(18, 18, 18, 0.28);
             border-radius: 50%;
             display: flex;
             align-items: center;
@@ -650,7 +649,7 @@
         }
 
         .sample-table th {
-            background: rgba(182, 166, 151, 0.055);
+            background: rgba(18, 18, 18, 0.055);
             color: var(--accent);
             font-weight: 400;
             text-transform: uppercase;
@@ -694,7 +693,7 @@
         /* ── Testimonials ── */
         .testimonials {
             padding: 100px 0;
-            background: radial-gradient(ellipse at center top, rgba(182, 166, 151, 0.04) 0%, transparent 65%);
+            background: radial-gradient(ellipse at center top, rgba(18, 18, 18, 0.04) 0%, transparent 65%);
         }
 
         .testimonial-grid {
@@ -816,14 +815,14 @@
         }
 
         .pricing-card:hover {
-            border-color: rgba(182, 166, 151, 0.3);
+            border-color: rgba(18, 18, 18, 0.3);
             box-shadow: 0 32px 64px rgba(0, 0, 0, 0.08);
             transform: translateY(-6px);
         }
 
         .pricing-card.premium {
-            border: 1.5px solid rgba(182, 166, 151, 0.4);
-            background: linear-gradient(180deg, rgba(182, 166, 151, 0.04) 0%, transparent 50%), var(--surface);
+            border: 1.5px solid rgba(18, 18, 18, 0.4);
+            background: linear-gradient(180deg, rgba(18, 18, 18, 0.04) 0%, transparent 50%), var(--surface);
         }
 
         .popular-badge {
@@ -838,7 +837,7 @@
             font-size: 11px;
             font-weight: 400;
             letter-spacing: 0.1em;
-            box-shadow: 0 6px 18px rgba(182, 166, 151, 0.25);
+            box-shadow: 0 6px 18px rgba(18, 18, 18, 0.25);
         }
 
         .price-tier-label {
@@ -1018,8 +1017,8 @@
         .security-icon {
             width: 44px;
             height: 44px;
-            background: rgba(182, 166, 151, 0.08);
-            border: 1px solid rgba(182, 166, 151, 0.14);
+            background: rgba(18, 18, 18, 0.08);
+            border: 1px solid rgba(18, 18, 18, 0.14);
             border-radius: 10px;
             display: flex;
             align-items: center;
@@ -1127,7 +1126,7 @@
             bottom: 32px;
             right: 32px;
             background: var(--surface);
-            border: 1px solid rgba(182, 166, 151, 0.35);
+            border: 1px solid rgba(18, 18, 18, 0.35);
             color: var(--text-primary);
             padding: 16px 24px;
             border-radius: var(--radius-md);
@@ -1701,7 +1700,7 @@
                                 <td style="padding: 20px 24px; border-bottom: 1px solid #F0E6E1; color: #6B655F;">40+
                                     Hours (Scraping & Cleaning)</td>
                                 <td
-                                    style="padding: 20px 24px; border-bottom: 1px solid #F0E6E1; background: rgba(182,166,151,0.05); font-weight: 600;">
+                                    style="padding: 20px 24px; border-bottom: 1px solid #F0E6E1; background: rgba(18, 18, 18,0.05); font-weight: 600;">
                                     2 Minutes (Instant Access)</td>
                             </tr>
                             <tr>
@@ -1710,7 +1709,7 @@
                                 <td style="padding: 20px 24px; border-bottom: 1px solid #F0E6E1; color: #6B655F;">$200 -
                                     $500/mo (Apollo, etc.)</td>
                                 <td
-                                    style="padding: 20px 24px; border-bottom: 1px solid #F0E6E1; background: rgba(182,166,151,0.05); font-weight: 600;">
+                                    style="padding: 20px 24px; border-bottom: 1px solid #F0E6E1; background: rgba(18, 18, 18,0.05); font-weight: 600;">
                                     $13 - $18 (One-Time)</td>
                             </tr>
                             <tr>
@@ -1719,14 +1718,14 @@
                                 <td style="padding: 20px 24px; border-bottom: 1px solid #F0E6E1; color: #6B655F;">30%+
                                     Bounce Rate (Generic data)</td>
                                 <td
-                                    style="padding: 20px 24px; border-bottom: 1px solid #F0E6E1; background: rgba(182,166,151,0.05); font-weight: 600;">
+                                    style="padding: 20px 24px; border-bottom: 1px solid #F0E6E1; background: rgba(18, 18, 18,0.05); font-weight: 600;">
                                     < 2% Bounce Rate (Verified)</td>
                             </tr>
                             <tr>
                                 <td style="padding: 20px 24px; font-weight: 500;">Effort</td>
                                 <td style="padding: 20px 24px; color: #6B655F;">Mental Exhaustion</td>
                                 <td
-                                    style="padding: 20px 24px; background: rgba(182,166,151,0.05); font-weight: 600; border-bottom-right-radius: 20px;">
+                                    style="padding: 20px 24px; background: rgba(18, 18, 18,0.05); font-weight: 600; border-bottom-right-radius: 20px;">
                                     Pure Leverage</td>
                             </tr>
                         </tbody>
@@ -1737,7 +1736,7 @@
 
 
         <!-- ── Why Not ChatGPT? ── -->
-        <section class="how-it-works" style="background: rgba(182, 166, 151, 0.05); border: none; padding: 100px 0;">
+        <section class="how-it-works" style="background: rgba(18, 18, 18, 0.05); border: none; padding: 100px 0;">
             <div class="container">
                 <div class="section-header">
                     <span class="section-tag">Comparison</span>
@@ -2162,7 +2161,7 @@
                 padding: 24px;
             `;
             modal.innerHTML = `
-                <div style="background: var(--border); border: 1.5px solid rgba(182,166,151,0.4); border-radius: 24px;
+                <div style="background: var(--border); border: 1.5px solid rgba(18, 18, 18,0.4); border-radius: 24px;
                             padding: 60px 48px; max-width: 480px; width: 100%; text-align: center;
                             box-shadow: 0 40px 80px rgba(0,0,0,0.1);">
                     <div style="font-size: 64px; margin-bottom: 20px;">🎉</div>
