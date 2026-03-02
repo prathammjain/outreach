@@ -61,20 +61,20 @@
             --bg: #F8F5F2;
             --surface: #FFFFFF;
             --surface-2: #FAF8F6;
-            --surface-hover: #F0EDE9;
-            --border: rgba(0, 0, 0, 0.12);
-            --border-bright: rgba(0, 0, 0, 0.22);
+            --surface-hover: #F2EFED;
+            --border: rgba(0, 0, 0, 0.1);
+            --border-bright: rgba(0, 0, 0, 0.2);
             --text-primary: #121212;
-            --text-secondary: #2A2A2A;
-            --text-muted: #555555;
+            --text-secondary: #3A3A3A;
+            --text-muted: #666666;
             --accent: #121212;
             --accent-glow: rgba(18, 18, 18, 0.08);
-            --glass: rgba(255, 255, 255, 0.75);
+            --glass: rgba(255, 255, 255, 0.82);
             --glass-border: rgba(0, 0, 0, 0.08);
             --radius-sm: 10px;
-            --radius-md: 16px;
-            --radius-lg: 24px;
-            --radius-xl: 32px;
+            --radius-md: 14px;
+            --radius-lg: 20px;
+            --radius-xl: 28px;
         }
 
         * {
@@ -232,41 +232,42 @@
         }
 
         .btn {
-            padding: 12px 28px;
-            border-radius: var(--radius-sm);
-            font-size: 14px;
-            font-weight: 400;
+            padding: 14px 32px;
+            border-radius: 12px;
+            font-size: 15px;
+            font-weight: 500;
             cursor: pointer;
             transition: all 0.25s cubic-bezier(0.4, 0, 0.2, 1);
             text-decoration: none;
             display: inline-flex;
             align-items: center;
-            gap: 8px;
+            justify-content: center;
+            gap: 10px;
             border: none;
             font-family: 'Inter', sans-serif;
         }
 
         .btn-primary {
-            background: var(--accent);
-            color: #FFFFFF;
-            box-shadow: 0 6px 20px rgba(18, 18, 18, 0.22);
+            background: #121212;
+            color: #FFFFFF !important;
+            box-shadow: 0 4px 14px rgba(0, 0, 0, 0.15);
         }
 
         .btn-primary:hover {
             background: #000000;
             transform: translateY(-2px);
-            box-shadow: 0 10px 28px rgba(18, 18, 18, 0.32);
+            box-shadow: 0 8px 24px rgba(0, 0, 0, 0.25);
         }
 
         .btn-secondary {
-            background: var(--glass);
-            color: var(--text-primary);
-            border: 1px solid var(--border-bright);
+            background: transparent;
+            color: #121212;
+            border: 2px solid #121212;
         }
 
         .btn-secondary:hover {
-            border-color: var(--accent);
-            background: var(--accent-glow);
+            background: #121212;
+            color: #FFFFFF !important;
             transform: translateY(-2px);
         }
 
@@ -322,10 +323,10 @@
         }
 
         h1 {
-            font-family: 'Inter', sans-serif;
-            font-size: clamp(44px, 7.5vw, 88px);
-            font-weight: 300;
-            line-height: 0.96;
+            font-family: 'Outfit', sans-serif;
+            font-size: clamp(48px, 8vw, 92px);
+            font-weight: 700;
+            line-height: 0.94;
             letter-spacing: -0.04em;
             margin-bottom: 28px;
             color: var(--text-primary);
@@ -417,14 +418,18 @@
         }
 
         .stat-card {
-            padding: 36px 32px;
+            padding: 40px 32px;
             background: var(--surface);
             border: 1px solid var(--border);
-            border-radius: var(--radius-lg);
+            border-radius: 20px;
             text-align: center;
-            transition: all 0.3s ease;
+            transition: all 0.3s cubic-bezier(0.4, 0, 0.2, 1);
             position: relative;
             overflow: hidden;
+            display: flex;
+            flex-direction: column;
+            justify-content: center;
+            min-height: 180px;
         }
 
         .stat-card::before {
@@ -437,8 +442,9 @@
         }
 
         .stat-card:hover {
-            transform: translateY(-6px);
-            border-color: rgba(18, 18, 18, 0.25);
+            transform: translateY(-8px);
+            border-color: rgba(0, 0, 0, 0.25);
+            box-shadow: 0 12px 24px rgba(0, 0, 0, 0.04);
         }
 
         .stat-card:hover::before {
@@ -481,22 +487,23 @@
         }
 
         .section-title {
-            font-family: 'Inter', sans-serif;
-            font-size: clamp(30px, 4.5vw, 46px);
-            font-weight: 400;
+            font-family: 'Outfit', sans-serif;
+            font-size: clamp(32px, 5vw, 48px);
+            font-weight: 600;
             color: var(--text-primary);
-            letter-spacing: -0.025em;
+            letter-spacing: -0.03em;
             line-height: 1.1;
         }
 
         .section-subtitle {
             color: var(--text-secondary);
-            font-size: 16px;
-            margin-top: 14px;
-            max-width: 560px;
+            font-size: 17px;
+            margin-top: 16px;
+            max-width: 600px;
             margin-left: auto;
             margin-right: auto;
-            line-height: 1.6;
+            line-height: 1.8;
+            font-weight: 300;
         }
 
         /* ── Features ── */
@@ -513,11 +520,14 @@
         .feature-card {
             background: var(--surface);
             border: 1px solid var(--border);
-            border-radius: var(--radius-lg);
-            padding: 44px 40px;
-            transition: all 0.35s ease;
+            border-radius: 20px;
+            padding: 48px 40px;
+            transition: all 0.4s cubic-bezier(0.4, 0, 0.2, 1);
             position: relative;
             overflow: hidden;
+            display: flex;
+            flex-direction: column;
+            height: 100%;
         }
 
         .feature-card::after {
@@ -624,10 +634,98 @@
             color: var(--text-primary);
         }
 
-        .step p {
+        /* ── Special Banners ── */
+        .banner-dark {
+            background: #121212;
+            color: #FFFFFF;
+            border-radius: 24px;
+            padding: 60px 40px;
+            text-align: center;
+        }
+
+        .banner-dark .section-title {
+            color: #FFFFFF;
+            margin-bottom: 12px;
+        }
+
+        .banner-dark p {
+            opacity: 0.85;
+            max-width: 600px;
+            margin: 0 auto 32px;
+            font-size: 16px;
+            line-height: 1.7;
+        }
+
+        .price-badge-alt {
+            display: inline-flex;
+            background: rgba(255, 255, 255, 0.1);
+            padding: 10px 20px;
+            border-radius: 10px;
+            font-size: 14px;
+            border: 1px solid rgba(255, 255, 255, 0.2);
+            color: #FFFFFF;
+            font-weight: 500;
+        }
+
+        .comparison-table-wrapper {
+            overflow-x: auto;
+            margin-top: 40px;
+        }
+
+        .comparison-table {
+            width: 100%;
+            border-collapse: separate;
+            border-spacing: 0;
+            background: var(--surface);
+            border-radius: 20px;
+            box-shadow: 0 20px 40px rgba(0, 0, 0, 0.03);
+            border: 1.5px solid var(--border);
+            overflow: hidden;
+        }
+
+        .comparison-table th {
+            padding: 24px;
+            text-align: left;
+            background: var(--bg);
+            border-bottom: 1.5px solid var(--border);
+            font-family: 'Outfit', sans-serif;
+            font-weight: 600;
+        }
+
+        .comparison-table th.premium-col {
+            background: var(--accent);
+            color: #FFFFFF;
+            border-bottom: 1.5px solid var(--accent);
+        }
+
+        .comparison-table td {
+            padding: 20px 24px;
+            border-bottom: 1px solid var(--border);
+            font-size: 15px;
             color: var(--text-secondary);
-            font-size: 13px;
-            line-height: 1.65;
+        }
+
+        .comparison-table td.premium-cell {
+            background: rgba(18, 18, 18, 0.03);
+            font-weight: 600;
+            color: var(--text-primary);
+        }
+
+        .comparison-table tr:last-child td {
+            border-bottom: none;
+        }
+
+        /* ── Section Spacing ── */
+        .section-padding {
+            padding: 100px 0;
+        }
+
+        .section-padding-sm {
+            padding: 60px 0;
+        }
+
+        .bg-muted {
+            background: rgba(18, 18, 18, 0.035);
         }
 
         /* ── Sample table ── */
@@ -677,10 +775,43 @@
             color: var(--text-primary);
         }
 
-        .blurred-cell {
-            filter: blur(5px);
-            user-select: none;
-            pointer-events: none;
+        /* ── ChatGPT Grid ── */
+        .chatgpt-grid {
+            display: grid;
+            grid-template-columns: repeat(auto-fit, minmax(300px, 1fr));
+            gap: 24px;
+            margin-top: 48px;
+        }
+
+        .chatgpt-card {
+            background: var(--surface);
+            padding: 40px;
+            border-radius: 20px;
+            border: 1px solid var(--border);
+            display: flex;
+            flex-direction: column;
+            gap: 16px;
+        }
+
+        .chatgpt-card h4 {
+            color: var(--text-primary);
+            font-weight: 700;
+            font-size: 20px;
+        }
+
+        .chatgpt-list {
+            list-style: none;
+            color: var(--text-secondary);
+            font-size: 15px;
+            display: flex;
+            flex-direction: column;
+            gap: 16px;
+        }
+
+        .chatgpt-list li {
+            display: flex;
+            gap: 12px;
+            line-height: 1.5;
         }
 
         .sample-caption {
@@ -690,7 +821,51 @@
             margin-top: 14px;
         }
 
-        /* ── Testimonials ── */
+        /* ── Success Modal ── */
+        .modal-overlay {
+            position: fixed;
+            inset: 0;
+            background: rgba(0, 0, 0, 0.4);
+            backdrop-filter: blur(8px);
+            z-index: 2000;
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            padding: 24px;
+        }
+
+        .modal-card {
+            background: var(--surface);
+            border: 1px solid var(--border);
+            border-radius: 24px;
+            padding: 60px 48px;
+            max-width: 480px;
+            width: 100%;
+            text-align: center;
+            box-shadow: 0 40px 80px rgba(0, 0, 0, 0.1);
+        }
+
+        .modal-icon {
+            font-size: 64px;
+            margin-bottom: 24px;
+        }
+
+        .modal-title {
+            font-family: 'Outfit', sans-serif;
+            font-size: 30px;
+            color: var(--text-primary);
+            margin-bottom: 14px;
+            letter-spacing: -0.02em;
+            font-weight: 600;
+        }
+
+        .modal-text {
+            color: var(--text-secondary);
+            margin-bottom: 32px;
+            line-height: 1.65;
+            font-size: 15px;
+        }
+
         .testimonials {
             padding: 100px 0;
             background: radial-gradient(ellipse at center top, rgba(18, 18, 18, 0.04) 0%, transparent 65%);
@@ -705,12 +880,13 @@
         .testimonial-card {
             background: var(--surface);
             border: 1px solid var(--border);
-            border-radius: var(--radius-lg);
-            padding: 36px 32px;
-            transition: border-color 0.3s;
+            border-radius: 20px;
+            padding: 40px;
+            transition: all 0.3s ease;
             display: flex;
             flex-direction: column;
-            gap: 20px;
+            gap: 24px;
+            height: 100%;
         }
 
         .testimonial-card:hover {
@@ -814,15 +990,27 @@
             flex-direction: column;
         }
 
+        .pricing-card {
+            position: relative;
+            padding: 56px 44px;
+            background: var(--surface);
+            border: 1px solid var(--border);
+            border-radius: 24px;
+            transition: all 0.4s cubic-bezier(0.4, 0, 0.2, 1);
+            display: flex;
+            flex-direction: column;
+            height: 100%;
+        }
+
         .pricing-card:hover {
-            border-color: rgba(18, 18, 18, 0.3);
-            box-shadow: 0 32px 64px rgba(0, 0, 0, 0.08);
-            transform: translateY(-6px);
+            transform: translateY(-10px);
+            border-color: rgba(0, 0, 0, 0.3);
+            box-shadow: 0 32px 64px rgba(0, 0, 0, 0.1);
         }
 
         .pricing-card.premium {
-            border: 1.5px solid rgba(18, 18, 18, 0.4);
-            background: linear-gradient(180deg, rgba(18, 18, 18, 0.04) 0%, transparent 50%), var(--surface);
+            border: 2px solid #121212;
+            background: linear-gradient(180deg, rgba(18, 18, 18, 0.02) 0%, transparent 100%), var(--surface);
         }
 
         .popular-badge {
@@ -1306,7 +1494,7 @@
                 <a href="#sample">Sample Data</a>
                 <a href="#testimonials">Reviews</a>
                 <a href="#faq">FAQ</a>
-                <a href="#pricing" class="btn btn-primary" style="padding: 10px 22px; font-size: 13px;">Get Access →</a>
+                <a href="#pricing" class="btn btn-primary">Get Access →</a>
             </nav>
         </div>
     </header>
@@ -1405,37 +1593,36 @@
             <div class="container">
                 <div class="stats-grid">
                     <div class="stat-card">
-                        <div class="stat-number">6,438</div>
-                        <div class="stat-label">Verified Inboxes</div>
+                        <div class="stat-number">6,400+</div>
+                        <div class="stat-label">Verified Emails</div>
                     </div>
                     <div class="stat-card">
-                        <div class="stat-number">$13</div>
-                        <div class="stat-label">Lifetime Edge</div>
+                        <div class="stat-number">4.9/5</div>
+                        <div class="stat-label">Member Rating</div>
                     </div>
                     <div class="stat-card">
-                        <div class="stat-number">2-Min</div>
-                        <div class="stat-label">Delivery Time</div>
+                        <div class="stat-number">24/7</div>
+                        <div class="stat-label">Instant Access</div>
                     </div>
                     <div class="stat-card">
-                        <div class="stat-number">98%</div>
-                        <div class="stat-label">Email Accuracy</div>
+                        <div class="stat-number">$12M+</div>
+                        <div class="stat-label">Deals Facilitated</div>
                     </div>
                 </div>
             </div>
         </section>
 
         <!-- ── Urgency / Scarcity ── -->
-        <section class="how-it-works" style="background: var(--text-primary); color: #FFF; padding: 40px 0;">
-            <div class="container" style="text-align: center;">
-                <h2 class="section-title" style="color: #FFF; margin-bottom: 8px; font-size: 24px;">Limited Launch Price
-                    Ending Soon</h2>
-                <p style="font-size: 16px; opacity: 0.9; max-width: 600px; margin: 0 auto 24px;">
-                    We refresh the vault every quarter. The price will increase by 25% on the next batch update. Secure
-                    your lifetime access at today's rate.
-                </p>
-                <div
-                    style="display: inline-flex; background: rgba(255,255,255,0.1); padding: 8px 16px; border-radius: 8px; font-size: 14px; border: 1px solid rgba(255,255,255,0.2);">
-                    🔥 148+ users already using this weapon to book meetings.
+        <!-- ── Limited Launch Price Banner ── -->
+        <section class="section-padding">
+            <div class="container">
+                <div class="banner-dark">
+                    <h2 class="section-title">Limited Launch Price</h2>
+                    <p>Stop paying monthly for stale leads. Lock in the OutreachKit Vault today and own the data
+                        forever. Prices increase as the database grows.</p>
+                    <div class="price-badge-alt">
+                        Next Update: April 1st → +$5
+                    </div>
                 </div>
             </div>
         </section>
@@ -1516,9 +1703,8 @@
                                 CRM-Ready Google Sheet
                             </li>
                         </ul>
-                        <a href="https://prathami4.gumroad.com/l/vtoipk"
-                            class="btn btn-secondary checkout-btn gumroad-button"
-                            style="text-decoration:none; text-align:center;" data-gumroad-overlay-checkout="true">
+                        <a href="https://prathami4.gumroad.com/l/vtoipk" class="btn btn-secondary gumroad-button"
+                            data-gumroad-overlay-checkout="true">
                             Claim Access — $13
                         </a>
                     </div>
@@ -1562,9 +1748,8 @@
                                 Lifetime Database Sync
                             </li>
                         </ul>
-                        <a href="https://prathami4.gumroad.com/l/kgeoqg"
-                            class="btn btn-primary checkout-btn gumroad-button"
-                            style="text-decoration:none; text-align:center;" data-gumroad-overlay-checkout="true">
+                        <a href="https://prathami4.gumroad.com/l/kgeoqg" class="btn btn-primary gumroad-button"
+                            data-gumroad-overlay-checkout="true">
                             Unlock the Vault — $18
                         </a>
                     </div>
@@ -1607,9 +1792,8 @@
                                 Quarterly Contact Refresh
                             </li>
                         </ul>
-                        <a href="https://prathami4.gumroad.com/l/pxkeh"
-                            class="btn btn-secondary checkout-btn gumroad-button"
-                            style="text-decoration:none; text-align:center;" data-gumroad-overlay-checkout="true">
+                        <a href="https://prathami4.gumroad.com/l/pxkeh" class="btn btn-secondary gumroad-button"
+                            data-gumroad-overlay-checkout="true">
                             Claim Access — $18
                         </a>
                     </div>
@@ -1626,107 +1810,86 @@
                     <span class="section-tag">Use Cases</span>
                     <h2 class="section-title">Fuel Your Growth Engine</h2>
                 </div>
-                <div class="feature-grid" style="grid-template-columns: repeat(auto-fit, minmax(280px, 1fr));">
-                    <div class="feature-card" style="padding: 32px;">
-                        <div class="feature-icon" style="width: 44px; height: 44px; font-size: 20px;">⚡</div>
-                        <h3 style="font-size: 18px;">Freelancers</h3>
-                        <p style="font-size: 14px;"><strong>Outcome:</strong> Book 3–5 high-ticket meetings per week by
+                <div class="feature-grid">
+                    <div class="feature-card">
+                        <div class="feature-icon">⚡</div>
+                        <h3>Freelancers</h3>
+                        <p><strong>Outcome:</strong> Book 3–5 high-ticket meetings per week by
                             pitching founders directly, bypassing the race-to-the-bottom on Upwork.</p>
                     </div>
-                    <div class="feature-card" style="padding: 32px;">
-                        <div class="feature-icon" style="width: 44px; height: 44px; font-size: 20px;">🏢</div>
-                        <h3 style="font-size: 18px;">Dev Agencies</h3>
-                        <p style="font-size: 14px;"><strong>Outcome:</strong> Add $10k+ MRR to your pipeline by reaching
+                    <div class="feature-card">
+                        <div class="feature-icon">🏢</div>
+                        <h3>Dev Agencies</h3>
+                        <p><strong>Outcome:</strong> Add $10k+ MRR to your pipeline by reaching
                             newly-funded founders who need to build fast.</p>
                     </div>
-                    <div class="feature-card" style="padding: 32px;">
-                        <div class="feature-icon" style="width: 44px; height: 44px; font-size: 20px;">📈</div>
-                        <h3 style="font-size: 18px;">Growth Marketers</h3>
-                        <p style="font-size: 14px;"><strong>Outcome:</strong> Build a repeatable outbound machine. Users
+                    <div class="feature-card">
+                        <div class="feature-icon">📈</div>
+                        <h3>Growth Marketers</h3>
+                        <p><strong>Outcome:</strong> Build a repeatable outbound machine. Users
                             report a 4x increase in lead speed over manual scraping.</p>
                     </div>
-                    <div class="feature-card" style="padding: 32px;">
-                        <div class="feature-icon" style="width: 44px; height: 44px; font-size: 20px;">🤝</div>
-                        <h3 style="font-size: 18px;">Partnerships</h3>
-                        <p style="font-size: 14px;"><strong>Outcome:</strong> Find 100+ relevant SaaS partners in a
-                            single afternoon. Multi-channel data for cold calls and DM sequences.</p>
+                    <div class="feature-card">
+                        <div class="feature-icon">🤝</div>
+                        <h3>Partnerships</h3>
+                        <p><strong>Outcome:</strong> Find long-term affiliate or strategic partners
+                            within the top 1% of tech companies globally.</p>
                     </div>
-                    <div class="feature-card" style="padding: 32px;">
-                        <div class="feature-icon" style="width: 44px; height: 44px; font-size: 20px;">🎓</div>
-                        <h3 style="font-size: 18px;">Job Seekers</h3>
-                        <p style="font-size: 14px;"><strong>Outcome:</strong> Land interview calls in days. Apply to
-                            stealth startups before the recruiter-spam hits the job boards.</p>
+                    <div class="feature-card">
+                        <div class="feature-icon">🔍</div>
+                        <h3>Recruiters</h3>
+                        <p><strong>Outcome:</strong> Hire faster. Users report a 3x higher response rate
+                            when reaching candidates or founders directly compared to LinkedIn InMail.</p>
                     </div>
-                    <div class="feature-card" style="padding: 32px;">
-                        <div class="feature-icon" style="width: 44px; height: 44px; font-size: 20px;">🔍</div>
-                        <h3 style="font-size: 18px;">Recruiters</h3>
-                        <p style="font-size: 14px;"><strong>Outcome:</strong> Place executive talent faster. Reach the
-                            decision-makers who have the budget to hire your pool.</p>
+                    <div class="feature-card">
+                        <div class="feature-icon">🚀</div>
+                        <h3>SaaS Founders</h3>
+                        <p><strong>Outcome:</strong> Build your "early adopter" list. 100+ founders
+                            report successful beta launches using this specific data set.</p>
                     </div>
                 </div>
             </div>
         </section>
 
-        <!-- ── Value Stack Comparison ── -->
-        <section class="value-stack"
-            style="background: var(--bg); padding: 100px 0; border-top: 1px solid var(--border);">
+        <!-- ── Comparison Section ── -->
+        <section class="section-padding bg-muted" style="border-top: 1px solid var(--border);">
             <div class="container">
-                <div class="section-header" style="margin-bottom: 60px;">
-                    <span class="section-tag">Value Comparison</span>
-                    <h2 class="section-title">The Lead-Gen Math</h2>
-                    <p class="section-subtitle">Why manual scraping is the most expensive way to build a pipeline.</p>
+                <div class="section-header">
+                    <span class="section-tag">Comparison</span>
+                    <h2 class="section-title">Manual Research vs. OutreachKit Vault</h2>
                 </div>
 
-                <div style="overflow-x: auto;">
-                    <table
-                        style="width: 100%; border-collapse: separate; border-spacing: 0; background: #FFF; border-radius: 20px; box-shadow: 0 20px 40px rgba(0,0,0,0.03); border: 1.5px solid var(--border);">
+                <div class="comparison-table-wrapper">
+                    <table class="comparison-table">
                         <thead>
                             <tr>
-                                <th
-                                    style="padding: 24px; text-align: left; background: var(--bg); border-bottom: 1.5px solid var(--border); font-family: 'Outfit', sans-serif;">
-                                    Metric</th>
-                                <th
-                                    style="padding: 24px; text-align: left; background: var(--bg); border-bottom: 1.5px solid var(--border); color: var(--text-muted);">
-                                    DIY Scraping + ChatGPT</th>
-                                <th
-                                    style="padding: 24px; text-align: left; background: var(--accent); color: #FFF; border-bottom: 1.5px solid var(--accent); border-top-right-radius: 20px;">
-                                    OutreachKit Vault</th>
+                                <th>Feature</th>
+                                <th style="color: var(--text-muted);">Manual Grinding</th>
+                                <th class="premium-col" style="border-top-right-radius: 20px;">The OutreachKit Vault
+                                </th>
                             </tr>
                         </thead>
                         <tbody>
                             <tr>
-                                <td style="padding: 20px 24px; border-bottom: 1px solid #F0E6E1; font-weight: 500;">Time
-                                    to Build</td>
-                                <td style="padding: 20px 24px; border-bottom: 1px solid #F0E6E1; color: #6B655F;">40+
-                                    Hours (Scraping & Cleaning)</td>
-                                <td
-                                    style="padding: 20px 24px; border-bottom: 1px solid #F0E6E1; background: rgba(18, 18, 18,0.05); font-weight: 600;">
-                                    2 Minutes (Instant Access)</td>
+                                <td style="font-weight: 500;">Time to Access Data</td>
+                                <td>40+ Hours (Scraping & Cleaning)</td>
+                                <td class="premium-cell">2 Minutes (Instant Access)</td>
                             </tr>
                             <tr>
-                                <td style="padding: 20px 24px; border-bottom: 1px solid #F0E6E1; font-weight: 500;">Tool
-                                    Costs</td>
-                                <td style="padding: 20px 24px; border-bottom: 1px solid #F0E6E1; color: #6B655F;">$200 -
-                                    $500/mo (Apollo, etc.)</td>
-                                <td
-                                    style="padding: 20px 24px; border-bottom: 1px solid #F0E6E1; background: rgba(18, 18, 18,0.05); font-weight: 600;">
-                                    $13 - $18 (One-Time)</td>
+                                <td style="font-weight: 500;">Tool Costs</td>
+                                <td>$200 - $500/mo (Apollo, etc.)</td>
+                                <td class="premium-cell">$13 - $18 (One-Time)</td>
                             </tr>
                             <tr>
-                                <td style="padding: 20px 24px; border-bottom: 1px solid #F0E6E1; font-weight: 500;">Data
-                                    Accuracy</td>
-                                <td style="padding: 20px 24px; border-bottom: 1px solid #F0E6E1; color: #6B655F;">30%+
-                                    Bounce Rate (Generic data)</td>
-                                <td
-                                    style="padding: 20px 24px; border-bottom: 1px solid #F0E6E1; background: rgba(18, 18, 18,0.05); font-weight: 600;">
+                                <td style="font-weight: 500;">Data Quality</td>
+                                <td>30%+ Bounce Rate (Generic data)</td>
+                                <td class="premium-cell">
                                     < 2% Bounce Rate (Verified)</td>
                             </tr>
                             <tr>
-                                <td style="padding: 20px 24px; font-weight: 500;">Effort</td>
-                                <td style="padding: 20px 24px; color: #6B655F;">Mental Exhaustion</td>
-                                <td
-                                    style="padding: 20px 24px; background: rgba(18, 18, 18,0.05); font-weight: 600; border-bottom-right-radius: 20px;">
-                                    Pure Leverage</td>
+                                <td style="font-weight: 500;">Internal Effort</td>
+                                <td>Mental Exhaustion</td>
+                                <td class="premium-cell" style="border-bottom-right-radius: 20px;">Pure Leverage</td>
                             </tr>
                         </tbody>
                     </table>
@@ -1736,45 +1899,45 @@
 
 
         <!-- ── Why Not ChatGPT? ── -->
-        <section class="how-it-works" style="background: rgba(18, 18, 18, 0.05); border: none; padding: 100px 0;">
+        <section class="section-padding bg-muted">
             <div class="container">
                 <div class="section-header">
                     <span class="section-tag">Comparison</span>
                     <h2 class="section-title">Why Not Just Use ChatGPT?</h2>
-                    <p class="section-subtitle">LLMs are great for writing, but they are dangerous for
-                        database work. Here’s why the Vault is your weapon of choice:</p>
+                    <p class="section-subtitle">AI is great for brainstorming, but it's a disaster for sourcing
+                        accurate,
+                        high-value human contacts.</p>
                 </div>
-                <div class="feature-grid"
-                    style="grid-template-columns: 1fr 1fr; max-width: 900px; margin: 0 auto; gap: 40px;">
-                    <div style="background: #FFF; padding: 40px; border-radius: 20px; border: 1px solid var(--border);">
-                        <h4 style="color: var(--text-primary); margin-bottom: 24px; font-weight: 700; font-size: 20px;">
-                            The ChatGPT Trap:</h4>
-                        <ul
-                            style="list-style: none; color: var(--text-secondary); font-size: 15px; display: flex; flex-direction: column; gap: 16px;">
-                            <li style="display: flex; gap: 12px;">🔴 <strong>Hallucinations:</strong>
-                                Generates "confident" fake email addresses and dead links.</li>
-                            <li style="display: flex; gap: 12px;">🔴 <strong>Stale Data:</strong> Training
-                                data is 12-24 months behind the market.</li>
-                            <li style="display: flex; gap: 12px;">🔴 <strong>No Filtering:</strong> Cannot
-                                sort by recent funding or specific city HQ.</li>
-                            <li style="display: flex; gap: 12px;">🔴 <strong>Manual Grind:</strong> Expect
-                                10+ hours of cleaning "dirty" data.</li>
+
+                <div class="chatgpt-grid">
+                    <div class="chatgpt-card">
+                        <h4>Prompting AI</h4>
+                        <ul class="chatgpt-list">
+                            <li>🔴 <strong>Hallucinations:</strong> AI creates plausible-sounding but fake email
+                                addresses.</li>
+                            <li>🔴 <strong>Stale Data:</strong> Training data ends in 2023. You'll miss every recent
+                                startup.</li>
+                            <li>🔴 <strong>No Filtering:</strong> Cannot verify if a startup is active or recently
+                                funded.</li>
+                            <li>🔴 <strong>Manual Grind:</strong> Expect to spend hours prompting just to get 10-20
+                                "meh" leads.</li>
                         </ul>
                     </div>
-                    <div style="background: var(--accent); padding: 40px; border-radius: 20px; color: #FFF;">
-                        <h4 style="color: #FFF; margin-bottom: 24px; font-weight: 700; font-size: 20px;">The
-                            OutreachKit Edge:</h4>
-                        <ul
-                            style="list-style: none; color: rgba(255,255,255,0.9); font-size: 15px; display: flex; flex-direction: column; gap: 16px;">
-                            <li style="display: flex; gap: 12px;">✅ <strong>Verified Real:</strong> 6,400+
-                                hand-curated, active companies only.</li>
-                            <li style="display: flex; gap: 12px;">✅ <strong>Live Updates:</strong> W25 batch
-                                and recent funding rounds included.</li>
-                            <li style="display: flex; gap: 12px;">✅ <strong>CRM Ready:</strong> Filter by
-                                batch, sector, and HQ city in 1 click.</li>
-                            <li style="display: flex; gap: 12px;">✅ <strong>Instant Deployment:</strong>
-                                Access the Vault in < 2 minutes.</li>
+
+                    <div class="chatgpt-card" style="background: var(--accent); color: #FFF;">
+                        <h4 style="color: #FFF;">The OutreachKit Vault</h4>
+                        <ul class="chatgpt-list" style="color: rgba(255,255,255,0.9);">
+                            <li>🟢 <strong>Verified Human Data:</strong> Every email passed a bounce-check in 2025.</li>
+                            <li>🟢 <strong>Fresh Batches:</strong> Includes W25 startups and newly funded UK agencies.
+                            </li>
+                            <li>🟢 <strong>Categorized & Clean:</strong> Instantly filter by niche, funding, and
+                                revenue.</li>
+                            <li>🟢 <strong>Zero Prompts:</strong> Just download, upload to your CRM, and hit 'Send'.
+                            </li>
                         </ul>
+                    </div>
+                </div>
+            </div>
         </section>
 
         <!-- ── How It Works ── -->
@@ -2139,7 +2302,8 @@
         (function checkReturnStatus() {
             const params = new URLSearchParams(window.location.search);
             if (params.get('payment') === 'success') {
-                showSuccessModal();
+                const email = params.get('email') || 'your inbox'; // Assuming Gumroad might pass email
+                showSuccessModal(email);
                 window.history.replaceState({}, '', window.location.pathname);
             }
         })();
@@ -2153,32 +2317,17 @@
         }
 
         // ── Success modal ────────────────────────────────────────────────────────
-        function showSuccessModal() {
+        function showSuccessModal(email) {
             const modal = document.createElement('div');
-            modal.style.cssText = `
-                position: fixed; inset: 0; background: rgba(221, 208, 200,0.96);
-                display: flex; align-items: center; justify-content: center; z-index: 10000;
-                padding: 24px;
-            `;
+            modal.className = 'modal-overlay';
             modal.innerHTML = `
-                <div style="background: var(--border); border: 1.5px solid rgba(18, 18, 18,0.4); border-radius: 24px;
-                            padding: 60px 48px; max-width: 480px; width: 100%; text-align: center;
-                            box-shadow: 0 40px 80px rgba(0,0,0,0.1);">
-                    <div style="font-size: 64px; margin-bottom: 20px;">🎉</div>
-                    <h2 style="font-family: 'Inter', sans-serif; font-size: 30px; color: var(--accent); margin-bottom: 14px; letter-spacing: -0.02em;">
-                        Access Unlocked!
-                    </h2>
-                    <p style="color: #6B655F; margin-bottom: 32px; line-height: 1.65; font-size: 15px;">
-                        Google Sheets access has been sent to your email. Check your inbox — and your spam folder just in case. It usually arrives within 2–5 minutes.
-                    </p>
-                    <button onclick="this.closest('div[style]').remove()"
-                        style="width: 100%; padding: 16px; border-radius: 12px; background: var(--accent); color: #FFFFFF;
-                               font-size: 15px; font-weight: 400; border: none; cursor: pointer; font-family: 'Inter', sans-serif;">
-                        Got it — check my inbox
-                    </button>
+                <div class="modal-card">
+                    <div class="modal-icon">🎉</div>
+                    <h2 class="modal-title">Access Granted!</h2>
+                    <p class="modal-text">We've sent the <strong>OutreachKit Vault</strong> access link to <strong>${email}</strong>. Check your inbox (and spam just in case).</p>
+                    <button class="btn btn-primary" style="width: 100%;" onclick="this.closest('.modal-overlay').remove()">Start Prospecting</button>
                     <p style="margin-top: 18px; font-size: 12px; color: var(--text-muted);">
-                        Didn't receive it? Email us at
-                        <a href="mailto:sleektechventures@gmail.com" style="color: var(--accent); text-decoration: none;">sleektechventures@gmail.com</a>
+                        Need help? <a href="mailto:sleektechventures@gmail.com" style="color: var(--accent); text-decoration: none;">sleektechventures@gmail.com</a>
                     </p>
                 </div>
             `;
