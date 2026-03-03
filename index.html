@@ -367,6 +367,23 @@
             color: var(--accent);
         }
 
+        .hero-rating {
+            display: flex;
+            justify-content: center;
+            align-items: center;
+            gap: 8px;
+            margin-top: 16px;
+            margin-bottom: 8px;
+            color: var(--text-secondary);
+            font-size: 14px;
+        }
+
+        .hero-stars {
+            color: #f59e0b;
+            font-size: 16px;
+            letter-spacing: 2px;
+        }
+
         /* ── Trust logos / as-seen-in bar ── */
         .credibility-bar {
             border-top: 1px solid var(--border);
@@ -566,10 +583,10 @@
         }
 
         .feature-card h3 {
-            font-family: 'Inter', sans-serif;
-            font-size: 21px;
-            font-weight: 400;
-            margin-bottom: 12px;
+            font-family: 'Outfit', sans-serif;
+            font-size: 20px;
+            font-weight: 600;
+            margin-bottom: 10px;
             color: var(--text-primary);
         }
 
@@ -627,11 +644,17 @@
         }
 
         .step h4 {
-            font-family: 'Inter', sans-serif;
+            font-family: 'Outfit', sans-serif;
             font-size: 16px;
-            font-weight: 400;
+            font-weight: 600;
             margin-bottom: 8px;
             color: var(--text-primary);
+        }
+
+        .step p {
+            color: var(--text-muted);
+            font-size: 13px;
+            line-height: 1.65;
         }
 
         /* ── Special Banners ── */
@@ -814,6 +837,12 @@
             line-height: 1.5;
         }
 
+        .blurred-cell {
+            filter: blur(5px);
+            user-select: none;
+            pointer-events: none;
+        }
+
         .sample-caption {
             text-align: center;
             color: var(--text-muted);
@@ -980,19 +1009,8 @@
         }
 
         .pricing-card {
-            background: var(--surface);
-            border: 1px solid var(--border);
-            border-radius: var(--radius-xl);
-            padding: 48px 44px;
             position: relative;
-            transition: all 0.4s cubic-bezier(0.4, 0, 0.2, 1);
-            display: flex;
-            flex-direction: column;
-        }
-
-        .pricing-card {
-            position: relative;
-            padding: 56px 44px;
+            padding: 48px 40px;
             background: var(--surface);
             border: 1px solid var(--border);
             border-radius: 24px;
@@ -1096,12 +1114,10 @@
             flex-shrink: 0;
         }
 
-        .checkout-btn {
+        .pricing-card .btn {
             width: 100%;
             justify-content: center;
-            font-size: 15px;
-            padding: 16px;
-            border-radius: var(--radius-md);
+            margin-top: auto;
         }
 
         .guarantee-note {
@@ -1335,45 +1351,112 @@
             opacity: 1;
         }
 
-        /* ── Responsive ── */
         @media (max-width: 768px) {
             .nav-links a:not(.btn) {
                 display: none;
             }
 
+            .nav-links .btn {
+                padding: 10px 20px;
+                font-size: 13px;
+            }
+
             .hero {
-                padding: 60px 0 40px;
+                padding: 48px 0 32px;
             }
 
             h1 {
-                font-size: clamp(36px, 10vw, 48px);
-                margin-bottom: 20px;
+                font-size: clamp(32px, 9vw, 44px);
+                margin-bottom: 18px;
+                line-height: 1.0;
             }
 
             .hero-subtitle {
-                font-size: 16px;
-                margin-bottom: 32px;
+                font-size: 15px;
+                margin-bottom: 28px;
+                line-height: 1.6;
             }
 
             .hero-badge {
-                margin-bottom: 24px;
-                font-size: 12px;
+                margin-bottom: 20px;
+                font-size: 11px;
+                padding: 6px 14px;
+            }
+
+            .btn-lg {
+                padding: 16px 32px;
+                font-size: 15px;
             }
 
             .features,
             .how-it-works,
             .sample-section,
             .testimonials,
-            .pricing {
-                padding: 60px 0;
+            .pricing,
+            .faq-section,
+            .section-padding {
+                padding: 48px 0;
             }
 
             .section-header {
-                margin-bottom: 40px;
+                margin-bottom: 32px;
             }
 
             .section-title {
-                font-size: clamp(26px, 7vw, 32px);
+                font-size: clamp(24px, 7vw, 30px);
+            }
+
+            .section-subtitle {
+                font-size: 15px;
+                line-height: 1.6;
+            }
+
+            .stats-section {
+                padding: 40px 0;
+            }
+
+            .stat-card {
+                padding: 28px 20px;
+                min-height: auto;
+            }
+
+            .stat-number {
+                font-size: 36px;
+            }
+
+            .stat-label {
+                font-size: 10px;
+            }
+
+            .feature-card {
+                padding: 28px 24px;
+            }
+
+            .feature-icon {
+                width: 44px;
+                height: 44px;
+                font-size: 20px;
+                margin-bottom: 16px;
+            }
+
+            .feature-card h3 {
+                font-size: 17px;
+            }
+
+            .feature-card p {
+                font-size: 14px;
+            }
+
+            .pricing-card {
+                padding: 32px 24px;
+            }
+
+            .amount {
+                font-size: 48px;
+            }
+
+            .testimonial-card {
+                padding: 28px 24px;
             }
 
             .steps::before {
@@ -1382,7 +1465,41 @@
 
             .steps {
                 grid-template-columns: 1fr 1fr;
-                gap: 36px;
+                gap: 28px;
+            }
+
+            .step-number {
+                width: 44px;
+                height: 44px;
+                font-size: 16px;
+            }
+
+            .banner-dark {
+                padding: 40px 24px;
+                border-radius: 16px;
+            }
+
+            .chatgpt-grid {
+                grid-template-columns: 1fr;
+                margin-top: 32px;
+            }
+
+            .chatgpt-card {
+                padding: 28px 24px;
+            }
+
+            .comparison-table th,
+            .comparison-table td {
+                padding: 14px 16px;
+                font-size: 13px;
+            }
+
+            .security-grid {
+                grid-template-columns: 1fr 1fr;
+            }
+
+            .security-card {
+                padding: 20px;
             }
 
             .footer-top {
@@ -1396,50 +1513,44 @@
             .footer-bottom {
                 flex-direction: column;
                 align-items: flex-start;
-                gap: 20px;
+                gap: 16px;
             }
 
             .trust-bar {
-                gap: 18px;
-                padding: 20px 0;
+                gap: 14px;
+                padding: 18px 0;
             }
 
             .credibility-inner {
-                gap: 20px;
+                gap: 16px;
             }
 
-            .pricing-card {
-                padding: 36px 24px;
-            }
-
-            .feature-card {
-                padding: 32px 24px;
-            }
-
-            .stat-card {
-                padding: 24px;
+            .credibility-badge {
+                font-size: 12px;
             }
 
             .cta-group {
-                margin-bottom: 12px;
+                margin-bottom: 8px;
             }
 
-            /* Modal Optimization */
-            .checkout-modal {
-                padding: 40px 24px !important;
+            .modal-card {
+                padding: 40px 24px;
             }
 
-            .checkout-modal h2 {
-                font-size: 22px !important;
-                margin-bottom: 8px !important;
-            }
-
-            .checkout-modal p {
-                font-size: 13px !important;
+            .modal-title {
+                font-size: 24px;
             }
         }
 
         @media (max-width: 480px) {
+            .container {
+                padding: 0 16px;
+            }
+
+            h1 {
+                font-size: 28px;
+            }
+
             .cta-group {
                 flex-direction: column;
                 align-items: stretch;
@@ -1453,6 +1564,15 @@
 
             .stats-grid {
                 grid-template-columns: 1fr 1fr;
+                gap: 12px;
+            }
+
+            .stat-card {
+                padding: 20px 16px;
+            }
+
+            .stat-number {
+                font-size: 28px;
             }
 
             .steps {
@@ -1469,6 +1589,23 @@
 
             .testimonial-grid {
                 grid-template-columns: 1fr;
+            }
+
+            .security-grid {
+                grid-template-columns: 1fr;
+            }
+
+            .announcement-bar {
+                font-size: 11px;
+                padding: 8px 16px;
+            }
+
+            .header-content {
+                height: 56px;
+            }
+
+            .logo {
+                font-size: 18px;
             }
         }
     </style>
@@ -1530,11 +1667,8 @@
                     </a>
                 </div>
 
-                <div
-                    style="display: flex; justify-content: center; align-items: center; gap: 8px; margin-top: 16px; margin-bottom: 8px; color: var(--text-secondary); font-size: 14px;">
-                    <div style="display: flex; color: #f59e0b; font-size: 16px;">
-                        <span>★</span><span>★</span><span>★</span><span>★</span><span>★</span>
-                    </div>
+                <div class="hero-rating">
+                    <div class="hero-stars">★★★★★</div>
                     <span><strong>4.9/5</strong> rating from 148+ users</span>
                 </div>
                 <p class="hero-trust-note">
@@ -1804,9 +1938,9 @@
 
 
         <!-- ── Use Cases ── -->
-        <section class="features" style="padding-top: 60px; padding-bottom: 60px;">
+        <section class="features section-padding-sm">
             <div class="container">
-                <div class="section-header" style="margin-bottom: 48px;">
+                <div class="section-header">
                     <span class="section-tag">Use Cases</span>
                     <h2 class="section-title">Fuel Your Growth Engine</h2>
                 </div>
@@ -2100,9 +2234,6 @@
                     </div>
                 </div>
             </div>
-        </section>
-        </div>
-        </div>
         </section>
 
         <!-- ── Security / Trust ── -->
