@@ -4,9 +4,67 @@
 <head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title>Verified Startup Contacts & Cold Email Leads | OutreachKit</title>
+
+    <!-- Primary SEO -->
+    <title>6,400+ Verified Startup Contacts & Founder Emails | OutreachKit</title>
     <meta name="description"
-        content="Reach the right founders fast. Access 6,400+ verified tech startup emails for B2B outreach and job hunting. One-time payment • Instant access.">
+        content="Get instant access to 6,400+ verified tech startup contacts — founder emails, phone numbers & LinkedIn profiles. Perfect for B2B cold outreach, job hunting & brand partnerships. One-time payment, lifetime access.">
+    <meta name="keywords"
+        content="startup contacts database, cold email leads, founder emails, B2B outreach, startup outreach, YC companies list, Indian startups database, cold emailing, job search startups, bulk applying, brand outreach">
+    <link rel="canonical" href="https://outreachkit.in/">
+
+    <!-- Open Graph -->
+    <meta property="og:type" content="website">
+    <meta property="og:url" content="https://outreachkit.in/">
+    <meta property="og:title" content="6,400+ Verified Startup Contacts & Founder Emails | OutreachKit">
+    <meta property="og:description"
+        content="Pre-researched startup database with founder emails, phone numbers & LinkedIn. Built for cold outreach, job hunting & B2B sales. One-time payment.">
+    <meta property="og:image" content="https://outreachkit.in/assets/spreadsheet-1.png">
+    <meta property="og:site_name" content="OutreachKit">
+    <meta property="og:locale" content="en_IN">
+
+    <!-- Twitter Card -->
+    <meta name="twitter:card" content="summary_large_image">
+    <meta name="twitter:title" content="6,400+ Verified Startup Contacts & Founder Emails | OutreachKit">
+    <meta name="twitter:description"
+        content="Pre-researched startup database with founder emails, phone numbers & LinkedIn. Built for cold outreach, job hunting & B2B sales.">
+    <meta name="twitter:image" content="https://outreachkit.in/assets/spreadsheet-1.png">
+
+    <!-- JSON-LD Structured Data -->
+    <script type="application/ld+json">
+    {
+        "@context": "https://schema.org",
+        "@type": "Product",
+        "name": "OutreachKit Startup Database",
+        "description": "6,400+ verified tech startup contacts with founder emails, phone numbers, and LinkedIn profiles for B2B cold outreach and job hunting.",
+        "brand": { "@type": "Brand", "name": "OutreachKit" },
+        "url": "https://outreachkit.in/",
+        "image": "https://outreachkit.in/assets/spreadsheet-1.png",
+        "offers": [
+            {
+                "@type": "Offer",
+                "name": "Indian Startups Database",
+                "price": "1100",
+                "priceCurrency": "INR",
+                "availability": "https://schema.org/InStock",
+                "priceValidUntil": "2026-12-31"
+            },
+            {
+                "@type": "Offer",
+                "name": "Complete Database (YC + Indian)",
+                "price": "1999",
+                "priceCurrency": "INR",
+                "availability": "https://schema.org/InStock",
+                "priceValidUntil": "2026-12-31"
+            }
+        ],
+        "aggregateRating": {
+            "@type": "AggregateRating",
+            "ratingValue": "4.9",
+            "reviewCount": "148"
+        }
+    }
+    </script>
 
     <!-- Fonts -->
     <link rel="preconnect" href="https://fonts.googleapis.com">
@@ -16,25 +74,16 @@
         rel="stylesheet">
 
     <style>
-        /* ==================== EASY UPDATE SECTION ==================== */
-        /* Change these values to update pricing, colors, etc. */
         :root {
-            /* Pricing - UPDATE HERE */
-            --tier1-price: "1,100";
-            --tier2-price: "2,399";
-
-            /* Colors */
             --bg: #F8F5F2;
             --surface: #FFFFFF;
-            --border: rgba(0, 0, 0, 0.12);
+            --border: rgba(0, 0, 0, 0.10);
             --text-primary: #121212;
-            --text-secondary: #2A2A2A;
+            --text-secondary: #4A4A4A;
             --accent: #121212;
-            --accent-dim: #000000;
+            --accent-warm: #1a1a2e;
             --warning: #ff6b35;
         }
-
-        /* ============================================================= */
 
         * {
             margin: 0;
@@ -59,7 +108,7 @@
                 linear-gradient(90deg, var(--border) 1px, transparent 1px),
                 linear-gradient(0deg, var(--border) 1px, transparent 1px);
             background-size: 60px 60px;
-            opacity: 0.3;
+            opacity: 0.25;
             z-index: 0;
             animation: gridMove 20s linear infinite;
         }
@@ -72,10 +121,10 @@
 
         .orb {
             position: fixed;
-            width: 600px;
-            height: 600px;
+            width: 500px;
+            height: 500px;
             border-radius: 50%;
-            background: radial-gradient(circle, rgba(18, 18, 18, .15), transparent 70%);
+            background: radial-gradient(circle, rgba(18, 18, 18, .12), transparent 70%);
             filter: blur(80px);
             pointer-events: none;
             z-index: 1;
@@ -95,26 +144,27 @@
 
         @keyframes float {
             50% {
-                transform: translate(50px, -50px) scale(1.1);
+                transform: translate(40px, -40px) scale(1.05);
             }
         }
 
         .container {
             position: relative;
             z-index: 2;
-            max-width: 1200px;
+            max-width: 1100px;
             margin: auto;
             padding: 0 24px;
         }
 
+        /* ── Header ── */
         header {
-            padding: 24px 0;
+            padding: 18px 0;
             border-bottom: 1px solid var(--border);
             backdrop-filter: blur(12px);
             position: sticky;
             top: 0;
             z-index: 100;
-            background: rgba(248, 245, 242, .8);
+            background: rgba(248, 245, 242, .85);
         }
 
         .header-content {
@@ -124,7 +174,7 @@
         }
 
         .logo {
-            font-size: 24px;
+            font-size: 22px;
             font-weight: 700;
         }
 
@@ -144,62 +194,59 @@
             color: var(--accent);
         }
 
-        /* Banner */
+        /* ── Banner ── */
         .banner {
-            background: linear-gradient(90deg, var(--accent) 0%, var(--accent-dim) 100%);
-            color: var(--bg);
-            padding: 12px 0;
+            background: var(--accent);
+            color: #f8f5f2;
+            padding: 10px 0;
             text-align: center;
             font-weight: 600;
-            font-size: 14px;
+            font-size: 13px;
+            letter-spacing: 0.3px;
         }
 
+        /* ── Hero ── */
         .hero {
-            padding: 120px 0 80px;
+            padding: 90px 0 60px;
             text-align: center;
         }
 
         .badge {
-            padding: 6px 14px;
-            border: 1px solid rgba(18, 18, 18, .2);
+            padding: 5px 14px;
+            border: 1px solid rgba(18, 18, 18, .18);
             border-radius: 100px;
             color: var(--accent);
             font-size: 13px;
-            margin-bottom: 24px;
+            margin-bottom: 20px;
             display: inline-block;
+            background: rgba(255, 255, 255, .6);
         }
 
         h1 {
-            font-size: clamp(48px, 8vw, 84px);
-            line-height: 1.1;
-            margin-bottom: 24px;
-        }
-
-        .gradient-text {
-            background: linear-gradient(135deg, #fff, var(--accent));
-            background-clip: text;
-            -webkit-background-clip: text;
-            -webkit-text-fill-color: transparent;
+            font-size: clamp(40px, 7vw, 76px);
+            line-height: 1.08;
+            margin-bottom: 20px;
+            letter-spacing: -1px;
         }
 
         .hero-subtitle {
-            max-width: 600px;
-            margin: auto auto 48px;
+            max-width: 560px;
+            margin: 0 auto 36px;
             color: var(--text-secondary);
-            font-size: clamp(18px, 3vw, 22px);
+            font-size: clamp(16px, 2.5vw, 19px);
         }
 
         .cta-group {
             display: flex;
-            gap: 16px;
+            gap: 14px;
             justify-content: center;
             flex-wrap: wrap;
         }
 
         .btn {
-            padding: 16px 32px;
+            padding: 15px 30px;
             border-radius: 8px;
-            font-size: 16px;
+            font-size: 15px;
             font-weight: 600;
             border: none;
             cursor: pointer;
@@ -212,12 +259,12 @@
 
         .btn-primary {
             background: var(--accent);
-            color: var(--bg);
+            color: #f8f5f2;
         }
 
         .btn-primary:hover {
-            background: var(--accent-dim);
             transform: translateY(-2px);
+            box-shadow: 0 8px 24px rgba(0, 0, 0, .15);
         }
 
         .btn-secondary {
@@ -228,96 +275,220 @@
 
         .btn-secondary:hover {
             border-color: var(--accent);
-            color: var(--accent);
         }
 
-        .stats {
+        .hero-trust {
+            margin-top: 20px;
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            gap: 8px;
+            color: var(--text-secondary);
+            font-size: 13px;
+        }
+
+        .stars {
+            color: #f59e0b;
+            letter-spacing: 1px;
+        }
+
+        /* ── Stats Row ── */
+        .stats-row {
             display: grid;
-            grid-template-columns: repeat(auto-fit, minmax(200px, 1fr));
-            gap: 24px;
-            padding: 80px 0;
+            grid-template-columns: repeat(4, 1fr);
+            gap: 16px;
+            padding: 48px 0 0;
         }
 
         .stat-card {
             background: var(--surface);
             border: 1px solid var(--border);
             border-radius: 12px;
-            padding: 32px;
+            padding: 24px 20px;
             text-align: center;
         }
 
         .stat-number {
-            font-size: 48px;
+            font-size: 36px;
+            font-weight: 700;
             color: var(--accent);
             font-family: 'JetBrains Mono', monospace;
+            line-height: 1;
         }
 
         .stat-label {
             color: var(--text-secondary);
-            margin-top: 8px;
+            margin-top: 6px;
+            font-size: 13px;
         }
 
-        .features {
-            padding: 80px 0;
+        /* ── Access in 5 min ── */
+        .quick-access {
+            padding: 72px 0 56px;
         }
 
         .section-title {
-            font-size: 36px;
+            font-size: clamp(24px, 4vw, 34px);
             text-align: center;
-            margin-bottom: 64px;
+            margin-bottom: 12px;
+            letter-spacing: -0.5px;
+        }
+
+        .section-sub {
+            text-align: center;
+            color: var(--text-secondary);
+            font-size: 15px;
+            margin-bottom: 48px;
+        }
+
+        .steps-grid {
+            display: grid;
+            grid-template-columns: repeat(3, 1fr);
+            gap: 20px;
+        }
+
+        .step-card {
+            background: var(--surface);
+            border: 1px solid var(--border);
+            border-radius: 12px;
+            padding: 28px 24px;
+            position: relative;
+        }
+
+        .step-number {
+            font-family: 'JetBrains Mono', monospace;
+            font-size: 13px;
+            font-weight: 600;
+            color: var(--text-secondary);
+            margin-bottom: 12px;
+            letter-spacing: 1px;
+        }
+
+        .step-icon {
+            font-size: 28px;
+            margin-bottom: 10px;
+        }
+
+        .step-title {
+            font-size: 17px;
+            font-weight: 600;
+            margin-bottom: 6px;
+        }
+
+        .step-desc {
+            color: var(--text-secondary);
+            font-size: 14px;
+            line-height: 1.55;
+        }
+
+        /* ── Product Screenshots ── */
+        .screenshots {
+            padding: 0 0 72px;
+        }
+
+        .screenshots-grid {
+            display: grid;
+            grid-template-columns: 1fr 1fr;
+            gap: 20px;
+        }
+
+        .screenshot-card {
+            border: 1px solid var(--border);
+            border-radius: 14px;
+            overflow: hidden;
+            background: var(--surface);
+            box-shadow: 0 4px 24px rgba(0, 0, 0, .06);
+            transition: box-shadow 0.25s, transform 0.25s;
+        }
+
+        .screenshot-card:hover {
+            box-shadow: 0 12px 40px rgba(0, 0, 0, .12);
+            transform: translateY(-3px);
+        }
+
+        .screenshot-card img {
+            width: 100%;
+            display: block;
+        }
+
+        .screenshot-label {
+            padding: 14px 18px;
+            border-top: 1px solid var(--border);
+            font-size: 13px;
+            font-weight: 600;
+            color: var(--text-secondary);
+            display: flex;
+            align-items: center;
+            gap: 6px;
+        }
+
+        /* ── Features ── */
+        .features {
+            padding: 0 0 72px;
         }
 
         .feature-grid {
             display: grid;
-            grid-template-columns: repeat(auto-fit, minmax(300px, 1fr));
-            gap: 24px;
+            grid-template-columns: repeat(3, 1fr);
+            gap: 16px;
         }
 
         .feature-card {
             background: var(--surface);
             border: 1px solid var(--border);
             border-radius: 12px;
-            padding: 32px;
-            transition: border-color 0.2s;
+            padding: 24px;
+            transition: border-color 0.2s, transform 0.2s;
         }
 
         .feature-card:hover {
             border-color: var(--accent);
+            transform: translateY(-2px);
         }
 
         .feature-icon {
-            font-size: 32px;
-            margin-bottom: 16px;
+            font-size: 26px;
+            margin-bottom: 12px;
         }
 
         .feature-title {
-            font-size: 20px;
-            margin-bottom: 12px;
+            font-size: 16px;
+            font-weight: 600;
+            margin-bottom: 6px;
         }
 
         .feature-desc {
             color: var(--text-secondary);
-            font-size: 15px;
+            font-size: 13.5px;
+            line-height: 1.55;
         }
 
+        /* ── Pricing ── */
         .pricing {
-            padding: 80px 0;
+            padding: 0 0 80px;
+        }
+
+        .pricing-grid {
+            display: grid;
+            grid-template-columns: 1fr 1fr;
+            gap: 20px;
+            max-width: 860px;
+            margin: 0 auto;
         }
 
         .pricing-card {
-            max-width: 900px;
-            margin: 0 auto 40px;
             background: var(--surface);
             border: 2px solid var(--border);
             border-radius: 16px;
-            padding: 48px;
+            padding: 36px 32px;
             text-align: center;
             position: relative;
-            transition: border-color 0.2s;
+            transition: border-color 0.2s, transform 0.2s;
         }
 
         .pricing-card:hover {
             border-color: var(--accent);
+            transform: translateY(-2px);
         }
 
         .pricing-card.best-value {
@@ -326,63 +497,82 @@
 
         .pricing-badge {
             position: absolute;
-            top: 24px;
-            right: 24px;
+            top: 18px;
+            right: 18px;
             background: var(--accent);
-            color: var(--bg);
-            padding: 6px 14px;
+            color: #f8f5f2;
+            padding: 4px 12px;
             border-radius: 100px;
-            font-size: 12px;
+            font-size: 11px;
+            font-weight: 700;
+            letter-spacing: 0.5px;
+        }
+
+        .pricing-name {
+            font-size: 15px;
             font-weight: 600;
+            color: var(--text-secondary);
+            margin-bottom: 16px;
         }
 
         .price {
-            font-size: 72px;
+            font-size: 58px;
             font-family: 'JetBrains Mono', monospace;
             color: var(--accent);
+            line-height: 1;
         }
 
         .price-currency {
-            font-size: 36px;
+            font-size: 28px;
             color: var(--text-secondary);
+            vertical-align: top;
+            margin-top: 8px;
+            display: inline-block;
         }
 
         .price-note {
-            margin: 16px 0 32px;
+            margin: 12px 0 24px;
             color: var(--text-secondary);
+            font-size: 13px;
         }
 
         .features-list {
             text-align: left;
-            margin: 32px 0;
             list-style: none;
+            margin-bottom: 28px;
         }
 
         .features-list li {
-            padding: 12px 0;
+            padding: 9px 0;
             border-bottom: 1px solid var(--border);
             display: flex;
-            gap: 12px;
+            gap: 10px;
             align-items: flex-start;
+            font-size: 14px;
+        }
+
+        .features-list li:last-child {
+            border-bottom: none;
         }
 
         .check {
             color: var(--accent);
             flex-shrink: 0;
+            font-weight: 700;
         }
 
         .share-btn {
-            margin-top: 16px;
-            padding: 12px 24px;
+            margin-top: 12px;
+            padding: 10px 20px;
             background: transparent;
             border: 1px solid var(--border);
             color: var(--text-secondary);
             border-radius: 8px;
-            font-size: 14px;
+            font-size: 13px;
             cursor: pointer;
             display: inline-flex;
             align-items: center;
-            gap: 8px;
+            gap: 6px;
             transition: all 0.2s;
         }
 
@@ -396,10 +586,11 @@
             bottom: 24px;
             right: 24px;
             background: var(--accent);
-            color: var(--bg);
-            padding: 16px 24px;
+            color: #f8f5f2;
+            padding: 14px 22px;
             border-radius: 8px;
             font-weight: 600;
+            font-size: 14px;
             opacity: 0;
             transform: translateY(20px);
             transition: all 0.3s;
@@ -411,31 +602,62 @@
             transform: translateY(0);
         }
 
+        /* ── Footer ── */
         footer {
             border-top: 1px solid var(--border);
-            padding: 48px 0;
+            padding: 36px 0;
             text-align: center;
             color: var(--text-secondary);
+            font-size: 13px;
         }
 
         .footer-links {
             display: flex;
             gap: 24px;
             justify-content: center;
-            margin-bottom: 24px;
+            margin-bottom: 16px;
         }
 
+        /* ── Responsive ── */
         @media (max-width: 768px) {
-            .cta-group {
-                flex-direction: column;
+            .stats-row {
+                grid-template-columns: repeat(2, 1fr);
             }
 
-            .pricing-card {
-                padding: 32px 24px;
+            .steps-grid {
+                grid-template-columns: 1fr;
+                gap: 14px;
+            }
+
+            .screenshots-grid {
+                grid-template-columns: 1fr;
+            }
+
+            .feature-grid {
+                grid-template-columns: 1fr 1fr;
+            }
+
+            .pricing-grid {
+                grid-template-columns: 1fr;
+            }
+
+            .cta-group {
+                flex-direction: column;
+                align-items: center;
+            }
+
+            .hero {
+                padding: 60px 0 40px;
             }
 
             .price {
-                font-size: 56px;
+                font-size: 46px;
+            }
+        }
+
+        @media (max-width: 480px) {
+            .feature-grid {
+                grid-template-columns: 1fr;
             }
         }
     </style>
@@ -447,82 +669,130 @@
 
     <!-- Top Banner -->
     <div class="banner">
-        🚀 Ease your outreach • Connect with 6,400+ tech startups instantly
+        🚀 6,438 verified startup contacts — cold outreach, brand deals & job hunting made easy
     </div>
 
     <header>
         <div class="container header-content">
             <div class="logo">Outreach<span class="logo-accent">Kit</span></div>
-            <a href="#pricing" class="nav-link">Get Access →</a>
+            <a href="#pricing" class="nav-link" id="nav-cta">Get Access →</a>
         </div>
     </header>
 
-    <section class="hero">
+    <!-- ── 1. HERO ── -->
+    <section class="hero" id="home">
         <div class="container">
-            <div class="badge">🚀 6,438 Startups • YC + Indian Tech</div>
+            <div class="badge">🚀 6,438 Startups · YC + Indian Tech</div>
             <h1>
                 Stop Searching.<br>
-                <span class="gradient-text">Get Verified Startup Contacts.</span>
+                <span
+                    style="background: linear-gradient(135deg, #555, #000); background-clip: text; -webkit-background-clip: text; -webkit-text-fill-color: transparent;">Get
+                    Verified Startup Contacts.</span>
             </h1>
             <p class="hero-subtitle">
-                6,400+ tech startups with founder emails, phone numbers, and contact info.
-                Pre-researched. Ready for cold outreach.
+                Founder emails, phone numbers & LinkedIn profiles for 6,400+ tech startups. Pre-researched. Ready to
+                send.
             </p>
             <div class="cta-group">
-                <a href="#pricing" class="btn btn-primary">
-                    Get Database — From ₹1,100
-                    <span>→</span>
+                <a href="#pricing" class="btn btn-primary" id="hero-cta">
+                    Get Database — From ₹1,100 →
                 </a>
             </div>
-            <div
-                style="display: flex; justify-content: center; align-items: center; gap: 8px; margin-top: 16px; color: var(--text-secondary); font-size: 14px;">
-                <div style="display: flex; color: #f59e0b; font-size: 16px;">
-                    <span>★</span><span>★</span><span>★</span><span>★</span><span>★</span>
+            <div class="hero-trust">
+                <span class="stars">★★★★★</span>
+                <span><strong>4.9/5</strong> from 148+ users · Secure checkout · One-time payment</span>
+            </div>
+
+            <!-- Stats Row inside Hero -->
+            <div class="stats-row">
+                <div class="stat-card">
+                    <div class="stat-number">6,438</div>
+                    <div class="stat-label">Total Startups</div>
                 </div>
-                <span><strong>4.9/5</strong> rating from 148+ users</span>
+                <div class="stat-card">
+                    <div class="stat-number">3,314</div>
+                    <div class="stat-label">YC Companies</div>
+                </div>
+                <div class="stat-card">
+                    <div class="stat-number">3,124</div>
+                    <div class="stat-label">Indian Startups</div>
+                </div>
+                <div class="stat-card">
+                    <div class="stat-number">3,200+</div>
+                    <div class="stat-label">Founder Emails</div>
+                </div>
             </div>
-            <p style="color: var(--text-secondary); font-size: 13px; margin-top: 8px;">
-                Secure checkout · One-time payment · Instant access
-            </p>
         </div>
     </section>
 
-    <!-- Stats -->
-    <section class="stats">
+    <!-- ── 2. ACCESS IN 5 MINUTES ── -->
+    <section class="quick-access" id="how-it-works">
         <div class="container">
-            <div class="stat-card">
-                <div class="stat-number">6,438</div>
-                <div class="stat-label">Total Startups</div>
-            </div>
-            <div class="stat-card">
-                <div class="stat-number">3,314</div>
-                <div class="stat-label">YC Companies</div>
-            </div>
-            <div class="stat-card">
-                <div class="stat-number">3,124</div>
-                <div class="stat-label">Indian Startups</div>
-            </div>
-            <div class="stat-card">
-                <div class="stat-number">3,200+</div>
-                <div class="stat-label">Founder Emails</div>
+            <h2 class="section-title">Get Access in Under 5 Minutes</h2>
+            <p class="section-sub">No signup walls. No waiting. Pay once and start reaching out today.</p>
+            <div class="steps-grid">
+                <div class="step-card">
+                    <div class="step-number">STEP 01</div>
+                    <div class="step-icon">💳</div>
+                    <h3 class="step-title">Choose Your Plan</h3>
+                    <p class="step-desc">Pick Indian, YC, or the Complete bundle. One-time payment via Razorpay — no
+                        subscriptions.</p>
+                </div>
+                <div class="step-card">
+                    <div class="step-number">STEP 02</div>
+                    <div class="step-icon">📧</div>
+                    <h3 class="step-title">Check Your Email</h3>
+                    <p class="step-desc">Google Sheets access is granted instantly. You'll get a "Shared with you" email
+                        within minutes.</p>
+                </div>
+                <div class="step-card">
+                    <div class="step-number">STEP 03</div>
+                    <div class="step-icon">🚀</div>
+                    <h3 class="step-title">Start Outreaching</h3>
+                    <p class="step-desc">Filter by city, industry, or YC batch. Send your first cold email today.</p>
+                </div>
             </div>
         </div>
     </section>
 
-    <!-- Features -->
+    <!-- ── 3. PRODUCT SCREENSHOTS ── -->
+    <section class="screenshots" id="preview">
+        <div class="container">
+            <h2 class="section-title">See What You're Getting</h2>
+            <p class="section-sub">Real data. Organised and ready to use — not a generic scraped list.</p>
+            <div class="screenshots-grid">
+                <div class="screenshot-card">
+                    <img src="../assets/spreadsheet-1.png"
+                        alt="OutreachKit YC Outreach Planner showing company names, websites, phone numbers, founder emails and LinkedIn profiles"
+                        loading="lazy" width="1512" height="788">
+                    <div class="screenshot-label">📊 YC Outreach Planner — Founder emails, LinkedIn, YC batch info</div>
+                </div>
+                <div class="screenshot-card">
+                    <img src="../assets/spreadsheet-2.png"
+                        alt="OutreachKit Indian Startups Database showing phone numbers, city, industry and company details"
+                        loading="lazy" width="1512" height="788">
+                    <div class="screenshot-label">🇮🇳 Indian Startups — Phone numbers, city, industry filters</div>
+                </div>
+            </div>
+        </div>
+    </section>
+
+    <!-- ── 4. WHAT'S INCLUDED ── -->
     <section class="features" id="features">
         <div class="container">
-            <h2 class="section-title">Data Built for B2B Cold Emailing & Outreach</h2>
+            <h2 class="section-title">Every Contact Field You Need</h2>
+            <p class="section-sub">6 data columns built for cold outreach — nothing fluff, everything actionable.</p>
             <div class="feature-grid">
                 <div class="feature-card">
                     <div class="feature-icon">📧</div>
                     <h3 class="feature-title">Founder Emails</h3>
-                    <p class="feature-desc">3,200+ verified email patterns for YC founders. Skip the guesswork.</p>
+                    <p class="feature-desc">3,200+ verified email patterns for YC founders. Reach the decision-maker
+                        directly.</p>
                 </div>
                 <div class="feature-card">
                     <div class="feature-icon">📞</div>
                     <h3 class="feature-title">Phone Numbers</h3>
-                    <p class="feature-desc">3,100+ Indian startup phone numbers. Call directly, no hunting.</p>
+                    <p class="feature-desc">3,100+ Indian startup phone numbers. Call directly, no middlemen.</p>
                 </div>
                 <div class="feature-card">
                     <div class="feature-icon">🔗</div>
@@ -531,336 +801,207 @@
                 </div>
                 <div class="feature-card">
                     <div class="feature-icon">🎯</div>
-                    <h3 class="feature-title">Pre-Filtered</h3>
-                    <p class="feature-desc">Only tech companies hiring developers. No restaurants, no retail.</p>
+                    <h3 class="feature-title">Pre-Filtered Tech Only</h3>
+                    <p class="feature-desc">Only tech companies. No restaurants, no retail. Your outreach list stays
+                        clean.</p>
                 </div>
                 <div class="feature-card">
                     <div class="feature-icon">📊</div>
                     <h3 class="feature-title">Outreach Tracker</h3>
-                    <p class="feature-desc">Google Sheets template with contact tracking, follow-ups, notes.</p>
+                    <p class="feature-desc">Google Sheets template with pipeline tracking, follow-ups, and notes.</p>
                 </div>
                 <div class="feature-card">
                     <div class="feature-icon">🏙️</div>
-                    <h3 class="feature-title">City-Wise Lists</h3>
-                    <p class="feature-desc">Bangalore, Hyderabad, Mumbai, Delhi. Filter by location instantly.</p>
+                    <h3 class="feature-title">City & Industry Filters</h3>
+                    <p class="feature-desc">Filter by Bangalore, Mumbai, Delhi, AI, Fintech, SaaS and more — instantly.
+                    </p>
                 </div>
             </div>
         </div>
     </section>
 
-    <!-- Pricing -->
+    <!-- ── 5. PRICING ── -->
     <section class="pricing" id="pricing">
         <div class="container">
-            <h2 class="section-title">Get Full Access to the Startup Database</h2>
+            <h2 class="section-title">Simple Pricing. Lifetime Access.</h2>
+            <p class="section-sub">One-time payment. No subscriptions. No surprise fees.</p>
 
-            <!-- Tier 1 -->
-            <div class="pricing-card">
-                <h3>Indian Startups Database</h3>
-                <div class="price">
-                    <span class="price-currency">₹</span>1,100
+            <div class="pricing-grid">
+                <!-- Tier 1 -->
+                <div class="pricing-card">
+                    <p class="pricing-name">Indian Startups Database</p>
+                    <div class="price">
+                        <span class="price-currency">₹</span>1,100
+                    </div>
+                    <p class="price-note">One-time · Lifetime access</p>
+                    <ul class="features-list">
+                        <li><span class="check">✓</span><span>3,124 Indian tech companies</span></li>
+                        <li><span class="check">✓</span><span>Phone numbers + addresses</span></li>
+                        <li><span class="check">✓</span><span>City-wise filtering (Blr, Hyd, Mumbai…)</span></li>
+                        <li><span class="check">✓</span><span>Google Sheets outreach tracker</span></li>
+                        <li><span class="check">✓</span><span>Instant access via email</span></li>
+                    </ul>
+                    <button class="btn btn-secondary" onclick="handlePurchase('tier1')" id="buy-tier1"
+                        style="width: 100%; justify-content: center;">
+                        Get Indian Database →
+                    </button>
+                    <button class="share-btn" onclick="shareLink('tier1')" id="share-tier1">
+                        📋 Copy Link to Share
+                    </button>
                 </div>
-                <p class="price-note">One-time payment. Lifetime access.</p>
 
-                <ul class="features-list">
-                    <li>
-                        <span class="check">✓</span>
-                        <span>3,124 Indian tech companies</span>
-                    </li>
-                    <li>
-                        <span class="check">✓</span>
-                        <span>Phone numbers + addresses</span>
-                    </li>
-                    <li>
-                        <span class="check">✓</span>
-                        <span>City-wise filtering (Bangalore, Hyderabad, Mumbai, etc.)</span>
-                    </li>
-                    <li>
-                        <span class="check">✓</span>
-                        <span>Google Sheets outreach tracker</span>
-                    </li>
-                    <li>
-                        <span class="check">✓</span>
-                        <span>Instant access via email</span>
-                    </li>
-                </ul>
-
-                <button class="btn btn-secondary" onclick="handlePurchase('tier1')"
-                    style="width: 100%; justify-content: center;">
-                    Get Indian Database
-                    <span>→</span>
-                </button>
-
-                <button class="share-btn" onclick="shareLink('tier1')">
-                    📋 Copy Link to Share
-                </button>
-            </div>
-
-            <!-- Tier 2 -->
-            <div class="pricing-card best-value">
-                <div class="pricing-badge">BEST VALUE</div>
-                <h3>Complete Database (YC + Indian)</h3>
-                <div class="price">
-                    <span class="price-currency">₹</span>1,999
+                <!-- Tier 2 -->
+                <div class="pricing-card best-value">
+                    <div class="pricing-badge">BEST VALUE</div>
+                    <p class="pricing-name">Complete Database (YC + Indian)</p>
+                    <div class="price">
+                        <span class="price-currency">₹</span>1,999
+                    </div>
+                    <p class="price-note">One-time · Lifetime access · Save ₹1,225!</p>
+                    <ul class="features-list">
+                        <li><span class="check">✓</span><span>Everything in Indian Database</span></li>
+                        <li><span class="check">✓</span><span>6,438 companies (YC + Indian)</span></li>
+                        <li><span class="check">✓</span><span>3,200+ founder email patterns (YC)</span></li>
+                        <li><span class="check">✓</span><span>Founder LinkedIn profiles</span></li>
+                        <li><span class="check">✓</span><span>Industry filters: AI, Fintech, SaaS, B2B</span></li>
+                        <li><span class="check">✓</span><span>Sheets tracker with email templates</span></li>
+                    </ul>
+                    <button class="btn btn-primary" onclick="handlePurchase('tier2')" id="buy-tier2"
+                        style="width: 100%; justify-content: center;">
+                        Get Complete Database →
+                    </button>
+                    <button class="share-btn" onclick="shareLink('tier2')" id="share-tier2">
+                        📋 Copy Link to Share
+                    </button>
+                    <p style="margin-top: 14px; font-size: 12px; color: var(--text-secondary);">🔒 Secure payment via
+                        Razorpay</p>
                 </div>
-                <p class="price-note">One-time payment. Lifetime access. Save ₹1,225!</p>
-
-                <ul class="features-list">
-                    <li>
-                        <span class="check">✓</span>
-                        <span>Everything in Indian Database</span>
-                    </li>
-                    <li>
-                        <span class="check">✓</span>
-                        <span>6,438 total companies (YC + Indian)</span>
-                    </li>
-                    <li>
-                        <span class="check">✓</span>
-                        <span>3,200+ founder email patterns (YC)</span>
-                    </li>
-                    <li>
-                        <span class="check">✓</span>
-                        <span>Founder LinkedIn profiles</span>
-                    </li>
-                    <li>
-                        <span class="check">✓</span>
-                        <span>3,100+ Indian company phone numbers</span>
-                    </li>
-                    <li>
-                        <span class="check">✓</span>
-                        <span>Industry filters: AI, Fintech, SaaS, B2B</span>
-                    </li>
-                    <li>
-                        <span class="check">✓</span>
-                        <span>Google Sheets tracker with templates</span>
-                    </li>
-                </ul>
-
-                <button class="btn btn-primary" onclick="handlePurchase('tier2')"
-                    style="width: 100%; justify-content: center;">
-                    Get Complete Database
-                    <span>→</span>
-                </button>
-
-                <button class="share-btn" onclick="shareLink('tier2')">
-                    📋 Copy Link to Share
-                </button>
-
-                <p class="price-note" style="margin-top: 16px;">
-                    🔒 Secure payment via Razorpay
-                </p>
             </div>
         </div>
     </section>
 
-    <!-- Footer -->
+    <!-- ── Footer ── -->
     <footer>
         <div class="container">
             <div class="footer-links">
                 <a href="mailto:sleektechventures@gmail.com" class="nav-link">Contact</a>
-                <a href="#" class="nav-link">Privacy</a>
-                <a href="#" class="nav-link">Terms</a>
+                <a href="/terms.html" class="nav-link">Terms</a>
+                <a href="mailto:sleektechventures@gmail.com" class="nav-link">Privacy</a>
             </div>
-            <p>© 2026 OutreachKit. Pre-researched startup contacts for cold outreach.</p>
+            <p>© 2026 OutreachKit — Pre-researched startup contacts for cold outreach, brand deals & job hunting.</p>
         </div>
     </footer>
 
-    <!-- Copy Notification -->
-    <div class="copy-notification" id="copyNotification">
-        Link copied to clipboard! 📋
-    </div>
+    <div class="copy-notification" id="copyNotification">Link copied! 📋</div>
 
     <!-- Razorpay SDK -->
     <script src="https://checkout.razorpay.com/v1/checkout.js"></script>
 
     <script>
-        // ==================== CONFIGURATION ====================
-        // UPDATE THESE VALUES BEFORE DEPLOYMENT
-        const RAZORPAY_KEY_ID = 'rzp_test_SE2V5xMaMdVAxJ'; // Replace with your Razorpay Key ID (Test or Live)
+        const RAZORPAY_KEY_ID = 'rzp_test_SE2V5xMaMdVAxJ';
 
         const PRICING = {
             tier1: {
-                amount: 110000,  // ₹1,100 in paise
+                amount: 110000,
                 name: 'Indian Startups Database',
                 description: '3,124 Indian tech companies with contacts'
             },
             tier2: {
-                amount: 199900,  // ₹1,999 in paise
+                amount: 199900,
                 name: 'Complete Database (YC + Indian)',
                 description: '6,438 total companies with founder contacts'
             }
         };
-        // ======================================================
 
         function handlePurchase(tier) {
             const product = PRICING[tier];
+            if (!product) return alert('Invalid product selection');
 
-            if (!product) {
-                alert('Invalid product selection');
-                return;
-            }
-
-            // Razorpay checkout options
             const options = {
                 key: RAZORPAY_KEY_ID,
                 amount: product.amount,
                 currency: 'INR',
                 name: 'OutreachKit',
                 description: product.description,
-                image: '', // Optional: Add your logo URL
-
-                // Prefill (optional, but helps UX)
-                prefill: {
-                    email: '',
-                    contact: ''
-                },
-
-                // Make email mandatory
-                readonly: {
-                    email: false,
-                    contact: false
-                },
-
-                // Theme
-                theme: {
-                    color: '#00ff88'
-                },
-
-                // Handler for successful payment
+                image: '',
+                prefill: { email: '', contact: '' },
+                readonly: { email: false, contact: false },
+                theme: { color: '#121212' },
                 handler: function (response) {
-                    // Payment successful
-                    // The webhook will handle access granting automatically
                     showSuccessMessage(product.name);
                 },
-
-                // Modal close handler
-                modal: {
-                    ondismiss: function () {
-                        console.log('Payment cancelled by user');
-                    }
-                },
-
-                // Notes (optional metadata)
-                notes: {
-                    tier: tier,
-                    product: product.name
-                }
+                modal: { ondismiss: function () {} },
+                notes: { tier: tier, product: product.name }
             };
 
-            // Create and open Razorpay checkout
             const rzp = new Razorpay(options);
-
-            // Handle payment failure
             rzp.on('payment.failed', function (response) {
                 alert('Payment failed. Please try again.\n\nError: ' + response.error.description);
             });
-
             rzp.open();
         }
 
         function showSuccessMessage(productName) {
-            // Create success modal
             const modal = document.createElement('div');
             modal.style.cssText = `
-                position: fixed;
-                inset: 0;
-                background: rgba(0,0,0,0.9);
-                display: flex;
-                align-items: center;
-                justify-content: center;
-                z-index: 10000;
-                animation: fadeIn 0.3s;
+                position: fixed; inset: 0; background: rgba(0,0,0,.85);
+                display: flex; align-items: center; justify-content: center;
+                z-index: 10000; animation: fadeIn 0.3s;
             `;
-
             modal.innerHTML = `
-                <div style="
-                    background: var(--surface);
-                    border: 2px solid var(--accent);
-                    border-radius: 16px;
-                    padding: 48px;
-                    max-width: 500px;
-                    text-align: center;
-                    animation: slideUp 0.3s;
-                ">
-                    <div style="font-size: 64px; margin-bottom: 24px;">✅</div>
-                    <h2 style="font-size: 28px; margin-bottom: 16px; color: var(--accent);">Payment Successful!</h2>
-                    <p style="color: var(--text-secondary); margin-bottom: 24px;">
-                        You've purchased: <strong style="color: var(--text-primary);">${productName}</strong>
+                <div style="background: #fff; border: 2px solid #121212; border-radius: 16px; padding: 48px; max-width: 480px; text-align: center; animation: slideUp 0.3s;">
+                    <div style="font-size: 56px; margin-bottom: 20px;">✅</div>
+                    <h2 style="font-size: 26px; margin-bottom: 12px;">Payment Successful!</h2>
+                    <p style="color: #4a4a4a; margin-bottom: 16px;">
+                        You've purchased: <strong style="color: #121212;">${productName}</strong>
                     </p>
-                    <p style="color: var(--text-secondary); margin-bottom: 32px;">
+                    <p style="color: #4a4a4a; margin-bottom: 28px; font-size: 14px;">
                         📧 Check your email for Google Sheets access.<br>
-                        You'll receive a "You've been granted access" email from Google within a few minutes.
+                        You'll receive a "You've been granted access" email within a few minutes.
                     </p>
-                    <button onclick="this.parentElement.parentElement.remove()" class="btn btn-primary">
+                    <button onclick="this.parentElement.parentElement.remove()" style="padding: 13px 28px; background: #121212; color: #fff; border: none; border-radius: 8px; font-size: 15px; font-weight: 600; cursor: pointer;">
                         Got it!
                     </button>
                 </div>
             `;
-
             document.body.appendChild(modal);
-
-            // Auto-remove after 10 seconds
-            setTimeout(() => {
-                if (modal.parentElement) {
-                    modal.remove();
-                }
-            }, 10000);
+            setTimeout(() => { if (modal.parentElement) modal.remove(); }, 10000);
         }
 
         function shareLink(tier) {
-            const baseUrl = window.location.origin + window.location.pathname;
-            const shareUrl = baseUrl + '#pricing';
-
-            // Copy to clipboard
-            navigator.clipboard.writeText(shareUrl).then(() => {
-                showNotification();
-            }).catch(() => {
-                // Fallback for older browsers
-                const textArea = document.createElement('textarea');
-                textArea.value = shareUrl;
-                document.body.appendChild(textArea);
-                textArea.select();
+            const shareUrl = window.location.origin + window.location.pathname + '#pricing';
+            navigator.clipboard.writeText(shareUrl).then(showNotification).catch(() => {
+                const ta = document.createElement('textarea');
+                ta.value = shareUrl;
+                document.body.appendChild(ta);
+                ta.select();
                 document.execCommand('copy');
-                document.body.removeChild(textArea);
+                document.body.removeChild(ta);
                 showNotification();
             });
         }
 
         function showNotification() {
-            const notification = document.getElementById('copyNotification');
-            notification.classList.add('show');
-            setTimeout(() => {
-                notification.classList.remove('show');
-            }, 2000);
+            const n = document.getElementById('copyNotification');
+            n.classList.add('show');
+            setTimeout(() => n.classList.remove('show'), 2000);
         }
 
-        // Smooth scroll for anchor links
         document.querySelectorAll('a[href^="#"]').forEach(anchor => {
             anchor.addEventListener('click', function (e) {
                 e.preventDefault();
                 const target = document.querySelector(this.getAttribute('href'));
-                if (target) {
-                    target.scrollIntoView({ behavior: 'smooth', block: 'start' });
-                }
+                if (target) target.scrollIntoView({ behavior: 'smooth', block: 'start' });
             });
         });
 
-        // Add CSS animations
         const style = document.createElement('style');
         style.textContent = `
-            @keyframes fadeIn {
-                from { opacity: 0; }
-                to { opacity: 1; }
-            }
-            @keyframes slideUp {
-                from { transform: translateY(30px); opacity: 0; }
-                to { transform: translateY(0); opacity: 1; }
-            }
+            @keyframes fadeIn { from { opacity: 0; } to { opacity: 1; } }
+            @keyframes slideUp { from { transform: translateY(30px); opacity: 0; } to { transform: translateY(0); opacity: 1; } }
         `;
         document.head.appendChild(style);
     </script>
-
-
-
 </body>
 
 </html>
