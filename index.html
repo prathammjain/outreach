@@ -751,6 +751,37 @@
             background: rgba(18, 18, 18, 0.035);
         }
 
+        /* ── Vault Preview ── */
+        .vault-images-grid {
+            display: flex;
+            flex-direction: column;
+            gap: 32px;
+            align-items: center;
+            max-width: 1000px;
+            margin: 0 auto;
+        }
+
+        .vault-image {
+            width: 100%;
+            height: auto;
+            border-radius: var(--radius-md);
+            border: 1.5px solid var(--border);
+            box-shadow: 0 12px 32px rgba(0, 0, 0, 0.08);
+            transition: transform 0.3s ease;
+        }
+
+        .vault-image:hover {
+            transform: translateY(-4px);
+            box-shadow: 0 16px 40px rgba(0, 0, 0, 0.12);
+        }
+
+        @media (min-width: 768px) {
+            .vault-images-grid {
+                flex-direction: column;
+                /* Or row if they are small, but screenshots usually look better full width */
+            }
+        }
+
         /* ── Sample table ── */
         .sample-section {
             padding: 100px 0;
@@ -2046,6 +2077,22 @@
 
 
 
+
+        <!-- ── Inside The Vault ── -->
+        <section class="vault-preview section-padding bg-muted">
+            <div class="container">
+                <div class="section-header">
+                    <span class="section-tag">Inside The Vault</span>
+                    <h2 class="section-title">No Fluff. Just Clean Data.</h2>
+                    <p class="section-subtitle">Take a look inside the master template you'll receive instantly upon
+                        purchase. Ready to be mapped to your CRM.</p>
+                </div>
+                <div class="vault-images-grid">
+                    <img src="assets/spreadsheet-1.png" alt="YC Outreach Planner Target Leads" class="vault-image">
+                    <img src="assets/spreadsheet-2.png" alt="YC Outreach Planner Pipeline Tracking" class="vault-image">
+                </div>
+            </div>
+        </section>
 
         <!-- ── Sample Data ── -->
         <section class="sample-section" id="sample">
