@@ -963,10 +963,11 @@
                         <li><span class="check">✓</span><span>Google Sheets outreach tracker</span></li>
                         <li><span class="check">✓</span><span>Instant access via email</span></li>
                     </ul>
-                    <button class="btn btn-secondary" onclick="handlePurchase('tier1')" id="buy-tier1"
-                        style="width: 100%; justify-content: center;">
+                    <a href="https://prathami4.gumroad.com/l/vtoipk" class="btn btn-secondary gumroad-button"
+                        data-gumroad-overlay-checkout="true"
+                        style="width: 100%; justify-content: center; display: inline-flex;">
                         Get Indian Database →
-                    </button>
+                    </a>
                     <button class="share-btn" onclick="shareLink('tier1')" id="share-tier1">
                         📋 Copy Link to Share
                     </button>
@@ -988,15 +989,16 @@
                         <li><span class="check">✓</span><span>Industry filters: AI, Fintech, SaaS, B2B</span></li>
                         <li><span class="check">✓</span><span>Sheets tracker with email templates</span></li>
                     </ul>
-                    <button class="btn btn-primary" onclick="handlePurchase('tier2')" id="buy-tier2"
-                        style="width: 100%; justify-content: center;">
+                    <a href="https://prathami4.gumroad.com/l/kgeoqg" class="btn btn-primary gumroad-button"
+                        data-gumroad-overlay-checkout="true"
+                        style="width: 100%; justify-content: center; display: inline-flex;">
                         Get Complete Database →
-                    </button>
+                    </a>
                     <button class="share-btn" onclick="shareLink('tier2')" id="share-tier2">
                         📋 Copy Link to Share
                     </button>
                     <p style="margin-top: 14px; font-size: 12px; color: var(--text-secondary);">🔒 Secure payment via
-                        Razorpay</p>
+                        Gumroad</p>
                 </div>
             </div>
         </div>
@@ -1091,79 +1093,27 @@
 
     <div class="copy-notification" id="copyNotification">Link copied! 📋</div>
 
-    <!-- Razorpay SDK -->
-    <script src="https://checkout.razorpay.com/v1/checkout.js"></script>
+    <!-- Gumroad Overlay Script -->
+    <script src="https://gumroad.com/js/gumroad.js"></script>
 
     <script>
-        const RAZORPAY_KEY_ID = 'rzp_test_SE2V5xMaMdVAxJ';
-
-        const PRICING = {
-            tier1: {
-                amount: 110000,
-                name: 'Indian Startups Database',
-                description: '3,124 Indian tech companies with contacts'
-            },
-            tier2: {
-                amount: 199900,
-                name: 'Complete Database (YC + Indian)',
-                description: '6,438 total companies with founder contacts'
+        // Check if returning from Gumroad payment
+        (function checkReturnStatus() {
+            const params = new URLSearchParams(window.location.search);
+            if (params.get('payment') === 'success') {
+                const email = params.get('email') || 'your inbox';
+                const modal = document.createElement('div');
+                modal.style.cssText = 'position:fixed;inset:0;background:rgba(0,0,0,.85);display:flex;align-items:center;justify-content:center;z-index:10000;';
+                modal.innerHTML = `<div style="background:#fff;border:2px solid #121212;border-radius:16px;padding:48px;max-width:480px;text-align:center;">
+                    <div style="font-size:56px;margin-bottom:20px;">🎉</div>
+                    <h2 style="font-size:26px;margin-bottom:12px;">Access Granted!</h2>
+                    <p style="color:#4a4a4a;margin-bottom:28px;">We've sent the OutreachKit database access to <strong>${email}</strong>. Check your inbox.</p>
+                    <button onclick="this.parentElement.parentElement.remove()" style="padding:13px 28px;background:#121212;color:#fff;border:none;border-radius:8px;font-size:15px;font-weight:600;cursor:pointer;">Start Prospecting</button>
+                </div>`;
+                document.body.appendChild(modal);
+                window.history.replaceState({}, '', window.location.pathname);
             }
-        };
-
-        function handlePurchase(tier) {
-            const product = PRICING[tier];
-            if (!product) return alert('Invalid product selection');
-
-            const options = {
-                key: RAZORPAY_KEY_ID,
-                amount: product.amount,
-                currency: 'INR',
-                name: 'OutreachKit',
-                description: product.description,
-                image: '',
-                prefill: { email: '', contact: '' },
-                readonly: { email: false, contact: false },
-                theme: { color: '#121212' },
-                handler: function (response) {
-                    showSuccessMessage(product.name);
-                },
-                modal: { ondismiss: function () { } },
-                notes: { tier: tier, product: product.name }
-            };
-
-            const rzp = new Razorpay(options);
-            rzp.on('payment.failed', function (response) {
-                alert('Payment failed. Please try again.\n\nError: ' + response.error.description);
-            });
-            rzp.open();
-        }
-
-        function showSuccessMessage(productName) {
-            const modal = document.createElement('div');
-            modal.style.cssText = `
-                position: fixed; inset: 0; background: rgba(0,0,0,.85);
-                display: flex; align-items: center; justify-content: center;
-                z-index: 10000; animation: fadeIn 0.3s;
-            `;
-            modal.innerHTML = `
-                <div style="background: #fff; border: 2px solid #121212; border-radius: 16px; padding: 48px; max-width: 480px; text-align: center; animation: slideUp 0.3s;">
-                    <div style="font-size: 56px; margin-bottom: 20px;">✅</div>
-                    <h2 style="font-size: 26px; margin-bottom: 12px;">Payment Successful!</h2>
-                    <p style="color: #4a4a4a; margin-bottom: 16px;">
-                        You've purchased: <strong style="color: #121212;">${productName}</strong>
-                    </p>
-                    <p style="color: #4a4a4a; margin-bottom: 28px; font-size: 14px;">
-                        📧 Check your email for Google Sheets access.<br>
-                        You'll receive a "You've been granted access" email within a few minutes.
-                    </p>
-                    <button onclick="this.parentElement.parentElement.remove()" style="padding: 13px 28px; background: #121212; color: #fff; border: none; border-radius: 8px; font-size: 15px; font-weight: 600; cursor: pointer;">
-                        Got it!
-                    </button>
-                </div>
-            `;
-            document.body.appendChild(modal);
-            setTimeout(() => { if (modal.parentElement) modal.remove(); }, 10000);
-        }
+        })();
 
         function shareLink(tier) {
             const shareUrl = window.location.origin + window.location.pathname + '#pricing';
