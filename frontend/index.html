@@ -602,20 +602,144 @@
             transform: translateY(0);
         }
 
+        /* ── FAQ ── */
+        .faq-section {
+            padding: 0 0 72px;
+        }
+
+        .faq-wrap {
+            max-width: 700px;
+            margin: 0 auto;
+        }
+
+        .faq-item {
+            border-bottom: 1px solid var(--border);
+        }
+
+        .faq-question {
+            width: 100%;
+            background: none;
+            border: none;
+            color: var(--text-primary);
+            font-family: 'Archivo', sans-serif;
+            font-size: 15px;
+            font-weight: 500;
+            padding: 20px 0;
+            text-align: left;
+            cursor: pointer;
+            display: flex;
+            justify-content: space-between;
+            align-items: center;
+            gap: 16px;
+            transition: color 0.2s;
+        }
+
+        .faq-question:hover {
+            color: var(--accent);
+        }
+
+        .faq-icon {
+            color: var(--accent);
+            font-size: 20px;
+            font-weight: 300;
+            flex-shrink: 0;
+            transition: transform 0.25s;
+        }
+
+        .faq-answer {
+            color: var(--text-secondary);
+            font-size: 14px;
+            line-height: 1.8;
+            padding-bottom: 20px;
+            display: none;
+        }
+
+        .faq-item.open .faq-answer {
+            display: block;
+        }
+
+        .faq-item.open .faq-icon {
+            transform: rotate(45deg);
+        }
+
         /* ── Footer ── */
         footer {
             border-top: 1px solid var(--border);
-            padding: 36px 0;
-            text-align: center;
+            padding: 56px 0 32px;
+        }
+
+        .footer-top {
+            display: grid;
+            grid-template-columns: 1fr auto;
+            gap: 48px;
+            margin-bottom: 40px;
+            align-items: start;
+        }
+
+        .footer-brand p {
+            color: var(--text-secondary);
+            font-size: 14px;
+            max-width: 300px;
+            line-height: 1.6;
+            margin-top: 8px;
+        }
+
+        .footer-links-group {
+            display: flex;
+            gap: 40px;
+        }
+
+        .footer-col h4 {
+            font-size: 11px;
+            font-weight: 600;
+            text-transform: uppercase;
+            letter-spacing: 0.1em;
+            color: var(--text-secondary);
+            margin-bottom: 14px;
+        }
+
+        .footer-col a {
+            display: block;
+            color: var(--text-secondary);
+            text-decoration: none;
+            font-size: 14px;
+            margin-bottom: 10px;
+            transition: color 0.2s;
+        }
+
+        .footer-col a:hover {
+            color: var(--accent);
+        }
+
+        .footer-bottom {
+            border-top: 1px solid var(--border);
+            padding-top: 24px;
+            display: flex;
+            justify-content: space-between;
+            align-items: center;
+            flex-wrap: wrap;
+            gap: 12px;
+        }
+
+        .copyright {
             color: var(--text-secondary);
             font-size: 13px;
         }
 
-        .footer-links {
+        .footer-legal-links {
             display: flex;
-            gap: 24px;
-            justify-content: center;
-            margin-bottom: 16px;
+            gap: 20px;
+        }
+
+        .footer-legal-links a {
+            color: var(--text-secondary);
+            text-decoration: none;
+            font-size: 13px;
+            transition: color 0.2s;
+        }
+
+        .footer-legal-links a:hover {
+            color: var(--accent);
         }
 
         /* ── Responsive ── */
@@ -880,15 +1004,90 @@
         </div>
     </section>
 
+    <!-- ── FAQ ── -->
+    <section class="faq-section" id="faq">
+        <div class="container">
+            <h2 class="section-title">Frequently Asked Questions</h2>
+            <p class="section-sub">Everything you need to know before buying.</p>
+            <div class="faq-wrap">
+                <div class="faq-item">
+                    <button class="faq-question" onclick="toggleFaq(this)">What exactly is in the database? <span
+                            class="faq-icon">+</span></button>
+                    <div class="faq-answer">Each row includes: Company name, website, founder name, founder email
+                        pattern (YC), phone number (Indian), LinkedIn URL, city, industry, and YC batch if applicable.
+                        Everything you need to send a personalised cold email.</div>
+                </div>
+                <div class="faq-item">
+                    <button class="faq-question" onclick="toggleFaq(this)">What is the bounce rate like? <span
+                            class="faq-icon">+</span></button>
+                    <div class="faq-answer">Our bounce rate is typically under 1–2%. We actively refresh the database so
+                        you aren't emailing companies that shut down years ago.</div>
+                </div>
+                <div class="faq-item">
+                    <button class="faq-question" onclick="toggleFaq(this)">How fast do I get access? <span
+                            class="faq-icon">+</span></button>
+                    <div class="faq-answer">Instant. Once your payment is confirmed, our system automatically grants
+                        your email access to the Google Sheet. You'll see an invitation in your inbox within a few
+                        minutes.</div>
+                </div>
+                <div class="faq-item">
+                    <button class="faq-question" onclick="toggleFaq(this)">What is your refund policy? <span
+                            class="faq-icon">+</span></button>
+                    <div class="faq-answer">We stand by our data. If the list has a verified bounce rate over 20% or we
+                        fail to deliver access, we'll issue a full refund within 7 days. We don't offer refunds for
+                        "change of mind" given the digital nature of the product.</div>
+                </div>
+                <div class="faq-item">
+                    <button class="faq-question" onclick="toggleFaq(this)">Do you offer lifetime updates? <span
+                            class="faq-icon">+</span></button>
+                    <div class="faq-answer">Yes. Your one-time purchase includes all future updates to that database.
+                        When we add new startups or refresh contact details, your Google Sheet reflects those changes
+                        automatically.</div>
+                </div>
+            </div>
+        </div>
+    </section>
+
     <!-- ── Footer ── -->
     <footer>
         <div class="container">
-            <div class="footer-links">
-                <a href="mailto:sleektechventures@gmail.com" class="nav-link">Contact</a>
-                <a href="/terms.html" class="nav-link">Terms</a>
-                <a href="mailto:sleektechventures@gmail.com" class="nav-link">Privacy</a>
+            <div class="footer-top">
+                <div class="footer-brand">
+                    <div class="logo">Outreach<span class="logo-accent">Kit</span></div>
+                    <p>Helping agencies, freelancers, and job seekers connect with the right startup founders — faster.
+                    </p>
+                    <p style="margin-top: 10px; font-size: 13px; color: var(--text-secondary);">
+                        By <strong>Sleek Tech Ventures</strong> ·
+                        <a href="mailto:sleektechventures@gmail.com"
+                            style="color: var(--accent); text-decoration: none;">sleektechventures@gmail.com</a>
+                    </p>
+                </div>
+                <div class="footer-links-group">
+                    <div class="footer-col">
+                        <h4>Product</h4>
+                        <a href="#features">Features</a>
+                        <a href="#preview">Preview</a>
+                        <a href="#pricing">Pricing</a>
+                        <a href="#faq">FAQ</a>
+                    </div>
+                    <div class="footer-col">
+                        <h4>Legal</h4>
+                        <a href="terms.html">Terms &amp; Conditions</a>
+                        <a href="terms.html#privacy">Privacy Policy</a>
+                        <a href="terms.html#refunds">Refund Policy</a>
+                        <a href="mailto:sleektechventures@gmail.com">Contact / Support</a>
+                    </div>
+                </div>
             </div>
-            <p>© 2026 OutreachKit — Pre-researched startup contacts for cold outreach, brand deals & job hunting.</p>
+            <div class="footer-bottom">
+                <p class="copyright">© 2026 OutreachKit · Sleek Tech Ventures · Data sourced from public records &amp;
+                    YC directory</p>
+                <div class="footer-legal-links">
+                    <a href="terms.html">Terms</a>
+                    <a href="terms.html#privacy">Privacy</a>
+                    <a href="terms.html#refunds">Refunds</a>
+                </div>
+            </div>
         </div>
     </footer>
 
@@ -930,7 +1129,7 @@
                 handler: function (response) {
                     showSuccessMessage(product.name);
                 },
-                modal: { ondismiss: function () {} },
+                modal: { ondismiss: function () { } },
                 notes: { tier: tier, product: product.name }
             };
 
@@ -979,6 +1178,13 @@
                 document.body.removeChild(ta);
                 showNotification();
             });
+        }
+
+        function toggleFaq(btn) {
+            const item = btn.closest('.faq-item');
+            const isOpen = item.classList.contains('open');
+            document.querySelectorAll('.faq-item.open').forEach(el => el.classList.remove('open'));
+            if (!isOpen) item.classList.add('open');
         }
 
         function showNotification() {
